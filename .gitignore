@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Dependências e builds (caso o projeto evolua)
+node_modules/
+dist/
+build/
+
+# Logs e segredos
+*.log
+.env
+.env.*
+
+# Arquivos temporários e capturas de tela
+*.tmp
+*.bak
+screenshots/
+
+# Contexto da conversa (uso local, não subir)
+CONTEXTO.md

@@ -11,19 +11,20 @@
       <div class="left">
         <div class="big"><svg viewBox="0 0 600 555" style="width:160px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg></div>
         <h1>Crie sua conta de gestor</h1>
-        <h2 class="muted">Depois de entrar, você cria a trilha da sua secretaria e cadastra professores e servidores.</h2>
+        <h2 class="muted">Sua trilha de aprendizagem é criada junto com a conta. Depois é só cadastrar professores e servidores.</h2>
         <ul class="bul">
-          <li>Uma única trilha por gestor</li>
+          <li>Uma única trilha por gestor, criada agora</li>
           <li>Contas de professores e servidores criadas por você</li>
           <li>Dashboard com indicadores de desempenho</li>
         </ul>
       </div>
       <div class="right">
-        <form action="gestor-criar-trilha.html">
+        <form action="gestor-dashboard.html">
           <div>
             <span class="badge orange">Gestor</span>
             <h1 style="margin-top:10px">Criar conta</h1>
           </div>
+          <h3>Seus dados</h3>
           <div class="field">
             <label>Nome completo</label>
             <input type="text" value="" placeholder="Marina Souza">
@@ -55,7 +56,26 @@
             <label>Confirmar senha</label>
             <input type="password" value="" placeholder="Repita a senha">
           </div>
-          <button class="btn accent block" type="submit">Criar conta e continuar</button><a class="small strong" href="login-gestor.html">Já tenho conta · Entrar</a>
+          <h3>Sua trilha de aprendizagem</h3>
+          <div class="notice ">
+            <b>Uma trilha por gestor</b>
+            <p>A trilha é criada junto com a conta e é a que os alunos e professores vinculados enxergam. Ela não pode ser duplicada nem excluída.</p>
+          </div>
+          <div class="field">
+            <label>Nome da trilha</label>
+            <input type="text" value="" placeholder="Gestão Pública Municipal">
+            <span class="help">Este nome aparece para todos os alunos da trilha.</span>
+          </div>
+          <div class="field">
+            <label>Descrição</label>
+            <textarea placeholder="Resumo do que a trilha oferece aos servidores" style="min-height:96px"></textarea>
+          </div>
+          <div class="field">
+            <label>Meta mensal de horas de capacitação</label>
+            <input type="text" value="" placeholder="2.400">
+            <span class="help">Usada na barra de meta do dashboard.</span>
+          </div>
+          <button class="btn accent block" type="submit">Criar conta e trilha</button><a class="small strong" href="login-gestor.html">Já tenho conta · Entrar</a>
         </form>
       </div>
     </div>

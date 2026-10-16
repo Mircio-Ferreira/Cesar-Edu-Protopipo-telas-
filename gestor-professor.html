@@ -13,7 +13,6 @@
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
-          <a href="gestor-criar-trilha.html" class=""><i></i>Criar trilha</a>
           <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt">7</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class="on"><i></i>Cadastro de professor</a>
@@ -51,7 +50,11 @@
             </div>
             <div class="field">
               <label>Trilha</label>
-              <input type="text" value="Gestão Pública Municipal" placeholder="">
+              <div class="row between" style="background:var(--creme);border:1px solid var(--borda);border-radius:8px;padding:12px 14px">
+                <b class="strong">Gestão Pública Municipal</b>
+                <div class="row" style="gap:10px"><span class="badge navy">Sua trilha</span></div>
+              </div>
+              <span class="help">O professor é vinculado automaticamente à sua trilha e não é possível escolher outra.</span>
             </div>
             <div class="field">
               <label>Senha de acesso</label>
