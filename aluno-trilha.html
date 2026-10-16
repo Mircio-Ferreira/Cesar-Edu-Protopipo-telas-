@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Minha trilha · CESAR EDU</title>
+    <title>Trilhas · CESAR EDU</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -12,12 +12,9 @@
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">SERVIDOR</div>
         <nav>
-          <a href="aluno-trilha.html" class="on"><i></i>Minha trilha</a>
+          <a href="aluno-trilha.html" class="on"><i></i>Trilhas</a>
           <a href="aluno-avisos.html" class=""><i></i>Avisos<span class="cnt">3</span></a>
           <a href="aluno-aula.html" class=""><i></i>Aula</a>
-          <a href="aluno-comentarios.html" class=""><i></i>Comentários</a>
-          <a href="aluno-avaliar.html" class=""><i></i>Avaliar curso</a>
-          <a href="aluno-solicitar.html" class=""><i></i>Solicitar acesso</a>
         </nav>
         <div class="me">
           <span class="avatar navy">AB</span>
@@ -28,52 +25,55 @@
       <main class="main">
         <div class="page-head">
           <div>
-            <h1>Minha trilha</h1>
-            <p>Gestão Pública Municipal · Secretaria de Administração e Gestão de Pessoas</p>
+            <h1>Trilhas</h1>
+            <p>Acompanhe a trilha em que você está inscrito e conheça outras trilhas disponíveis.</p>
           </div>
-          <div class="row"><a class="btn sec" href="aluno-solicitar.html">Solicitar outra trilha</a></div>
         </div>
-        <div class="grid3" style="grid-template-columns:2fr 1fr">
+        <div class="grid3" style="grid-template-columns:1fr 2fr;align-items:stretch">
+          <div class="card compact" style="gap:12px">
+            <div class="row between">
+              <h2>Mural de avisos</h2>
+            </div>
+            <a class="card post" href="aluno-avisos.html" style="text-decoration:none;color:inherit;padding:16px;flex:1;justify-content:center">
+              <div class="meta">
+                <div class="who">
+                  <span class="avatar lg">MS</span>
+                  <div>
+                    <div class="row" style="gap:8px">
+                      <b class="strong">Gestora Marina Souza</b>
+                      <span class="badge orange">Gestor da Trilha</span>
+                    </div>
+                    <span class="small muted">Último aviso em 14/10/2026 às 10:30</span>
+                  </div>
+                </div>
+                <span class="mural-cnt" title="3 avisos novos">3</span>
+              </div>
+            </a>
+          </div>
           <div class="card">
             <div class="row between">
-              <h2>Seu progresso na trilha</h2>
+              <div>
+                <span class="badge navy">Sua trilha</span>
+                <h2 style="margin-top:8px">Gestão Pública Municipal</h2>
+                <span class="small muted">Secretaria de Administração e Gestão de Pessoas</span>
+              </div>
               <b style="font-size:28px">48%</b>
             </div>
             <div class="progress lg"><i style="width:48%"></i></div>
             <span class="small muted">1 de 4 cursos concluídos · 2 em andamento</span>
           </div>
-          <div class="card">
-            <div class="row between">
-              <h2>Sequência de estudos</h2>
-              <span class="badge orange">12 dias seguidos</span>
-            </div>
-            <div class="streak">
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class="on"></i>
-              <i class=""></i>
-              <i class=""></i>
-            </div>
-            <span class="small muted">Conclua uma aula hoje para manter a sequência.</span>
-          </div>
         </div>
         <div>
-          <h2>Cursos da trilha</h2>
+          <h2>Cursos da trilha Gestão Pública Municipal</h2>
         </div>
         <div class="grid2" style="grid-template-columns:repeat(2,1fr)">
           <a class="card course" href="aluno-aula.html">
             <div class="cover"></div>
             <div class="row between">
-              <h3>Atendimento ao Cidadão</h3>
+              <div class="row" style="gap:10px">
+                <h3>Atendimento ao Cidadão</h3>
+                <span class="course-rate" title="Nota 4,7 de 5" aria-label="Nota 4,7 de 5"><span style="color:var(--laranja);font-size:16px;line-height:1">★</span><b>4,7</b></span>
+              </div>
               <span class="badge orange">Em andamento</span>
             </div>
             <span class="small muted">Prof. Roberto Lacerda · 34 aulas</span>
@@ -85,7 +85,10 @@
           <a class="card course" href="aluno-aula.html">
             <div class="cover"></div>
             <div class="row between">
-              <h3>Gestão de Processos</h3>
+              <div class="row" style="gap:10px">
+                <h3>Gestão de Processos</h3>
+                <span class="course-rate" title="Nota 4,2 de 5" aria-label="Nota 4,2 de 5"><span style="color:var(--laranja);font-size:16px;line-height:1">★</span><b>4,2</b></span>
+              </div>
               <span class="badge orange">Em andamento</span>
             </div>
             <span class="small muted">Profa. Patrícia Mendonça · 22 aulas</span>
@@ -97,7 +100,10 @@
           <a class="card course" href="aluno-avaliar.html">
             <div class="cover"></div>
             <div class="row between">
-              <h3>Ética no Serviço Público</h3>
+              <div class="row" style="gap:10px">
+                <h3>Ética no Serviço Público</h3>
+                <span class="course-rate" title="Nota 4,9 de 5" aria-label="Nota 4,9 de 5"><span style="color:var(--laranja);font-size:16px;line-height:1">★</span><b>4,9</b></span>
+              </div>
               <span class="badge green">Concluído</span>
             </div>
             <span class="small muted">Prof. Eduardo Cavalcanti · 12 aulas</span>
@@ -106,10 +112,13 @@
               <b class="small">100%</b>
             </div>
           </a>
-          <a class="card course" href="aluno-aula.html">
+          <a class="card course" href="#curso-licitacoes">
             <div class="cover"></div>
             <div class="row between">
-              <h3>Licitações e Contratos</h3>
+              <div class="row" style="gap:10px">
+                <h3>Licitações e Contratos</h3>
+                <span class="course-rate" title="Nota 3,8 de 5" aria-label="Nota 3,8 de 5"><span style="color:var(--laranja);font-size:16px;line-height:1">★</span><b>3,8</b></span>
+              </div>
               <span class="badge ">Não iniciado</span>
             </div>
             <span class="small muted">Prof. Roberto Lacerda · 18 aulas</span>
@@ -118,6 +127,83 @@
               <b class="small">0%</b>
             </div>
           </a>
+        </div>
+        <div>
+          <h2>Outras trilhas</h2>
+          <p class="muted">Trilhas de outras secretarias. Peça acesso diretamente na trilha que quiser.</p>
+        </div>
+        <div class="grid2" style="grid-template-columns:repeat(2,1fr)">
+          <div class="card course">
+            <div class="cover"></div>
+            <div class="row between">
+              <h3>Saúde e Bem-estar</h3>
+              <span class="badge">Disponível</span>
+            </div>
+            <span class="small muted">Secretaria de Saúde · 5 cursos · 62 aulas</span>
+            <div class="row end"><a class="btn accent sm" href="#solicitar-1">Solicitar acesso</a></div>
+          </div>
+          <div class="card course">
+            <div class="cover"></div>
+            <div class="row between">
+              <h3>Educação e Aprendizagem</h3>
+              <span class="badge yellow">Solicitação pendente</span>
+            </div>
+            <span class="small muted">Secretaria de Educação · 6 cursos · 80 aulas</span>
+            <div class="row end"><span class="btn sec sm" style="opacity:.55;pointer-events:none">Aguardando análise</span></div>
+          </div>
+          <div class="card course">
+            <div class="cover"></div>
+            <div class="row between">
+              <h3>Mobilidade Urbana</h3>
+              <span class="badge red">Solicitação indeferida</span>
+            </div>
+            <span class="small muted">Secretaria de Infraestrutura · 4 cursos · 41 aulas</span>
+            <div class="row end"><a class="btn sec sm" href="#solicitar-3">Solicitar novamente</a></div>
+          </div>
+        </div>
+        <div class="modal" id="curso-licitacoes">
+          <div class="box">
+            <span class="badge">Não iniciado</span>
+            <h2>Licitações e Contratos</h2>
+            <span class="small muted">Prof. Roberto Lacerda · 18 aulas</span>
+            <div class="row" style="gap:24px">
+              <div><b class="strong" style="font-size:20px">4</b><div class="small muted">módulos</div></div>
+              <div><b class="strong" style="font-size:20px">6h 30min</b><div class="small muted">de duração</div></div>
+            </div>
+            <p class="muted">Conheça as etapas do processo de licitação, as modalidades previstas na legislação, a elaboração de editais e a gestão e fiscalização de contratos administrativos na rotina da prefeitura.</p>
+            <div class="actions"><a class="btn sec" href="#">Sair</a><a class="btn accent" href="aluno-aula.html">Iniciar curso</a></div>
+          </div>
+        </div>
+        <div class="modal" id="solicitar-1">
+          <div class="box">
+            <h2>Solicitar acesso · Saúde e Bem-estar</h2>
+            <p class="muted">O gestor da trilha vai analisar seu pedido.</p>
+            <div class="field">
+              <label>Justificativa</label>
+              <textarea placeholder="Explique por que você precisa desta trilha (10 a 500 caracteres)"></textarea>
+              <span class="help">Mínimo de 10 e máximo de 500 caracteres. Texto em branco ou só com espaços não é aceito.</span>
+            </div>
+            <div class="actions"><a class="btn sec" href="#">Cancelar</a><a class="btn accent" href="#enviado">Enviar solicitação</a></div>
+          </div>
+        </div>
+        <div class="modal" id="solicitar-3">
+          <div class="box">
+            <h2>Solicitar acesso · Mobilidade Urbana</h2>
+            <p class="muted">O gestor da trilha vai analisar seu pedido.</p>
+            <div class="field">
+              <label>Justificativa</label>
+              <textarea placeholder="Explique por que você precisa desta trilha (10 a 500 caracteres)"></textarea>
+              <span class="help">Mínimo de 10 e máximo de 500 caracteres. Texto em branco ou só com espaços não é aceito.</span>
+            </div>
+            <div class="actions"><a class="btn sec" href="#">Cancelar</a><a class="btn accent" href="#enviado">Enviar solicitação</a></div>
+          </div>
+        </div>
+        <div class="modal" id="enviado">
+          <div class="box">
+            <h2>Solicitação enviada</h2>
+            <p class="muted">O gestor da trilha foi notificado e vai analisar seu pedido.</p>
+            <div class="actions"><a class="btn" href="#">Voltar para trilhas</a></div>
+          </div>
         </div>
       </main>
     </div>

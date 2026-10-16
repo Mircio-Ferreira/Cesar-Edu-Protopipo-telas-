@@ -12,12 +12,9 @@
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">SERVIDOR</div>
         <nav>
-          <a href="aluno-trilha.html" class=""><i></i>Minha trilha</a>
+          <a href="aluno-trilha.html" class=""><i></i>Trilhas</a>
           <a href="aluno-avisos.html" class=""><i></i>Avisos<span class="cnt">3</span></a>
           <a href="aluno-aula.html" class="on"><i></i>Aula</a>
-          <a href="aluno-comentarios.html" class=""><i></i>Comentários</a>
-          <a href="aluno-avaliar.html" class=""><i></i>Avaliar curso</a>
-          <a href="aluno-solicitar.html" class=""><i></i>Solicitar acesso</a>
         </nav>
         <div class="me">
           <span class="avatar navy">AB</span>
@@ -26,7 +23,7 @@
         <a class="exit" href="index.html">Sair</a>
       </aside>
       <main class="main">
-        <div class="crumbs"><a href="aluno-trilha.html">Minha trilha</a> / Atendimento ao Cidadão / Módulo 2</div>
+        <div class="crumbs"><a href="aluno-trilha.html">Trilhas</a> / Atendimento ao Cidadão / Módulo 2</div>
         <div class="page-head">
           <div>
             <h1>2.1 Linguagem simples</h1>
@@ -45,12 +42,15 @@
             </div>
             <div class="row between" style="justify-content:flex-end">
               <div class="row">
+                <div class="col" style="gap:2px;align-items:center">
                 <div class="rate-stars" title="Avalie este curso">
-                  <a class="" href="aluno-avaliar.html" title="5 de 5 estrelas" aria-label="Avaliar com 5 de 5 estrelas">★</a>
-                  <a class="on" href="aluno-avaliar.html" title="4 de 5 estrelas" aria-label="Avaliar com 4 de 5 estrelas">★</a>
-                  <a class="on" href="aluno-avaliar.html" title="3 de 5 estrelas" aria-label="Avaliar com 3 de 5 estrelas">★</a>
-                  <a class="on" href="aluno-avaliar.html" title="2 de 5 estrelas" aria-label="Avaliar com 2 de 5 estrelas">★</a>
-                  <a class="on" href="aluno-avaliar.html" title="1 de 5 estrelas" aria-label="Avaliar com 1 de 5 estrelas">★</a>
+                  <a class="" href="#avaliar" title="5 de 5 estrelas" aria-label="Avaliar com 5 de 5 estrelas">★</a>
+                  <a class="on" href="#avaliar" title="4 de 5 estrelas" aria-label="Avaliar com 4 de 5 estrelas">★</a>
+                  <a class="on" href="#avaliar" title="3 de 5 estrelas" aria-label="Avaliar com 3 de 5 estrelas">★</a>
+                  <a class="on" href="#avaliar" title="2 de 5 estrelas" aria-label="Avaliar com 2 de 5 estrelas">★</a>
+                  <a class="on" href="#avaliar" title="1 de 5 estrelas" aria-label="Avaliar com 1 de 5 estrelas">★</a>
+                </div>
+                <a class="small muted" href="#avaliar">Avaliar curso</a>
                 </div>
                 <a class="btn accent" href="#ok">Marcar como concluída</a>
               </div>
@@ -162,6 +162,28 @@
                   </div>
                 </div>
               </div>
+          </div>
+        </div>
+        <div class="modal" id="avaliar">
+          <form class="box" action="#avaliado">
+            <h2>Avaliar curso</h2>
+            <p class="muted">Atendimento ao Cidadão · você pode avaliar sem concluir o curso.</p>
+            <div>
+              <div class="rate-pick"><input type="radio" name="nota" id="n5" value="5"><label for="n5" title="5 de 5 estrelas">★</label><input type="radio" name="nota" id="n4" value="4" checked><label for="n4" title="4 de 5 estrelas">★</label><input type="radio" name="nota" id="n3" value="3"><label for="n3" title="3 de 5 estrelas">★</label><input type="radio" name="nota" id="n2" value="2"><label for="n2" title="2 de 5 estrelas">★</label><input type="radio" name="nota" id="n1" value="1"><label for="n1" title="1 de 5 estrelas">★</label></div>
+              <span class="small muted">Clique em uma estrela para ajustar sua nota.</span>
+            </div>
+            <div class="field">
+              <label>Comentário</label>
+              <textarea placeholder="Conte o que achou do curso (opcional)" style="min-height:100px"></textarea>
+            </div>
+            <div class="actions"><a class="btn ghost" href="#">Cancelar</a><button class="btn accent" type="submit">Enviar avaliação</button></div>
+          </form>
+        </div>
+        <div class="modal" id="avaliado">
+          <div class="box">
+            <h2>Avaliação enviada</h2>
+            <p class="muted">Obrigado! Você pode ajustar sua nota e comentário quando quiser.</p>
+            <div class="actions"><a class="btn" href="#">Fechar</a></div>
           </div>
         </div>
         <div class="modal" id="ok">

@@ -804,10 +804,24 @@ table.t {
 }
 
 .profile .actions {
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr;
   gap:10px;
-  margin-top:8px;
-  flex-wrap:wrap
+  margin-top:auto;
+  padding-top:8px
+}
+
+.profile .actions .btn {
+  grid-column:span 2;
+  white-space:nowrap
+}
+
+.profile .actions .btn:nth-child(2) {
+  grid-column:span 1
+}
+
+.profile .actions .btn:first-child:not(:last-child) {
+  grid-column:span 1
 }
 
 .foot {
@@ -1337,23 +1351,8 @@ table.t {
 
 .yt > .col:last-child {
   grid-column:2;
-  grid-row:1;
-  align-self:stretch;
-  contain:size;
-  min-height:0
-}
-
-.yt > .col:last-child > .card {
-  min-height:0;
-  overflow-y:auto
-}
-
-.yt > .col:last-child > .card:first-child {
-  flex:1 1 0
-}
-
-.yt > .col:last-child > .card:last-child {
-  flex:1 1 0
+  grid-row:1 / span 10;
+  align-self:start
 }
 
 .rate-stars {
@@ -1436,4 +1435,81 @@ table.t {
 .steps .step.now small b {
   color:var(--navy);
   font-weight:700
+}
+
+.rate-pick {
+  display:flex;
+  flex-direction:row-reverse;
+  justify-content:flex-end;
+  width:max-content;
+  border:1px solid var(--borda);
+  border-radius:20px;
+  background:#fff;
+  padding:4px 12px
+}
+
+.rate-pick input {
+  position:absolute;
+  opacity:0;
+  pointer-events:none
+}
+
+.rate-pick label {
+  font-size:22px;
+  line-height:1;
+  padding:2px 2px;
+  cursor:pointer;
+  color:var(--creme2)
+}
+
+.rate-pick input:checked ~ label,
+.rate-pick label:hover,
+.rate-pick label:hover ~ label {
+  color:var(--laranja)
+}
+
+.rate-pick:hover input:checked ~ label:not(:hover):not(:hover ~ label) {
+  color:var(--creme2)
+}
+
+.mural-cnt {
+  background:var(--laranja);
+  color:var(--navy);
+  font-size:12px;
+  font-weight:600;
+  border-radius:999px;
+  padding:0 7px
+}
+
+.when-read {
+  display:none
+}
+
+.post:has(.read-toggle:checked),
+.main:has(.read-all:checked) .post {
+  opacity:.65
+}
+
+.post:has(.read-toggle:checked) .when-unread,
+.main:has(.read-all:checked) .post .when-unread,
+.row:has(.read-all:checked) .when-unread {
+  display:none
+}
+
+.post:has(.read-toggle:checked) .when-read,
+.main:has(.read-all:checked) .post .when-read,
+.row:has(.read-all:checked) .when-read {
+  display:inline
+}
+
+.course-rate {
+  display:flex;
+  align-items:center;
+  gap:4px;
+  font-size:12px;
+  color:var(--navy)
+}
+
+.course-rate b {
+  font-size:13px
 }
