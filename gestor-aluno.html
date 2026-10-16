@@ -29,7 +29,7 @@
         <div class="page-head">
           <div>
             <h1>Cadastro de aluno</h1>
-            <p>Cadastre o servidor. Ele entra com a conta criada por você e troca a senha no primeiro acesso.</p>
+            <p>Cadastre o servidor. Ele entra com a conta criada por você.</p>
           </div>
           <div class="row"></div>
         </div>
@@ -66,9 +66,9 @@
               </select>
             </div>
             <div class="field">
-              <label>Senha provisória</label>
-              <input value="Temp-7M3X9B" readonly>
-              <span class="help">Gerada automaticamente e válida somente até o primeiro acesso.</span>
+              <label>Senha de acesso</label>
+              <input type="password" placeholder="Mínimo de 8 caracteres">
+              <span class="help">O servidor usa esta senha para entrar na plataforma.</span>
             </div>
             <div class="notice blue">
               <b>Trilha</b>
@@ -142,7 +142,7 @@
                     </div>
                   </td>
                   <td>Infraestrutura</td>
-                  <td><span class="badge yellow">Senha provisória</span></td>
+                  <td><span class="badge green">Ativo</span></td>
                 </tr>
               </tbody>
             </table>
@@ -151,7 +151,7 @@
         <div class="modal" id="ok">
           <div class="box">
             <h2>Aluno cadastrado</h2>
-            <p class="muted">Conta criada com senha provisória. O servidor deverá trocá-la no primeiro acesso.</p>
+            <p class="muted">Conta criada. O servidor já pode entrar na plataforma.</p>
             <div class="actions"><a class="btn" href="#">Fechar</a></div>
           </div>
         </div>

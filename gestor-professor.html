@@ -29,7 +29,7 @@
         <div class="page-head">
           <div>
             <h1>Cadastro de professor</h1>
-            <p>Crie a conta do professor. Ele receberá uma senha provisória e trocará no primeiro acesso.</p>
+            <p>Crie a conta do professor. Ele entra com o e-mail e a senha definidos aqui.</p>
           </div>
           <div class="row"></div>
         </div>
@@ -54,9 +54,9 @@
               <input type="text" value="Gestão Pública Municipal" placeholder="">
             </div>
             <div class="field">
-              <label>Senha provisória</label>
-              <input value="Temp-4F9K2Q" readonly>
-              <span class="help">Gerada automaticamente. O professor será obrigado a trocá-la no primeiro acesso.</span>
+              <label>Senha de acesso</label>
+              <input type="password" placeholder="Mínimo de 8 caracteres">
+              <span class="help">O professor usa esta senha para entrar na plataforma.</span>
             </div>
             <div class="notice ">
               <b>O vínculo com a trilha é permanente</b>
@@ -131,7 +131,7 @@
         <div class="modal" id="ok">
           <div class="box">
             <h2>Professor cadastrado</h2>
-            <p class="muted">A conta foi criada com senha provisória e vinculada de forma permanente à trilha Gestão Pública Municipal.</p>
+            <p class="muted">A conta foi criada e vinculada de forma permanente à trilha Gestão Pública Municipal.</p>
             <div class="actions"><a class="btn" href="#">Fechar</a></div>
           </div>
         </div>
