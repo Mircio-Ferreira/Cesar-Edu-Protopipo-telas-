@@ -6,21 +6,21 @@
     <title>Cadastro de aluno · CESAR EDU</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body data-tipo="aluno">
     <div class="app">
       <aside class="side">
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
-          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt" id="side-pendentes">—</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
           <a href="gestor-aluno.html" class="on"><i></i>Cadastro de aluno</a>
         </nav>
         <div class="me">
           <span class="avatar navy">MS</span>
-          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+          <div><b class="strong">Marina Souza</b><small id="gestor-secretaria">Gestora</small></div>
         </div>
         <a class="exit" href="index.html">Sair</a>
       </aside>
@@ -28,133 +28,119 @@
         <div class="page-head">
           <div>
             <h1>Cadastro de aluno</h1>
-            <p>Cadastre o servidor. Ele entra com a conta criada por você.</p>
+            <p>Cadastre o servidor. Ele entra com a conta e a senha provisória criadas por você.</p>
           </div>
           <div class="row"></div>
         </div>
+        <div class="notice blue" id="status-carga">
+          <b>Carregando datasets…</b>
+          <p>Buscando os arquivos CSV de dashboard_links.js para validar CPF e e-mail.</p>
+        </div>
+        <div class="notice red" id="sem-permissao" hidden>
+          <b>Cadastro indisponível</b>
+          <p>Seu perfil não é responsável por nenhuma trilha. Apenas gestores de trilha podem cadastrar usuários.</p>
+        </div>
         <div class="grid2" style="align-items:start">
-          <form class="card" action="#">
+          <form class="card" id="form-cadastro" novalidate>
             <h2>Novo aluno (servidor)</h2>
-            <div class="field">
-              <label>Nome completo</label>
-              <input type="text" value="" placeholder="Ana Beatriz Lima">
+            <div class="field" id="campo-nome">
+              <label for="f-nome">Nome completo</label>
+              <input type="text" id="f-nome" placeholder="Ana Beatriz Lima">
+              <span class="help" id="help-nome" hidden></span>
             </div>
             <div class="grid2">
-              <div class="field">
-                <label>CPF</label>
-                <input type="text" value="" placeholder="000.000.000-00">
-              </div>
-              <div class="field">
-                <label>Matrícula funcional</label>
-                <input type="text" value="" placeholder="000000">
-              </div>
+            <div class="field" id="campo-cpf">
+              <label for="f-cpf">CPF</label>
+              <input type="text" id="f-cpf" placeholder="000.000.000-00" inputmode="numeric">
+              <span class="help" id="help-cpf" hidden></span>
             </div>
-            <div class="field">
-              <label>E-mail institucional</label>
-              <input type="email" value="" placeholder="servidor@recife.pe.gov.br">
+            <div class="field" id="campo-matricula">
+              <label for="f-matricula">Matrícula funcional</label>
+              <input type="text" id="f-matricula" placeholder="000000">
+              <span class="help" id="help-matricula" hidden></span>
+            </div>
+            </div>
+            <div class="field" id="campo-email">
+              <label for="f-email">E-mail institucional</label>
+              <input type="email" id="f-email" placeholder="servidor@recife.pe.gov.br">
+              <span class="help" id="help-email">CPF, e-mail e matrícula precisam ser únicos na plataforma.</span>
+            </div>
+            <div class="field" id="campo-cargo">
+              <label for="f-cargo">Cargo</label>
+              <select id="f-cargo"><option value="">Selecione</option></select>
+              <span class="help" id="help-cargo" hidden></span>
             </div>
             <div class="field">
               <label>Secretaria</label>
-              <select>
-                <option>Administração</option>
-                <option>Saúde</option>
-                <option>Educação</option>
-                <option>Infraestrutura</option>
-                <option>Assistência Social</option>
-                <option>Finanças</option>
-              </select>
+              <div class="row between" style="background:var(--creme);border:1px solid var(--borda);border-radius:8px;padding:12px 14px">
+                <b class="strong" id="secretaria-nome">—</b>
+                <div class="row" style="gap:10px"><span class="badge navy">Sua secretaria</span></div>
+              </div>
+              <span class="help">O servidor é vinculado à secretaria de origem do gestor.</span>
             </div>
             <div class="field">
-              <label>Senha de acesso</label>
-              <input type="password" placeholder="Mínimo de 8 caracteres">
-              <span class="help">O servidor usa esta senha para entrar na plataforma.</span>
+              <label>Trilha</label>
+              <div class="row between" id="trilha-fixa" style="background:var(--creme);border:1px solid var(--borda);border-radius:8px;padding:12px 14px">
+                <b class="strong" id="trilha-nome">—</b>
+                <div class="row" style="gap:10px"><span class="badge navy">Sua trilha</span></div>
+              </div>
+              <div id="campo-trilha-select" hidden><select id="f-trilha"></select></div>
+              <span class="help">Matrícula automática em <span id="cursos-trilha"></span> da trilha <span class="trilha-atual"></span>.</span>
             </div>
             <div class="notice blue">
-              <b>Trilha</b>
-              <p>O servidor será matriculado na trilha Gestão Pública Municipal e enxergará a trilha original do gestor.</p>
+              <b>Senha provisória</b>
+              <p>O sistema gera uma senha provisória ao concluir o cadastro. Ela deve ser trocada obrigatoriamente no primeiro acesso.</p>
             </div>
             <div class="row end">
               <a class="btn ghost" href="gestor-dashboard.html">Cancelar</a>
-              <a class="btn accent" href="#ok">Cadastrar aluno</a>
+              <button class="btn accent" type="submit" id="btn-cadastrar" disabled>Cadastrar aluno</button>
             </div>
           </form>
           <div class="card flat">
-            <div style="padding:24px 24px 12px">
-              <h2>Alunos cadastrados</h2>
+            <div class="row between" style="padding:24px 24px 12px;align-items:flex-start">
+              <div>
+                <h2>Alunos da secretaria (<span id="total">—</span>)</h2>
+                <p class="small muted">Servidores de servidores_estudantes.csv da sua secretaria e alunos cadastrados aqui.</p>
+              </div>
+              <div class="field" style="width:200px"><input id="f-busca" placeholder="Buscar"></div>
             </div>
             <table class="t">
               <thead>
                 <tr>
                   <th>Servidor</th>
-                  <th>Secretaria</th>
+                  <th>Cargo</th>
+                  <th>Cursos na trilha</th>
                   <th>Situação</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">AB</span>
-                      <div>
-                        <b class="strong">Ana Beatriz Lima</b>
-                        <small>ana.lima@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>Administração</td>
-                  <td><span class="badge green">Ativo</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">CM</span>
-                      <div>
-                        <b class="strong">Carlos Eduardo Menezes</b>
-                        <small>carlos.menezes@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>Saúde</td>
-                  <td><span class="badge green">Ativo</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">FA</span>
-                      <div>
-                        <b class="strong">Fernanda Albuquerque</b>
-                        <small>fernanda.albuquerque@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>Educação</td>
-                  <td><span class="badge green">Ativo</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">JP</span>
-                      <div>
-                        <b class="strong">João Pedro Cavalcanti</b>
-                        <small>joao.cavalcanti@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>Infraestrutura</td>
-                  <td><span class="badge green">Ativo</span></td>
-                </tr>
-              </tbody>
+              <tbody id="lista"></tbody>
             </table>
+            <div class="row between" style="padding:14px 20px;border-top:1px solid var(--borda)">
+              <span class="small muted" id="pag-info"></span>
+              <div class="row pager" id="paginacao"></div>
+            </div>
           </div>
         </div>
         <div class="modal" id="ok">
           <div class="box">
             <h2>Aluno cadastrado</h2>
-            <p class="muted">Conta criada. O servidor já pode entrar na plataforma.</p>
+            <p class="muted" id="ok-texto"></p>
+            <div class="notice">
+              <b>Senha provisória</b>
+              <div class="row between">
+                <b class="strong" id="ok-senha" style="font-size:18px;letter-spacing:.5px"></b>
+                <button type="button" class="btn sec sm" id="btn-copiar">Copiar</button>
+              </div>
+              <p>Repasse ao usuário. A troca de senha é obrigatória no primeiro acesso.</p>
+            </div>
             <div class="actions"><a class="btn" href="#">Fechar</a></div>
           </div>
         </div>
+        <div class="toast" id="toast" role="status"></div>
       </main>
     </div>
+    <script src="dashboard_links.js"></script>
+    <script src="gestor-dados.js"></script>
+    <script src="gestor-cadastro.js"></script>
   </body>
 </html>

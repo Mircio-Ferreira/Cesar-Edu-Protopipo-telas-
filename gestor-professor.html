@@ -6,21 +6,21 @@
     <title>Cadastro de professor · CESAR EDU</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body data-tipo="professor">
     <div class="app">
       <aside class="side">
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
-          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt" id="side-pendentes">—</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class="on"><i></i>Cadastro de professor</a>
           <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
         </nav>
         <div class="me">
           <span class="avatar navy">MS</span>
-          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+          <div><b class="strong">Marina Souza</b><small id="gestor-secretaria">Gestora</small></div>
         </div>
         <a class="exit" href="index.html">Sair</a>
       </aside>
@@ -28,38 +28,48 @@
         <div class="page-head">
           <div>
             <h1>Cadastro de professor</h1>
-            <p>Crie a conta do professor. Ele entra com o e-mail e a senha definidos aqui.</p>
+            <p>Crie a conta do professor. Ele entra com o e-mail e a senha provisória gerada no cadastro.</p>
           </div>
           <div class="row"></div>
         </div>
+        <div class="notice blue" id="status-carga">
+          <b>Carregando datasets…</b>
+          <p>Buscando os arquivos CSV de dashboard_links.js para validar CPF e e-mail.</p>
+        </div>
+        <div class="notice red" id="sem-permissao" hidden>
+          <b>Cadastro indisponível</b>
+          <p>Seu perfil não é responsável por nenhuma trilha. Apenas gestores de trilha podem cadastrar usuários.</p>
+        </div>
         <div class="grid2" style="align-items:start">
-          <form class="card" action="#">
+          <form class="card" id="form-cadastro" novalidate>
             <h2>Novo professor</h2>
-            <div class="field">
-              <label>Nome completo</label>
-              <input type="text" value="" placeholder="Roberto Lacerda">
+            <div class="field" id="campo-nome">
+              <label for="f-nome">Nome completo</label>
+              <input type="text" id="f-nome" placeholder="Roberto Lacerda">
+              <span class="help" id="help-nome" hidden></span>
             </div>
-            <div class="field">
-              <label>CPF</label>
-              <input type="text" value="" placeholder="000.000.000-00">
-              <span class="help">CPF e e-mail precisam ser únicos na plataforma.</span>
+            <div class="field" id="campo-cpf">
+              <label for="f-cpf">CPF</label>
+              <input type="text" id="f-cpf" placeholder="000.000.000-00" inputmode="numeric">
+              <span class="help" id="help-cpf">CPF e e-mail precisam ser únicos na plataforma.</span>
             </div>
-            <div class="field">
-              <label>E-mail institucional</label>
-              <input type="email" value="" placeholder="professor@recife.pe.gov.br">
+            <div class="field" id="campo-email">
+              <label for="f-email">E-mail institucional</label>
+              <input type="email" id="f-email" placeholder="professor@recife.pe.gov.br">
+              <span class="help" id="help-email" hidden></span>
             </div>
             <div class="field">
               <label>Trilha</label>
-              <div class="row between" style="background:var(--creme);border:1px solid var(--borda);border-radius:8px;padding:12px 14px">
-                <b class="strong">Gestão Pública Municipal</b>
+              <div class="row between" id="trilha-fixa" style="background:var(--creme);border:1px solid var(--borda);border-radius:8px;padding:12px 14px">
+                <b class="strong" id="trilha-nome">—</b>
                 <div class="row" style="gap:10px"><span class="badge navy">Sua trilha</span></div>
               </div>
-              <span class="help">O professor é vinculado automaticamente à sua trilha e não é possível escolher outra.</span>
+              <div id="campo-trilha-select" hidden><select id="f-trilha"></select></div>
+              <span class="help">O professor é vinculado à trilha <span class="trilha-atual"></span> e não é possível alterar depois.</span>
             </div>
-            <div class="field">
-              <label>Senha de acesso</label>
-              <input type="password" placeholder="Mínimo de 8 caracteres">
-              <span class="help">O professor usa esta senha para entrar na plataforma.</span>
+            <div class="notice blue">
+              <b>Senha provisória</b>
+              <p>O sistema gera uma senha provisória ao concluir o cadastro. Ela deve ser trocada obrigatoriamente no primeiro acesso.</p>
             </div>
             <div class="notice ">
               <b>O vínculo com a trilha é permanente</b>
@@ -67,13 +77,16 @@
             </div>
             <div class="row end">
               <a class="btn ghost" href="gestor-dashboard.html">Cancelar</a>
-              <a class="btn accent" href="#ok">Cadastrar professor</a>
+              <button class="btn accent" type="submit" id="btn-cadastrar" disabled>Cadastrar professor</button>
             </div>
           </form>
           <div class="card flat">
-            <div style="padding:24px 24px 12px">
-              <h2>Professores da trilha</h2>
-              <p class="small muted">Sem ações de edição ou remoção de vínculo.</p>
+            <div class="row between" style="padding:24px 24px 12px;align-items:flex-start">
+              <div>
+                <h2>Professores da trilha (<span id="total">—</span>)</h2>
+                <p class="small muted">Responsáveis pelos cursos em cursos_trilhas.csv e professores cadastrados aqui. Sem ações de edição ou remoção de vínculo.</p>
+              </div>
+              <div class="field" style="width:200px"><input id="f-busca" placeholder="Buscar"></div>
             </div>
             <table class="t">
               <thead>
@@ -84,61 +97,34 @@
                   <th>Vínculo</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">RL</span>
-                      <div>
-                        <b class="strong">Roberto Lacerda</b>
-                        <small>roberto.lacerda@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>3 cursos</td>
-                  <td class="muted">03/08/2026</td>
-                  <td><span class="lock">Vínculo permanente</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">PM</span>
-                      <div>
-                        <b class="strong">Patrícia Mendonça</b>
-                        <small>patricia.mendonca@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>2 cursos</td>
-                  <td class="muted">17/08/2026</td>
-                  <td><span class="lock">Vínculo permanente</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="who">
-                      <span class="avatar ">EC</span>
-                      <div>
-                        <b class="strong">Eduardo Cavalcanti</b>
-                        <small>eduardo.cavalcanti@recife.pe.gov.br</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>1 curso</td>
-                  <td class="muted">09/10/2026</td>
-                  <td><span class="lock">Vínculo permanente</span></td>
-                </tr>
-              </tbody>
+              <tbody id="lista"></tbody>
             </table>
+            <div class="row between" style="padding:14px 20px;border-top:1px solid var(--borda)">
+              <span class="small muted" id="pag-info"></span>
+              <div class="row pager" id="paginacao"></div>
+            </div>
           </div>
         </div>
         <div class="modal" id="ok">
           <div class="box">
             <h2>Professor cadastrado</h2>
-            <p class="muted">A conta foi criada e vinculada de forma permanente à trilha Gestão Pública Municipal.</p>
+            <p class="muted" id="ok-texto"></p>
+            <div class="notice">
+              <b>Senha provisória</b>
+              <div class="row between">
+                <b class="strong" id="ok-senha" style="font-size:18px;letter-spacing:.5px"></b>
+                <button type="button" class="btn sec sm" id="btn-copiar">Copiar</button>
+              </div>
+              <p>Repasse ao usuário. A troca de senha é obrigatória no primeiro acesso.</p>
+            </div>
             <div class="actions"><a class="btn" href="#">Fechar</a></div>
           </div>
         </div>
+        <div class="toast" id="toast" role="status"></div>
       </main>
     </div>
+    <script src="dashboard_links.js"></script>
+    <script src="gestor-dados.js"></script>
+    <script src="gestor-cadastro.js"></script>
   </body>
 </html>

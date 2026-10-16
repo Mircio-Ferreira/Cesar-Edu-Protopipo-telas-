@@ -6,21 +6,21 @@
     <title>Homologação · CESAR EDU</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body data-aba="pendentes">
     <div class="app">
       <aside class="side">
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
-          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt" id="side-pendentes">—</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
           <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
         </nav>
         <div class="me">
           <span class="avatar navy">MS</span>
-          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+          <div><b class="strong">Marina Souza</b><small id="gestor-secretaria">Gestora</small></div>
         </div>
         <a class="exit" href="index.html">Sair</a>
       </aside>
@@ -28,156 +28,71 @@
         <div class="page-head">
           <div>
             <h1>Homologação de solicitações</h1>
-            <p>Pedidos de servidores para ingressar em trilhas fora da secretaria de origem.</p>
+            <p>Pedidos de servidores para ingressar em cursos da sua trilha vindos de outras secretarias.</p>
           </div>
-          <div class="row"><span class="badge orange">7 pendentes</span></div>
+          <div class="row"><span class="badge orange" id="badge-total">—</span></div>
+        </div>
+        <div class="notice blue" id="status-carga">
+          <b>Carregando datasets…</b>
+          <p>Buscando solicitacoes_interdisciplinares.csv e os demais arquivos de dashboard_links.js.</p>
         </div>
         <div class="row wrap" style="gap:10px">
-          <a class="chip on" href="gestor-homologacao.html">Pendentes (7)</a>
-          <a class="chip " href="gestor-homologacao-aprovadas.html">Aprovadas (18)</a>
-          <a class="chip " href="gestor-homologacao-indeferidas.html">Indeferidas (14)</a>
+          <a class="chip on" href="gestor-homologacao.html">Pendentes (<span id="cnt-pendentes">—</span>)</a>
+          <a class="chip " href="gestor-homologacao-aprovadas.html">Aprovadas (<span id="cnt-aprovadas">—</span>)</a>
+          <a class="chip " href="gestor-homologacao-indeferidas.html">Indeferidas (<span id="cnt-indeferidas">—</span>)</a>
         </div>
-        <div class="col">
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">AB</span>
-                <div><b class="strong">Ana Beatriz Lima</b><small>Administração</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Saúde e Bem-estar</span>
-                <span class="small muted">há 2 dias</span>
-              </div>
-            </div>
-            <div class="notice blue" style="background:var(--creme);color:var(--navy)">
-              <b class="small">Justificativa do servidor</b>
-              <p style="font-size:13px;line-height:18px">Preciso entender a gestão de unidades de saúde para apoiar o novo sistema de compras da Secretaria. O curso complementa minhas atividades.</p>
-            </div>
-            <div class="row end">
-              <a class="btn danger sm" href="#indeferir1">Indeferir</a>
-              <a class="btn accent sm" href="#aprovar1">Aprovar</a>
-            </div>
+        <div class="card" style="flex-direction:row;align-items:flex-end;padding:16px 20px">
+          <div class="field grow">
+            <label for="f-busca">Buscar</label>
+            <input id="f-busca" placeholder="Servidor, matrícula ou curso">
           </div>
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">CM</span>
-                <div><b class="strong">Carlos Eduardo Menezes</b><small>Saúde</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Educação e Aprendizagem</span>
-                <span class="small muted">há 3 dias</span>
-              </div>
-            </div>
-            <div class="notice blue" style="background:var(--creme);color:var(--navy)">
-              <b class="small">Justificativa do servidor</b>
-              <p style="font-size:13px;line-height:18px">Atuo na formação de agentes comunitários e quero aprender didática para treinamentos presenciais com os servidores.</p>
-            </div>
-            <div class="row end">
-              <a class="btn danger sm" href="#indeferir2">Indeferir</a>
-              <a class="btn accent sm" href="#aprovar2">Aprovar</a>
-            </div>
+          <div class="field grow">
+            <label for="f-curso">Curso</label>
+            <select id="f-curso"></select>
           </div>
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">FA</span>
-                <div><b class="strong">Fernanda Albuquerque</b><small>Educação</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Mobilidade Urbana</span>
-                <span class="small muted">há 5 dias</span>
-              </div>
-            </div>
-            <div class="notice blue" style="background:var(--creme);color:var(--navy)">
-              <b class="small">Justificativa do servidor</b>
-              <p style="font-size:13px;line-height:18px">Participo do grupo de trabalho do transporte escolar e preciso conhecer o planejamento de mobilidade da cidade.</p>
-            </div>
-            <div class="row end">
-              <a class="btn danger sm" href="#indeferir3">Indeferir</a>
-              <a class="btn accent sm" href="#aprovar3">Aprovar</a>
-            </div>
+          <div class="field grow">
+            <label for="f-secretaria">Secretaria do servidor</label>
+            <select id="f-secretaria"></select>
           </div>
         </div>
-        <div class="modal" id="indeferir1">
-          <div class="box">
+        <div class="col" id="lista"></div>
+        <div class="card flat">
+          <div class="row between" style="padding:14px 20px;">
+            <span class="small muted" id="pag-info"></span>
+            <div class="row pager" id="paginacao"></div>
+          </div>
+        </div>
+        <div class="modal" id="indeferir">
+          <form class="box" id="form-indeferir">
             <h2>Indeferir solicitação</h2>
-            <p class="muted">Ana Beatriz Lima · Trilha Saúde e Bem-estar</p>
-            <div class="field error">
-              <label>Justificativa do indeferimento</label>
-              <textarea placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)">Sem vaga</textarea>
-              <span class="help">Escreva pelo menos 10 caracteres. Atual: 8.</span>
+            <p class="muted" id="indeferir-sub"></p>
+            <div class="field" id="indeferir-field">
+              <label for="indeferir-parecer">Justificativa do indeferimento</label>
+              <textarea id="indeferir-parecer" placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)"></textarea>
+              <span class="help" id="indeferir-help">Escreva pelo menos 10 caracteres. Atual: 0.</span>
             </div>
             <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
             <div class="actions">
               <a class="btn sec" href="#">Cancelar</a>
-              <button class="btn danger" disabled>Confirmar indeferimento</button>
+              <button class="btn danger" type="submit" id="indeferir-ok" disabled>Confirmar indeferimento</button>
             </div>
-          </div>
+          </form>
         </div>
-        <div class="modal" id="aprovar1">
+        <div class="modal" id="aprovar">
           <div class="box">
             <h2>Aprovar solicitação?</h2>
-            <p class="muted">Ana Beatriz Lima será matriculado automaticamente na Trilha Saúde e Bem-estar e terá acesso imediato aos cursos.</p>
+            <p class="muted" id="aprovar-sub"></p>
             <div class="actions">
               <a class="btn sec" href="#">Cancelar</a>
-              <a class="btn accent" href="#">Confirmar aprovação</a>
+              <button class="btn accent" type="button" id="aprovar-ok">Confirmar aprovação</button>
             </div>
           </div>
         </div>
-        <div class="modal" id="indeferir2">
-          <div class="box">
-            <h2>Indeferir solicitação</h2>
-            <p class="muted">Carlos Eduardo Menezes · Trilha Educação e Aprendizagem</p>
-            <div class="field error">
-              <label>Justificativa do indeferimento</label>
-              <textarea placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)">Sem vaga</textarea>
-              <span class="help">Escreva pelo menos 10 caracteres. Atual: 8.</span>
-            </div>
-            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
-            <div class="actions">
-              <a class="btn sec" href="#">Cancelar</a>
-              <button class="btn danger" disabled>Confirmar indeferimento</button>
-            </div>
-          </div>
-        </div>
-        <div class="modal" id="aprovar2">
-          <div class="box">
-            <h2>Aprovar solicitação?</h2>
-            <p class="muted">Carlos Eduardo Menezes será matriculado automaticamente na Trilha Educação e Aprendizagem e terá acesso imediato aos cursos.</p>
-            <div class="actions">
-              <a class="btn sec" href="#">Cancelar</a>
-              <a class="btn accent" href="#">Confirmar aprovação</a>
-            </div>
-          </div>
-        </div>
-        <div class="modal" id="indeferir3">
-          <div class="box">
-            <h2>Indeferir solicitação</h2>
-            <p class="muted">Fernanda Albuquerque · Trilha Mobilidade Urbana</p>
-            <div class="field error">
-              <label>Justificativa do indeferimento</label>
-              <textarea placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)">Sem vaga</textarea>
-              <span class="help">Escreva pelo menos 10 caracteres. Atual: 8.</span>
-            </div>
-            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
-            <div class="actions">
-              <a class="btn sec" href="#">Cancelar</a>
-              <button class="btn danger" disabled>Confirmar indeferimento</button>
-            </div>
-          </div>
-        </div>
-        <div class="modal" id="aprovar3">
-          <div class="box">
-            <h2>Aprovar solicitação?</h2>
-            <p class="muted">Fernanda Albuquerque será matriculado automaticamente na Trilha Mobilidade Urbana e terá acesso imediato aos cursos.</p>
-            <div class="actions">
-              <a class="btn sec" href="#">Cancelar</a>
-              <a class="btn accent" href="#">Confirmar aprovação</a>
-            </div>
-          </div>
-        </div>
+        <div class="toast" id="toast" role="status"></div>
       </main>
     </div>
+    <script src="dashboard_links.js"></script>
+    <script src="gestor-dados.js"></script>
+    <script src="gestor-homologacao.js"></script>
   </body>
 </html>

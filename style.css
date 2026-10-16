@@ -458,13 +458,13 @@ table.t {
   border-bottom:0
 }
 
-.t .who {
+.who {
   display:flex;
   align-items:center;
   gap:10px
 }
 
-.t .who small {
+.who small {
   display:block;
   color:var(--texto2);
   font-size:12px;
@@ -1512,4 +1512,135 @@ table.t {
 
 .course-rate b {
   font-size:13px
+}
+
+.kpi .d.neg {
+  color:var(--vermelho)
+}
+
+.kpi .d.neu {
+  color:var(--texto2)
+}
+
+button.chip {
+  font-family:inherit;
+  color:inherit;
+  cursor:pointer;
+  align-items:center;
+  gap:8px
+}
+
+.chip .x {
+  font-size:14px;
+  line-height:12px;
+  opacity:.6
+}
+
+.chip .x:hover {
+  opacity:1
+}
+
+.t th.sort {
+  cursor:pointer;
+  user-select:none
+}
+
+.t th.sort:hover {
+  color:var(--navy)
+}
+
+.t th.sort[data-dir="asc"]::after {
+  content:" ▲"
+}
+
+.t th.sort[data-dir="desc"]::after {
+  content:" ▼"
+}
+
+.pager {
+  gap:4px
+}
+
+.pager button {
+  font:inherit;
+  font-size:12px;
+  font-weight:600;
+  min-width:32px;
+  padding:5px 10px;
+  border-radius:8px;
+  border:1px solid var(--borda);
+  background:#fff;
+  color:var(--navy);
+  cursor:pointer
+}
+
+.pager button.on {
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff
+}
+
+.pager button[disabled] {
+  opacity:.4;
+  cursor:default
+}
+
+.notice[hidden] {
+  display:none
+}
+
+.toast {
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  max-width:380px;
+  padding:12px 16px;
+  border-radius:10px;
+  background:var(--navy);
+  color:#fff;
+  font-weight:600;
+  box-shadow:0 8px 24px rgba(19,34,47,.25);
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .2s,transform .2s;
+  pointer-events:none;
+  z-index:60
+}
+
+.toast.on {
+  opacity:1;
+  transform:none
+}
+
+.viz {
+  position:relative;
+  width:100%
+}
+
+.viz-vazio {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--texto2);
+  font-size:13px
+}
+
+.viz-dados summary {
+  cursor:pointer;
+  font-size:12px;
+  font-weight:600;
+  color:var(--texto2)
+}
+
+.viz-dados[open] summary {
+  margin-bottom:8px
+}
+
+.viz-dados .t td,.viz-dados .t th {
+  padding:6px 10px;
+  font-size:12px;
+  font-variant-numeric:tabular-nums
 }

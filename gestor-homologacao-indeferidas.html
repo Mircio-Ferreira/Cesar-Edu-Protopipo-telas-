@@ -6,21 +6,21 @@
     <title>Solicitações indeferidas · CESAR EDU</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body data-aba="indeferidas">
     <div class="app">
       <aside class="side">
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
-          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt" id="side-pendentes">—</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
           <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
         </nav>
         <div class="me">
           <span class="avatar navy">MS</span>
-          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+          <div><b class="strong">Marina Souza</b><small id="gestor-secretaria">Gestora</small></div>
         </div>
         <a class="exit" href="index.html">Sair</a>
       </aside>
@@ -30,104 +30,43 @@
             <h1>Solicitações indeferidas</h1>
             <p>Pedidos recusados, com a justificativa registrada na decisão.</p>
           </div>
-          <div class="row"><span class="badge red">14 indeferidas</span></div>
+          <div class="row"><span class="badge red" id="badge-total">—</span></div>
+        </div>
+        <div class="notice blue" id="status-carga">
+          <b>Carregando datasets…</b>
+          <p>Buscando solicitacoes_interdisciplinares.csv e os demais arquivos de dashboard_links.js.</p>
         </div>
         <div class="row wrap" style="gap:10px">
-          <a class="chip " href="gestor-homologacao.html">Pendentes (7)</a>
-          <a class="chip " href="gestor-homologacao-aprovadas.html">Aprovadas (18)</a>
-          <a class="chip on" href="gestor-homologacao-indeferidas.html">Indeferidas (14)</a>
+          <a class="chip " href="gestor-homologacao.html">Pendentes (<span id="cnt-pendentes">—</span>)</a>
+          <a class="chip " href="gestor-homologacao-aprovadas.html">Aprovadas (<span id="cnt-aprovadas">—</span>)</a>
+          <a class="chip on" href="gestor-homologacao-indeferidas.html">Indeferidas (<span id="cnt-indeferidas">—</span>)</a>
         </div>
-        <div class="col">
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">JP</span>
-                <div><b class="strong">João Pedro Cavalcanti</b><small>Infraestrutura</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Saúde e Bem-estar</span>
-                <span class="badge red">Indeferida</span>
-              </div>
-            </div>
-            <div class="row" style="gap:24px">
-              <span class="small muted">Solicitado em 10/09/2026</span>
-              <span class="small muted">Decidido em 12/09/2026</span>
-            </div>
-            <div class="notice red" style="background:var(--vermelho-claro)">
-              <b class="small">Justificativa do gestor</b>
-              <p style="font-size:13px;line-height:18px">O conteúdo da trilha não tem relação com as atividades do seu setor. Procure a trilha de Gestão Pública, que já está liberada para você.</p>
-            </div>
+        <div class="card" style="flex-direction:row;align-items:flex-end;padding:16px 20px">
+          <div class="field grow">
+            <label for="f-busca">Buscar</label>
+            <input id="f-busca" placeholder="Servidor, matrícula ou curso">
           </div>
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">FA</span>
-                <div><b class="strong">Fernanda Albuquerque</b><small>Educação</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Mobilidade Urbana</span>
-                <span class="badge red">Indeferida</span>
-              </div>
-            </div>
-            <div class="row" style="gap:24px">
-              <span class="small muted">Solicitado em 05/09/2026</span>
-              <span class="small muted">Decidido em 08/09/2026</span>
-            </div>
-            <div class="notice red" style="background:var(--vermelho-claro)">
-              <b class="small">Justificativa do gestor</b>
-              <p style="font-size:13px;line-height:18px">A trilha está com as turmas do semestre fechadas. Faça uma nova solicitação no início do próximo ciclo, em janeiro.</p>
-            </div>
+          <div class="field grow">
+            <label for="f-curso">Curso</label>
+            <select id="f-curso"></select>
           </div>
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">LM</span>
-                <div><b class="strong">Luciana Moura Barros</b><small>Saúde</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Educação e Aprendizagem</span>
-                <span class="badge red">Indeferida</span>
-              </div>
-            </div>
-            <div class="row" style="gap:24px">
-              <span class="small muted">Solicitado em 29/08/2026</span>
-              <span class="small muted">Decidido em 01/09/2026</span>
-            </div>
-            <div class="notice red" style="background:var(--vermelho-claro)">
-              <b class="small">Justificativa do gestor</b>
-              <p style="font-size:13px;line-height:18px">A justificativa apresentada não explica a necessidade de acesso. Reenvie com mais detalhes sobre a sua atuação.</p>
-            </div>
-          </div>
-          <div class="card" style="gap:12px">
-            <div class="row between">
-              <div class="who">
-                <span class="avatar ">TS</span>
-                <div><b class="strong">Tiago Silva Farias</b><small>Educação</small></div>
-              </div>
-              <div class="row">
-                <span class="badge orange">Trilha Saúde e Bem-estar</span>
-                <span class="badge red">Indeferida</span>
-              </div>
-            </div>
-            <div class="row" style="gap:24px">
-              <span class="small muted">Solicitado em 15/08/2026</span>
-              <span class="small muted">Decidido em 18/08/2026</span>
-            </div>
-            <div class="notice red" style="background:var(--vermelho-claro)">
-              <b class="small">Justificativa do gestor</b>
-              <p style="font-size:13px;line-height:18px">Solicitação duplicada de um pedido anterior que já foi analisado e aprovado.</p>
-            </div>
+          <div class="field grow">
+            <label for="f-secretaria">Secretaria do servidor</label>
+            <select id="f-secretaria"></select>
           </div>
         </div>
-        <div class="card" style="flex-direction:row;justify-content:space-between;align-items:center;padding:14px 20px">
-          <span class="small muted">Mostrando 4 de 14 solicitações indeferidas</span>
-          <b class="small">Anterior &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; Próxima</b>
+        <div class="col" id="lista"></div>
+        <div class="card flat">
+          <div class="row between" style="padding:14px 20px;">
+            <span class="small muted" id="pag-info"></span>
+            <div class="row pager" id="paginacao"></div>
+          </div>
         </div>
-        <div class="notice blue">
-          <b>Decisão definitiva</b>
-          <p>Uma solicitação indeferida não pode ser reaberta. Após o indeferimento, o servidor pode abrir um novo pedido para a mesma trilha.</p>
-        </div>
+        <div class="toast" id="toast" role="status"></div>
       </main>
     </div>
+    <script src="dashboard_links.js"></script>
+    <script src="gestor-dados.js"></script>
+    <script src="gestor-homologacao.js"></script>
   </body>
 </html>

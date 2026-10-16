@@ -13,14 +13,14 @@
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class="on"><i></i>Dashboard</a>
-          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt" id="side-pendentes">—</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
           <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
         </nav>
         <div class="me">
           <span class="avatar navy">MS</span>
-          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+          <div><b class="strong">Marina Souza</b><small id="gestor-secretaria">Gestora</small></div>
         </div>
         <a class="exit" href="index.html">Sair</a>
       </aside>
@@ -28,313 +28,188 @@
         <div class="page-head">
           <div>
             <h1>Dashboard</h1>
-            <p>Trilha Gestão Pública Municipal · atualizado hoje às 08:42</p>
+            <p id="subtitulo">Carregando dados…</p>
           </div>
           <div class="row">
-            <a class="btn sec" href="#">Exportar relatório</a>
+            <button class="btn sec" id="btn-exportar" type="button">Exportar relatório</button>
             <a class="btn accent" href="#salvar">Salvar visualização</a>
           </div>
         </div>
-        <div class="row wrap" style="gap:10px">
+
+        <div class="notice blue" id="status-carga">
+          <b>Carregando datasets…</b>
+          <p>Buscando os arquivos CSV definidos em dashboard_links.js.</p>
+        </div>
+
+        <div class="row wrap" style="gap:10px" id="views">
           <b class="small muted">Visualizações salvas:</b>
-          <span class="chip on">Visão geral</span>
-          <span class="chip">Estagnados há mais de 15 dias</span>
-          <span class="chip">Educação · último trimestre</span>
-          <span class="chip">Cursos com alta reprovação</span>
         </div>
-        <div class="card" style="flex-direction:row;align-items:flex-end;padding:16px 20px">
+
+        <form class="card" id="filtros" style="flex-direction:row;align-items:flex-end;padding:16px 20px">
           <div class="field grow">
-            <label>Período</label>
-            <select>
-              <option>Últimos 30 dias</option>
-              <option>Últimos 90 dias</option>
-              <option>Ano atual</option>
+            <label for="f-trilha">Trilha</label>
+            <select id="f-trilha" name="trilha"></select>
+          </div>
+          <div class="field grow">
+            <label for="f-periodo">Período</label>
+            <select id="f-periodo" name="periodo">
+              <option value="30">Últimos 30 dias</option>
+              <option value="90">Últimos 90 dias</option>
+              <option value="ano">Ano atual</option>
+              <option value="todos">Todo o histórico</option>
             </select>
           </div>
           <div class="field grow">
-            <label>Curso</label>
-            <select>
-              <option>Todos os cursos</option>
-              <option>Atendimento ao Cidadão</option>
-              <option>Gestão de Processos</option>
-              <option>Licitações e Contratos</option>
-            </select>
+            <label for="f-curso">Curso</label>
+            <select id="f-curso" name="curso"></select>
           </div>
           <div class="field grow">
-            <label>Secretaria</label>
-            <select>
-              <option>Todas as secretarias</option>
-              <option>Saúde</option>
-              <option>Educação</option>
-              <option>Infraestrutura</option>
-              <option>Administração</option>
-            </select>
+            <label for="f-secretaria">Secretaria</label>
+            <select id="f-secretaria" name="secretaria"></select>
           </div>
           <div class="field grow">
-            <label>Status</label>
-            <select>
-              <option>Todos os status</option>
-              <option>Não iniciado</option>
-              <option>Em andamento</option>
-              <option>Concluído</option>
+            <label for="f-status">Status</label>
+            <select id="f-status" name="status">
+              <option value="">Todos os status</option>
+              <option value="nao_iniciado">Não iniciado</option>
+              <option value="andamento">Em andamento</option>
+              <option value="concluido">Concluído</option>
+              <option value="cancelado">Cancelado</option>
             </select>
           </div>
-          <a class="btn" href="#">Aplicar filtros</a>
-        </div>
+          <button class="btn" type="submit">Aplicar filtros</button>
+        </form>
+
         <div class="grid4">
           <div class="card kpi">
             <span class="small muted">Servidores ativos na trilha</span>
-            <span class="v">248</span>
-            <span class="d">+12 neste mês</span>
+            <span class="v" id="kpi-ativos">—</span>
+            <span class="d" id="kpi-ativos-d"></span>
           </div>
           <div class="card kpi">
             <span class="small muted">Conclusão da trilha</span>
-            <span class="v">72%</span>
-            <span class="d">+4 p.p. vs. mês anterior</span>
+            <span class="v" id="kpi-conclusao">—</span>
+            <span class="d" id="kpi-conclusao-d"></span>
           </div>
           <div class="card kpi">
             <span class="small muted">Aprovação na 1ª tentativa</span>
-            <span class="v">68%</span>
-            <span class="d">+3 p.p. vs. mês anterior</span>
+            <span class="v" id="kpi-primeira">—</span>
+            <span class="d" id="kpi-primeira-d"></span>
           </div>
           <div class="card kpi">
             <span class="small muted">Taxa de evasão</span>
-            <span class="v">9,4%</span>
-            <span class="d">−1,2 p.p. vs. mês anterior</span>
+            <span class="v" id="kpi-evasao">—</span>
+            <span class="d" id="kpi-evasao-d"></span>
           </div>
         </div>
+
         <div class="card" style="gap:12px">
           <div class="card-head">
             <h2>Meta mensal de horas de capacitação</h2>
-            <span class="badge orange">77% da meta</span>
+            <span class="badge orange" id="meta-badge">—</span>
           </div>
           <div class="row between">
-            <h2>1.848 h concluídas</h2>
-            <span class="muted">Meta de outubro: 2.400 h</span>
+            <h2 id="meta-horas">—</h2>
+            <label class="row small muted" style="gap:8px">
+              <span id="meta-label">Meta do mês:</span>
+              <span class="field" style="width:110px"><input type="number" min="1" step="10" id="meta-input"></span>
+              <span>h</span>
+            </label>
           </div>
-          <div class="progress lg"><i style="width:77%"></i></div>
-          <span class="small muted">Faltam 552 h para a meta · 16 dias restantes no mês</span>
+          <div class="progress lg"><i id="meta-bar" style="width:0%"></i></div>
+          <span class="small muted" id="meta-rodape"></span>
         </div>
+
+        <div class="grid2">
+          <div class="card" style="gap:12px">
+            <div>
+              <h2>Matrículas e conclusões por mês</h2>
+              <p class="small muted" id="g-evolucao-sub">Últimos 12 meses · respeita trilha, curso e secretaria</p>
+            </div>
+            <div class="viz" style="height:260px"><canvas id="g-evolucao" role="img" aria-label="Matrículas e conclusões por mês"></canvas></div>
+            <details class="viz-dados"><summary>Ver dados</summary><div id="g-evolucao-tabela"></div></details>
+          </div>
+          <div class="card" style="gap:12px">
+            <div>
+              <h2>Horas de capacitação concluídas por mês</h2>
+              <p class="small muted" id="g-horas-sub">Carga horária dos cursos concluídos · mês atual em destaque</p>
+            </div>
+            <div class="viz" style="height:260px"><canvas id="g-horas" role="img" aria-label="Horas de capacitação concluídas por mês"></canvas></div>
+            <details class="viz-dados"><summary>Ver dados</summary><div id="g-horas-tabela"></div></details>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="card" style="gap:12px">
+            <div>
+              <h2>Status das matrículas por curso</h2>
+              <p class="small muted" id="g-status-sub">Quantidade de matrículas em cada situação</p>
+            </div>
+            <div class="viz" style="height:260px"><canvas id="g-status" role="img" aria-label="Status das matrículas por curso"></canvas></div>
+            <details class="viz-dados"><summary>Ver dados</summary><div id="g-status-tabela"></div></details>
+          </div>
+          <div class="card" style="gap:12px">
+            <div>
+              <h2>Distribuição das notas finais</h2>
+              <p class="small muted" id="g-notas-sub">Faixas abaixo da nota de corte em vermelho</p>
+            </div>
+            <div class="viz" style="height:260px"><canvas id="g-notas" role="img" aria-label="Distribuição das notas finais"></canvas></div>
+            <details class="viz-dados"><summary>Ver dados</summary><div id="g-notas-tabela"></div></details>
+          </div>
+        </div>
+
         <div class="grid2">
           <div class="card danger-border" style="gap:8px">
             <div class="card-head">
               <h2>Alerta de estagnação</h2>
-              <span class="badge red">5 servidores</span>
+              <span class="badge red" id="estag-badge">—</span>
             </div>
-            <p class="small muted">Sem login ou avanço nos conteúdos há mais de 15 dias.</p>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar red">JP</span>
-                <div><b class="strong">João Pedro Cavalcanti</b><small>Infraestrutura</small></div>
-              </div>
-              <span class="grow"></span><b class="small red-text">há 31 dias</b>
-            </div>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar red">RN</span>
-                <div><b class="strong">Rafael Nogueira Santos</b><small>Administração</small></div>
-              </div>
-              <span class="grow"></span><b class="small red-text">há 19 dias</b>
-            </div>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar red">LM</span>
-                <div><b class="strong">Luciana Moura Barros</b><small>Saúde</small></div>
-              </div>
-              <span class="grow"></span><b class="small red-text">há 18 dias</b>
-            </div>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar red">TS</span>
-                <div><b class="strong">Tiago Silva Farias</b><small>Educação</small></div>
-              </div>
-              <span class="grow"></span><b class="small red-text">há 16 dias</b>
-            </div>
-            <a class="btn sec block" href="#">Enviar lembrete aos 5 servidores</a>
+            <p class="small muted">Matrículas em andamento sem acesso ou avanço há mais de 15 dias.</p>
+            <div id="estag-lista"></div>
+            <button class="btn sec block" type="button" id="btn-lembrete">Enviar lembrete</button>
           </div>
           <div class="card" style="gap:8px">
             <div class="card-head">
               <h2>Fila de homologação</h2>
-              <span class="badge orange">7 pendentes</span>
+              <span class="badge orange" id="fila-badge">—</span>
             </div>
-            <p class="small muted">Solicitações de acesso a outras trilhas aguardando sua análise.</p>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar ">AB</span>
-                <div><b class="strong">Ana Beatriz Lima</b><small>Trilha Saúde e Bem-estar</small></div>
-              </div>
-              <span class="grow"></span><b class="small muted">há 2 dias</b>
-            </div>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar ">CM</span>
-                <div>
-                  <b class="strong">Carlos Eduardo Menezes</b>
-                  <small>Trilha Educação e Aprendizagem</small>
-                </div>
-              </div>
-              <span class="grow"></span><b class="small muted">há 3 dias</b>
-            </div>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar ">FA</span>
-                <div><b class="strong">Fernanda Albuquerque</b><small>Trilha Mobilidade Urbana</small></div>
-              </div>
-              <span class="grow"></span><b class="small muted">há 5 dias</b>
-            </div>
-            <div class="row" style="padding:8px 0">
-              <div class="who">
-                <span class="avatar ">MT</span>
-                <div>
-                  <b class="strong">Maria das Graças Tavares</b>
-                  <small>Trilha Saúde e Bem-estar</small>
-                </div>
-              </div>
-              <span class="grow"></span><b class="small muted">há 6 dias</b>
-            </div>
+            <p class="small muted">Solicitações de servidores de outras secretarias para cursos da sua trilha.</p>
+            <div id="fila-lista"></div>
             <a class="btn block" href="gestor-homologacao.html">Ir para homologação</a>
           </div>
         </div>
+
         <div class="card flat">
           <div class="row between" style="padding:18px 20px 14px">
             <div>
               <h2>Acompanhamento dos servidores</h2>
-              <span class="small muted">Status por curso, avanço na trilha e nota final acumulada</span>
+              <span class="small muted">Status por curso, avanço na trilha e nota final acumulada · clique no cabeçalho para ordenar</span>
             </div>
-            <div class="field" style="width:280px"><input placeholder="Buscar servidor ou matrícula"></div>
+            <div class="field" style="width:280px"><input id="busca" placeholder="Buscar servidor ou matrícula"></div>
           </div>
           <table class="t">
             <thead>
               <tr>
-                <th>Servidor</th>
-                <th>Secretaria</th>
-                <th>Status</th>
-                <th>Avanço na trilha</th>
-                <th>Nota</th>
-                <th>Último acesso</th>
+                <th class="sort" data-col="nome">Servidor</th>
+                <th class="sort" data-col="secretaria">Secretaria</th>
+                <th class="sort" data-col="status">Status</th>
+                <th class="sort" data-col="avanco">Avanço na trilha</th>
+                <th class="sort" data-col="nota">Nota</th>
+                <th class="sort" data-col="ultimo">Último acesso</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">AB</span>
-                    <div><b class="strong">Ana Beatriz Lima</b><small>Matrícula 204518</small></div>
-                  </div>
-                </td>
-                <td>Administração</td>
-                <td><span class="badge orange">Em andamento</span></td>
-                <td>
-                  <div class="bar">
-                    <div class="progress "><i style="width:64%"></i></div>
-                    <b class="small">64%</b>
-                  </div>
-                </td>
-                <td class="strong">8,2</td>
-                <td class="muted">há 1 dia</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">CM</span>
-                    <div><b class="strong">Carlos Eduardo Menezes</b><small>Matrícula 198773</small></div>
-                  </div>
-                </td>
-                <td>Saúde</td>
-                <td><span class="badge green">Concluído</span></td>
-                <td>
-                  <div class="bar">
-                    <div class="progress green"><i style="width:100%"></i></div>
-                    <b class="small">100%</b>
-                  </div>
-                </td>
-                <td class="strong">9,1</td>
-                <td class="muted">há 3 dias</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">FA</span>
-                    <div><b class="strong">Fernanda Albuquerque</b><small>Matrícula 211340</small></div>
-                  </div>
-                </td>
-                <td>Educação</td>
-                <td><span class="badge orange">Em andamento</span></td>
-                <td>
-                  <div class="bar">
-                    <div class="progress "><i style="width:38%"></i></div>
-                    <b class="small">38%</b>
-                  </div>
-                </td>
-                <td class="strong">7,4</td>
-                <td class="muted">há 2 dias</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">JP</span>
-                    <div><b class="strong">João Pedro Cavalcanti</b><small>Matrícula 187026</small></div>
-                  </div>
-                </td>
-                <td>Infraestrutura</td>
-                <td><span class="badge ">Não iniciado</span></td>
-                <td>
-                  <div class="bar">
-                    <div class="progress "><i style="width:0%"></i></div>
-                    <b class="small">0%</b>
-                  </div>
-                </td>
-                <td class="strong">—</td>
-                <td class="red-text">há 31 dias</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">MT</span>
-                    <div><b class="strong">Maria das Graças Tavares</b><small>Matrícula 176459</small></div>
-                  </div>
-                </td>
-                <td>Assistência Social</td>
-                <td><span class="badge orange">Em andamento</span></td>
-                <td>
-                  <div class="bar">
-                    <div class="progress "><i style="width:82%"></i></div>
-                    <b class="small">82%</b>
-                  </div>
-                </td>
-                <td class="strong">8,8</td>
-                <td class="muted">hoje</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">RN</span>
-                    <div><b class="strong">Rafael Nogueira Santos</b><small>Matrícula 205881</small></div>
-                  </div>
-                </td>
-                <td>Administração</td>
-                <td><span class="badge orange">Em andamento</span></td>
-                <td>
-                  <div class="bar">
-                    <div class="progress "><i style="width:21%"></i></div>
-                    <b class="small">21%</b>
-                  </div>
-                </td>
-                <td class="strong">6,9</td>
-                <td class="red-text">há 19 dias</td>
-              </tr>
-            </tbody>
+            <tbody id="tabela-servidores"></tbody>
           </table>
           <div class="row between" style="padding:14px 20px;border-top:1px solid var(--borda)">
-            <span class="small muted">Mostrando 6 de 248 servidores</span>
-            <b class="small">Anterior &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; … &nbsp; 42 &nbsp; Próxima</b>
+            <span class="small muted" id="pag-info"></span>
+            <div class="row pager" id="paginacao"></div>
           </div>
         </div>
+
         <div class="grid2">
           <div class="card flat">
             <div style="padding:24px 24px 8px">
               <h2>Média e reprovação por curso</h2>
-              <p class="small muted">Nota de corte de cada prova e percentual de tentativas abaixo dela.</p>
+              <p class="small muted" id="corte-info">Percentual de tentativas abaixo da nota de corte.</p>
             </div>
             <table class="t">
               <thead>
@@ -345,80 +220,115 @@
                   <th>1ª tentativa</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td class="strong">Atendimento ao Cidadão</td>
-                  <td class="strong">8,4</td>
-                  <td><span class="badge green">6%</span></td>
-                  <td>74%</td>
-                </tr>
-                <tr>
-                  <td class="strong">Gestão de Processos</td>
-                  <td class="strong">7,6</td>
-                  <td><span class="badge yellow">14%</span></td>
-                  <td>66%</td>
-                </tr>
-                <tr>
-                  <td class="strong">Licitações e Contratos</td>
-                  <td class="strong">6,8</td>
-                  <td><span class="badge red">27%</span></td>
-                  <td>49%</td>
-                </tr>
-                <tr>
-                  <td class="strong">Ética no Serviço Público</td>
-                  <td class="strong">8,9</td>
-                  <td><span class="badge green">3%</span></td>
-                  <td>81%</td>
-                </tr>
-              </tbody>
+              <tbody id="tabela-cursos"></tbody>
             </table>
           </div>
           <div class="card">
             <div>
-              <h2>Evasão e comparativo entre trilhas</h2>
-              <p class="small muted">Abandono antes da conclusão no prazo, média de notas e satisfação.</p>
+              <h2>Evasão e comparativo entre cursos</h2>
+              <p class="small muted">Canceladas ou sem progresso há mais de 45 dias, média de notas e satisfação.</p>
             </div>
-            <div class="col" style="gap:6px">
-              <div class="row between">
-                <b class="strong">Gestão Pública Municipal (sua trilha)</b>
-                <b class="small " style="color:var(--laranja-escuro)">9,4% de evasão</b>
-              </div>
-              <div class="progress" style="height:10px"><i style="width:47.0%;background:var(--laranja)"></i></div>
-              <span class="small muted">Média de notas 7,9 · Satisfação 4,5 de 5</span>
-            </div>
-            <div class="col" style="gap:6px">
-              <div class="row between">
-                <b class="strong">Saúde e Bem-estar</b>
-                <b class="small " style="color:var(--navy)">12,1% de evasão</b>
-              </div>
-              <div class="progress" style="height:10px"><i style="width:60.5%;background:var(--navy)"></i></div>
-              <span class="small muted">Média de notas 7,6 · Satisfação 4,3 de 5</span>
-            </div>
-            <div class="col" style="gap:6px">
-              <div class="row between">
-                <b class="strong">Educação e Aprendizagem</b>
-                <b class="small " style="color:var(--navy)">6,8% de evasão</b>
-              </div>
-              <div class="progress" style="height:10px"><i style="width:34.0%;background:var(--navy)"></i></div>
-              <span class="small muted">Média de notas 8,2 · Satisfação 4,7 de 5</span>
-            </div>
+            <div class="col" style="gap:16px" id="evasao-lista"></div>
           </div>
         </div>
+
+        <div class="card flat">
+          <div class="row between" style="padding:18px 20px 14px">
+            <div>
+              <h2>Fonte de dados</h2>
+              <span class="small muted">Teste de carregamento e validação de colunas dos CSV de dashboard_links.js</span>
+            </div>
+            <a class="btn sec sm" href="#auditoria">Log de auditoria (<span id="audit-cnt">0</span>)</a>
+          </div>
+          <table class="t">
+            <thead>
+              <tr>
+                <th>Arquivo</th>
+                <th>Registros</th>
+                <th>Colunas</th>
+                <th>Tempo de carga</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-fontes"></tbody>
+          </table>
+        </div>
+
         <div class="modal" id="salvar">
-          <div class="box">
+          <form class="box" id="form-salvar">
             <h2>Salvar visualização</h2>
-            <p class="muted">Guarda os filtros, a ordenação e o layout atuais para os próximos acessos.</p>
-            <div class="field">
-              <label>Nome da visualização</label>
-              <input type="text" value="" placeholder="Ex.: Educação · último trimestre">
+            <p class="muted">Guarda os filtros, a ordenação e o layout atuais para os próximos acessos. Usar um nome existente atualiza a visualização.</p>
+            <div class="field" id="salvar-field">
+              <label for="salvar-nome">Nome da visualização</label>
+              <input type="text" id="salvar-nome" placeholder="Ex.: Educação · último trimestre" maxlength="60">
+              <span class="help" id="salvar-help"></span>
             </div>
             <div class="actions">
               <a class="btn sec" href="#">Cancelar</a>
-              <a class="btn accent" href="#">Salvar</a>
+              <button class="btn accent" type="submit">Salvar</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal" id="indeferir">
+          <form class="box" id="form-indeferir">
+            <h2>Indeferir solicitação</h2>
+            <p class="muted" id="indeferir-sub"></p>
+            <div class="field" id="indeferir-field">
+              <label for="indeferir-parecer">Justificativa do indeferimento</label>
+              <textarea id="indeferir-parecer" placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)"></textarea>
+              <span class="help" id="indeferir-help">Escreva pelo menos 10 caracteres. Atual: 0.</span>
+            </div>
+            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <button class="btn danger" type="submit" id="indeferir-ok" disabled>Confirmar indeferimento</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal" id="aprovar">
+          <div class="box">
+            <h2>Aprovar solicitação?</h2>
+            <p class="muted" id="aprovar-sub"></p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <button class="btn accent" type="button" id="aprovar-ok">Confirmar aprovação</button>
             </div>
           </div>
         </div>
+
+        <div class="modal" id="auditoria">
+          <div class="box" style="max-width:760px">
+            <div class="card-head">
+              <h2>Auditoria de consultas do dashboard</h2>
+              <button class="btn ghost sm" type="button" id="audit-limpar">Limpar</button>
+            </div>
+            <p class="muted">Cada renderização ou alteração de filtro grava timestamp, gestor, métrica e tempo de execução.</p>
+            <div style="max-height:360px;overflow:auto;border:1px solid var(--borda);border-radius:10px">
+              <table class="t">
+                <thead>
+                  <tr>
+                    <th>Quando</th>
+                    <th>Gestor</th>
+                    <th>Métrica</th>
+                    <th>Filtros</th>
+                    <th>Tempo</th>
+                  </tr>
+                </thead>
+                <tbody id="tabela-auditoria"></tbody>
+              </table>
+            </div>
+            <div class="actions"><a class="btn sec" href="#">Fechar</a></div>
+          </div>
+        </div>
+
+        <div class="toast" id="toast" role="status"></div>
       </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="dashboard_links.js"></script>
+    <script src="gestor-dados.js"></script>
+    <script src="gestor-dashboard.js"></script>
   </body>
 </html>

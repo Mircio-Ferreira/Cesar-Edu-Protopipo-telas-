@@ -6,21 +6,21 @@
     <title>Solicitações aprovadas · CESAR EDU</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body data-aba="aprovadas">
     <div class="app">
       <aside class="side">
         <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
         <div class="sec">GESTOR</div>
         <nav>
           <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
-          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt" id="side-pendentes">—</span></a>
           <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
           <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
           <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
         </nav>
         <div class="me">
           <span class="avatar navy">MS</span>
-          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+          <div><b class="strong">Marina Souza</b><small id="gestor-secretaria">Gestora</small></div>
         </div>
         <a class="exit" href="index.html">Sair</a>
       </aside>
@@ -28,111 +28,60 @@
         <div class="page-head">
           <div>
             <h1>Solicitações aprovadas</h1>
-            <p>Pedidos homologados. A matrícula na trilha foi criada automaticamente e o acesso aos cursos foi liberado.</p>
+            <p>Pedidos homologados. A matrícula no curso foi criada automaticamente e o acesso foi liberado.</p>
           </div>
-          <div class="row"><span class="badge green">18 aprovadas</span></div>
+          <div class="row"><span class="badge green" id="badge-total">—</span></div>
+        </div>
+        <div class="notice blue" id="status-carga">
+          <b>Carregando datasets…</b>
+          <p>Buscando solicitacoes_interdisciplinares.csv e os demais arquivos de dashboard_links.js.</p>
         </div>
         <div class="row wrap" style="gap:10px">
-          <a class="chip " href="gestor-homologacao.html">Pendentes (7)</a>
-          <a class="chip on" href="gestor-homologacao-aprovadas.html">Aprovadas (18)</a>
-          <a class="chip " href="gestor-homologacao-indeferidas.html">Indeferidas (14)</a>
+          <a class="chip " href="gestor-homologacao.html">Pendentes (<span id="cnt-pendentes">—</span>)</a>
+          <a class="chip on" href="gestor-homologacao-aprovadas.html">Aprovadas (<span id="cnt-aprovadas">—</span>)</a>
+          <a class="chip " href="gestor-homologacao-indeferidas.html">Indeferidas (<span id="cnt-indeferidas">—</span>)</a>
+        </div>
+        <div class="card" style="flex-direction:row;align-items:flex-end;padding:16px 20px">
+          <div class="field grow">
+            <label for="f-busca">Buscar</label>
+            <input id="f-busca" placeholder="Servidor, matrícula ou curso">
+          </div>
+          <div class="field grow">
+            <label for="f-curso">Curso</label>
+            <select id="f-curso"></select>
+          </div>
+          <div class="field grow">
+            <label for="f-secretaria">Secretaria do servidor</label>
+            <select id="f-secretaria"></select>
+          </div>
         </div>
         <div class="card flat">
           <table class="t">
             <thead>
               <tr>
                 <th>Servidor</th>
-                <th>Trilha</th>
+                <th>Curso</th>
                 <th>Solicitado em</th>
                 <th>Aprovado em</th>
                 <th>Situação</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">AB</span>
-                    <div><b class="strong">Ana Beatriz Lima</b><small>Administração</small></div>
-                  </div>
-                </td>
-                <td class="strong">Trilha Saúde e Bem-estar</td>
-                <td class="muted">21/09/2026</td>
-                <td class="muted">23/09/2026</td>
-                <td><span class="badge green">Matriculado</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">CM</span>
-                    <div><b class="strong">Carlos Eduardo Menezes</b><small>Saúde</small></div>
-                  </div>
-                </td>
-                <td class="strong">Trilha Educação e Aprendizagem</td>
-                <td class="muted">18/09/2026</td>
-                <td class="muted">19/09/2026</td>
-                <td><span class="badge green">Matriculado</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">MT</span>
-                    <div><b class="strong">Maria das Graças Tavares</b><small>Assistência Social</small></div>
-                  </div>
-                </td>
-                <td class="strong">Trilha Educação e Aprendizagem</td>
-                <td class="muted">11/09/2026</td>
-                <td class="muted">14/09/2026</td>
-                <td><span class="badge green">Matriculado</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">LM</span>
-                    <div><b class="strong">Luciana Moura Barros</b><small>Saúde</small></div>
-                  </div>
-                </td>
-                <td class="strong">Trilha Mobilidade Urbana</td>
-                <td class="muted">02/09/2026</td>
-                <td class="muted">03/09/2026</td>
-                <td><span class="badge green">Matriculado</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">TS</span>
-                    <div><b class="strong">Tiago Silva Farias</b><small>Educação</small></div>
-                  </div>
-                </td>
-                <td class="strong">Trilha Saúde e Bem-estar</td>
-                <td class="muted">28/08/2026</td>
-                <td class="muted">31/08/2026</td>
-                <td><span class="badge green">Matriculado</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="who">
-                    <span class="avatar ">RN</span>
-                    <div><b class="strong">Rafael Nogueira Santos</b><small>Administração</small></div>
-                  </div>
-                </td>
-                <td class="strong">Trilha Mobilidade Urbana</td>
-                <td class="muted">20/08/2026</td>
-                <td class="muted">21/08/2026</td>
-                <td><span class="badge green">Matriculado</span></td>
-              </tr>
-            </tbody>
+            <tbody id="lista"></tbody>
           </table>
           <div class="row between" style="padding:14px 20px;border-top:1px solid var(--borda)">
-            <span class="small muted">Mostrando 6 de 18 solicitações aprovadas</span>
-            <b class="small">Anterior &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; Próxima</b>
+            <span class="small muted" id="pag-info"></span>
+            <div class="row pager" id="paginacao"></div>
           </div>
         </div>
         <div class="notice blue">
           <b>Decisão definitiva</b>
           <p>Uma solicitação aprovada não pode ser reaberta nem alterada.</p>
         </div>
+        <div class="toast" id="toast" role="status"></div>
       </main>
     </div>
+    <script src="dashboard_links.js"></script>
+    <script src="gestor-dados.js"></script>
+    <script src="gestor-homologacao.js"></script>
   </body>
 </html>
