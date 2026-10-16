@@ -917,6 +917,7 @@ table.t {
 
 .video {
   aspect-ratio:16/9;
+  width:100%;
   background:var(--navy);
   border-radius:12px;
   position:relative;
@@ -1213,4 +1214,226 @@ table.t {
   .auth .left {
     padding:40px
   }
+}
+
+.steps {
+  display:flex;
+  padding:8px 0 0
+}
+
+.steps .step {
+  flex:1;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  text-align:center
+}
+
+.steps .step::before {
+  content:"";
+  position:absolute;
+  top:9px;
+  right:50%;
+  width:100%;
+  height:3px;
+  background:var(--creme2)
+}
+
+.steps .step:first-child::before {
+  display:none
+}
+
+.steps .step.ok::before,
+.steps .step.now::before {
+  background:var(--verde)
+}
+
+.steps .step .dot {
+  position:relative;
+  z-index:1;
+  width:20px;
+  height:20px;
+  background:var(--branco)
+}
+
+.steps .step .dot.now {
+  background:var(--laranja);
+  border-color:var(--laranja);
+  box-shadow:0 0 0 4px var(--laranja-claro)
+}
+
+.steps .step small {
+  font-size:12px;
+  line-height:16px;
+  color:var(--texto2)
+}
+
+.steps .step.now small {
+  color:var(--laranja-escuro);
+  font-weight:700
+}
+
+.steps .step {
+  text-decoration:none;
+  padding:0 6px
+}
+
+.steps .step small b {
+  display:block;
+  color:var(--navy);
+  font-weight:600
+}
+
+.card.compact {
+  padding:14px 16px;
+  gap:10px
+}
+
+.card.compact h2 {
+  font-size:16px
+}
+
+.card.compact .mat {
+  padding:8px 10px;
+  gap:10px
+}
+
+.card.compact .steps {
+  padding-top:2px
+}
+
+.card.compact .steps .step small {
+  font-size:11px;
+  line-height:14px
+}
+
+.card.compact .mat .ext {
+  width:32px;
+  height:32px;
+  font-size:10px
+}
+
+.yt {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  column-gap:24px;
+  row-gap:16px;
+  align-items:start
+}
+
+.yt > .col:first-child {
+  display:contents
+}
+
+.yt > .col:first-child > * {
+  grid-column:1
+}
+
+.yt > .col:first-child > .video {
+  grid-row:1
+}
+
+.yt > .col:last-child {
+  grid-column:2;
+  grid-row:1;
+  align-self:stretch;
+  contain:size;
+  min-height:0
+}
+
+.yt > .col:last-child > .card {
+  min-height:0;
+  overflow-y:auto
+}
+
+.yt > .col:last-child > .card:first-child {
+  flex:1 1 0
+}
+
+.yt > .col:last-child > .card:last-child {
+  flex:1 1 0
+}
+
+.rate-stars {
+  display:flex;
+  flex-direction:row-reverse;
+  border:1px solid var(--borda);
+  border-radius:20px;
+  background:#fff;
+  padding:4px 12px
+}
+
+.rate-stars a {
+  font-size:22px;
+  line-height:1;
+  padding:2px 2px;
+  text-decoration:none;
+  color:var(--creme2)
+}
+
+.rate-stars a.on {
+  color:var(--laranja)
+}
+
+.rate-stars:hover a {
+  color:var(--creme2)
+}
+
+.rate-stars a:hover,
+.rate-stars a:hover ~ a {
+  color:var(--laranja)
+}
+
+.steps.v {
+  flex-direction:column;
+  padding:4px 0 0
+}
+
+.steps.v .step {
+  flex:none;
+  flex-direction:row;
+  align-items:flex-start;
+  text-align:left;
+  gap:12px;
+  padding:0 0 18px
+}
+
+.steps.v .step:last-child {
+  padding-bottom:0
+}
+
+.steps.v .step::before {
+  top:-18px;
+  bottom:auto;
+  right:auto;
+  left:8px;
+  width:3px;
+  height:100%
+}
+
+.steps.v .step:first-child::before {
+  display:none
+}
+
+.steps.v .step .dot {
+  flex:none;
+  margin-top:1px
+}
+
+.steps.v .step small {
+  font-size:13px;
+  line-height:18px
+}
+
+.steps .step small b {
+  color:var(--texto2);
+  font-weight:400
+}
+
+.steps .step.now small,
+.steps .step.now small b {
+  color:var(--navy);
+  font-weight:700
 }

@@ -13,6 +13,7 @@
         <div class="sec">SERVIDOR</div>
         <nav>
           <a href="aluno-trilha.html" class=""><i></i>Minha trilha</a>
+          <a href="aluno-avisos.html" class=""><i></i>Avisos<span class="cnt">3</span></a>
           <a href="aluno-aula.html" class="on"><i></i>Aula</a>
           <a href="aluno-comentarios.html" class=""><i></i>Comentários</a>
           <a href="aluno-avaliar.html" class=""><i></i>Avaliar curso</a>
@@ -31,9 +32,8 @@
             <h1>2.1 Linguagem simples</h1>
             <p>Atendimento ao Cidadão · Prof. Roberto Lacerda</p>
           </div>
-          <div class="row"><span class="badge orange">Sequência: 12 dias</span></div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start">
+        <div class="yt">
           <div class="col">
             <div class="video">
               <div class="play"></div>
@@ -43,61 +43,125 @@
                 <span>20:00</span>
               </div>
             </div>
-            <div class="card">
-              <div class="row between">
-                <div>
-                  <h2>Progresso do curso</h2>
-                  <span class="small muted">3 de 6 aulas concluídas</span>
+            <div class="row between" style="justify-content:flex-end">
+              <div class="row">
+                <div class="rate-stars" title="Avalie este curso">
+                  <a class="" href="aluno-avaliar.html" title="5 de 5 estrelas" aria-label="Avaliar com 5 de 5 estrelas">★</a>
+                  <a class="on" href="aluno-avaliar.html" title="4 de 5 estrelas" aria-label="Avaliar com 4 de 5 estrelas">★</a>
+                  <a class="on" href="aluno-avaliar.html" title="3 de 5 estrelas" aria-label="Avaliar com 3 de 5 estrelas">★</a>
+                  <a class="on" href="aluno-avaliar.html" title="2 de 5 estrelas" aria-label="Avaliar com 2 de 5 estrelas">★</a>
+                  <a class="on" href="aluno-avaliar.html" title="1 de 5 estrelas" aria-label="Avaliar com 1 de 5 estrelas">★</a>
                 </div>
-                <b style="font-size:24px">68%</b>
-              </div>
-              <div class="progress lg"><i style="width:68%"></i></div>
-              <div class="row between">
                 <a class="btn accent" href="#ok">Marcar como concluída</a>
-                <a class="btn sec" href="aluno-comentarios.html">Ver comentários da aula</a>
               </div>
             </div>
             <div class="card">
-              <h2>Materiais da aula</h2>
-              <div class="col" style="gap:10px">
-                <div class="mat">
-                  <div class="ext">PDF</div>
-                  <div class="grow">
-                    <b class="strong">Guia de linguagem simples</b>
-                    <div class="small muted">2,4 MB</div>
+              <div class="row between">
+                <h2>5 comentários</h2>
+                <a class="btn sec sm" href="aluno-comentarios.html">Ver todos os comentários</a>
+              </div>
+              <div class="row" style="align-items:flex-start">
+                <span class="avatar ">AB</span>
+                <div class="grow col" style="gap:8px">
+                  <div class="field"><textarea placeholder="Escreva um comentário ou dúvida..."></textarea></div>
+                  <div class="row between">
+                    <span class="small muted">0 / 1000 caracteres · não pode ficar em branco</span>
+                    <a class="btn accent sm" href="#">Publicar comentário</a>
                   </div>
-                  <a class="btn sec sm" href="#">Baixar</a>
                 </div>
-                <div class="mat">
-                  <div class="ext">PPT</div>
-                  <div class="grow">
-                    <b class="strong">Slides da aula 2.1</b>
-                    <div class="small muted">5,1 MB</div>
+              </div>
+              <div class="col" style="gap:20px">
+                <div>
+                  <div class="cm ">
+                    <span class="avatar ">CM</span>
+                    <div class="body">
+                      <div class="head">
+                        <b class="strong">Carlos Eduardo Menezes</b>
+                        <span class="small muted">há 3 horas</span>
+                      </div>
+                      <p>Professor, na seção de atendimento a pessoas com deficiência, a Libras é obrigatória em todos os setores ou só nos de atendimento direto?</p>
+                      <div class="acts"><a href="aluno-comentarios.html">Responder</a></div>
+                    </div>
                   </div>
-                  <a class="btn sec sm" href="#">Baixar</a>
+                  <div class="replies mt">
+                    <div>
+                      <div class="cm prof">
+                        <span class="avatar navy">RL</span>
+                        <div class="body">
+                          <div class="head">
+                            <b class="strong">Roberto Lacerda</b>
+                            <span class="badge orange">Professor</span>
+                            <span class="small muted">há 1 hora</span>
+                          </div>
+                          <p>Boa pergunta, Carlos. Apenas nos setores com atendimento direto ao público, mas recomendamos que toda a equipe conheça o básico. Veja o material complementar da aula.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="mat">
-                  <div class="ext">LINK</div>
-                  <div class="grow">
-                    <b class="strong">Manual de comunicação da Prefeitura</b>
-                    <div class="small muted">Link externo</div>
+                <div>
+                  <div class="cm ">
+                    <span class="avatar ">JP</span>
+                    <div class="body">
+                      <div class="head">
+                        <b class="strong">João Pedro Cavalcanti</b>
+                        <span class="small muted">ontem</span>
+                      </div>
+                      <p>A aula está muito boa, mas o áudio fica baixo no minuto 12.</p>
+                      <div class="acts"><a href="aluno-comentarios.html">Responder</a></div>
+                    </div>
                   </div>
-                  <a class="btn sec sm" href="#">Baixar</a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <h2>Conteúdo do curso</h2>
-            <ul class="lessons">
-              <li class=""><a href="#"><span class="dot ok"></span><span class="grow">1.1 O servidor e o cidadão</span><span class="small muted">12 min</span></a></li>
-              <li class=""><a href="#"><span class="dot ok"></span><span class="grow">1.2 Princípios do atendimento</span><span class="small muted">18 min</span></a></li>
-              <li class=""><a href="#"><span class="dot ok"></span><span class="grow">1.3 Canais de atendimento</span><span class="small muted">15 min</span></a></li>
-              <li class="on"><a href="#"><span class="dot now"></span><span class="grow">2.1 Linguagem simples</span><span class="small muted">20 min</span></a></li>
-              <li class=""><a href="#"><span class="dot "></span><span class="grow">2.2 Atendimento a pessoas com deficiência</span><span class="small muted">25 min</span></a></li>
-              <li class=""><a href="#"><span class="dot "></span><span class="grow">2.3 Situações difíceis</span><span class="small muted">22 min</span></a></li>
-            </ul>
-            <a class="btn sec block" href="aluno-avaliar.html">Avaliar este curso</a>
+          <div class="col">
+            <div class="card compact">
+              <div class="row between">
+                <div>
+                  <h2>Progresso do curso</h2>
+                </div>
+                <b style="font-size:18px">68%</b>
+              </div>
+              <div class="progress"><i style="width:68%"></i></div>
+              <div class="steps v">
+                  <a class="step ok" href="#"><span class="dot ok"></span><small><b>1.1 O servidor e o cidadão</b>12 min</small></a>
+                  <a class="step ok" href="#"><span class="dot ok"></span><small><b>1.2 Princípios do atendimento</b>18 min</small></a>
+                  <a class="step ok" href="#"><span class="dot ok"></span><small><b>1.3 Canais de atendimento</b>15 min</small></a>
+                  <a class="step now" href="#"><span class="dot now"></span><small><b>2.1 Linguagem simples</b>20 min</small></a>
+                  <a class="step " href="#"><span class="dot "></span><small><b>2.2 Atendimento a pessoas com deficiência</b>25 min</small></a>
+                  <a class="step " href="#"><span class="dot "></span><small><b>2.3 Situações difíceis</b>22 min</small></a>
+              </div>
+            </div>
+              <div class="card compact">
+                <h2>Materiais da aula</h2>
+                <div class="col" style="gap:10px">
+                  <div class="mat">
+                    <div class="ext">PDF</div>
+                    <div class="grow">
+                      <b class="strong">Guia de linguagem simples</b>
+                      <div class="small muted">2,4 MB</div>
+                    </div>
+                    <a class="btn sec sm" href="#">Baixar</a>
+                  </div>
+                  <div class="mat">
+                    <div class="ext">PPT</div>
+                    <div class="grow">
+                      <b class="strong">Slides da aula 2.1</b>
+                      <div class="small muted">5,1 MB</div>
+                    </div>
+                    <a class="btn sec sm" href="#">Baixar</a>
+                  </div>
+                  <div class="mat">
+                    <div class="ext">LINK</div>
+                    <div class="grow">
+                      <b class="strong">Manual de comunicação da Prefeitura</b>
+                      <div class="small muted">Link externo</div>
+                    </div>
+                    <a class="btn sec sm" href="#">Baixar</a>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
         <div class="modal" id="ok">
