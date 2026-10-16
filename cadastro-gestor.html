@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Criar conta de gestor · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="auth">
+      <div class="left">
+        <div class="big"><svg viewBox="0 0 600 555" style="width:160px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg></div>
+        <h1>Crie sua conta de gestor</h1>
+        <h2 class="muted">Depois de entrar, você cria a trilha da sua secretaria e cadastra professores e servidores.</h2>
+        <ul class="bul">
+          <li>Uma única trilha por gestor</li>
+          <li>Contas de professores e servidores criadas por você</li>
+          <li>Dashboard com indicadores de desempenho</li>
+        </ul>
+      </div>
+      <div class="right">
+        <form action="gestor-criar-trilha.html">
+          <div>
+            <span class="badge orange">Gestor</span>
+            <h1 style="margin-top:10px">Criar conta</h1>
+          </div>
+          <div class="field">
+            <label>Nome completo</label>
+            <input type="text" value="" placeholder="Marina Souza">
+          </div>
+          <div class="field">
+            <label>CPF</label>
+            <input type="text" value="" placeholder="000.000.000-00">
+            <span class="help">O CPF e o e-mail não podem estar cadastrados em outra conta.</span>
+          </div>
+          <div class="field">
+            <label>E-mail institucional</label>
+            <input type="email" value="" placeholder="nome@recife.pe.gov.br">
+          </div>
+          <div class="field">
+            <label>Secretaria</label>
+            <select>
+              <option>Secretaria de Administração e Gestão de Pessoas</option>
+              <option>Secretaria de Saúde</option>
+              <option>Secretaria de Educação</option>
+              <option>Secretaria de Infraestrutura</option>
+              <option>Secretaria de Finanças</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Senha</label>
+            <input type="password" value="" placeholder="Mínimo de 8 caracteres">
+          </div>
+          <div class="field">
+            <label>Confirmar senha</label>
+            <input type="password" value="" placeholder="Repita a senha">
+          </div>
+          <button class="btn accent block" type="submit">Criar conta e continuar</button><a class="small strong" href="login-gestor.html">Já tenho conta · Entrar</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

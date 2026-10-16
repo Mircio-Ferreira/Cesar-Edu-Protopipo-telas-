@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cadastro de professor · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">GESTOR</div>
+        <nav>
+          <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
+          <a href="gestor-criar-trilha.html" class=""><i></i>Criar trilha</a>
+          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
+          <a href="gestor-professor.html" class="on"><i></i>Cadastro de professor</a>
+          <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
+        </nav>
+        <div class="me">
+          <span class="avatar navy">MS</span>
+          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Cadastro de professor</h1>
+            <p>Crie a conta do professor. Ele receberá uma senha provisória e trocará no primeiro acesso.</p>
+          </div>
+          <div class="row"></div>
+        </div>
+        <div class="grid2" style="align-items:start">
+          <form class="card" action="#">
+            <h2>Novo professor</h2>
+            <div class="field">
+              <label>Nome completo</label>
+              <input type="text" value="" placeholder="Roberto Lacerda">
+            </div>
+            <div class="field">
+              <label>CPF</label>
+              <input type="text" value="" placeholder="000.000.000-00">
+              <span class="help">CPF e e-mail precisam ser únicos na plataforma.</span>
+            </div>
+            <div class="field">
+              <label>E-mail institucional</label>
+              <input type="email" value="" placeholder="professor@recife.pe.gov.br">
+            </div>
+            <div class="field">
+              <label>Trilha</label>
+              <input type="text" value="Gestão Pública Municipal" placeholder="">
+            </div>
+            <div class="field">
+              <label>Senha provisória</label>
+              <input value="Temp-4F9K2Q" readonly>
+              <span class="help">Gerada automaticamente. O professor será obrigado a trocá-la no primeiro acesso.</span>
+            </div>
+            <div class="notice ">
+              <b>O vínculo com a trilha é permanente</b>
+              <p>Ao confirmar, o professor fica vinculado a esta trilha de forma fixa. Não será possível alterar, transferir nem remover o vínculo depois.</p>
+            </div>
+            <div class="row end">
+              <a class="btn ghost" href="gestor-dashboard.html">Cancelar</a>
+              <a class="btn accent" href="#ok">Cadastrar professor</a>
+            </div>
+          </form>
+          <div class="card flat">
+            <div style="padding:24px 24px 12px">
+              <h2>Professores da trilha</h2>
+              <p class="small muted">Sem ações de edição ou remoção de vínculo.</p>
+            </div>
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Professor</th>
+                  <th>Cursos</th>
+                  <th>Cadastro</th>
+                  <th>Vínculo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">RL</span>
+                      <div>
+                        <b class="strong">Roberto Lacerda</b>
+                        <small>roberto.lacerda@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>3 cursos</td>
+                  <td class="muted">03/08/2026</td>
+                  <td><span class="lock">Vínculo permanente</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">PM</span>
+                      <div>
+                        <b class="strong">Patrícia Mendonça</b>
+                        <small>patricia.mendonca@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>2 cursos</td>
+                  <td class="muted">17/08/2026</td>
+                  <td><span class="lock">Vínculo permanente</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">EC</span>
+                      <div>
+                        <b class="strong">Eduardo Cavalcanti</b>
+                        <small>eduardo.cavalcanti@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>1 curso</td>
+                  <td class="muted">09/10/2026</td>
+                  <td><span class="lock">Vínculo permanente</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal" id="ok">
+          <div class="box">
+            <h2>Professor cadastrado</h2>
+            <p class="muted">A conta foi criada com senha provisória e vinculada de forma permanente à trilha Gestão Pública Municipal.</p>
+            <div class="actions"><a class="btn" href="#">Fechar</a></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

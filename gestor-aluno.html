@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cadastro de aluno · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">GESTOR</div>
+        <nav>
+          <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
+          <a href="gestor-criar-trilha.html" class=""><i></i>Criar trilha</a>
+          <a href="gestor-homologacao.html" class=""><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
+          <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
+          <a href="gestor-aluno.html" class="on"><i></i>Cadastro de aluno</a>
+        </nav>
+        <div class="me">
+          <span class="avatar navy">MS</span>
+          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Cadastro de aluno</h1>
+            <p>Cadastre o servidor. Ele entra com a conta criada por você e troca a senha no primeiro acesso.</p>
+          </div>
+          <div class="row"></div>
+        </div>
+        <div class="grid2" style="align-items:start">
+          <form class="card" action="#">
+            <h2>Novo aluno (servidor)</h2>
+            <div class="field">
+              <label>Nome completo</label>
+              <input type="text" value="" placeholder="Ana Beatriz Lima">
+            </div>
+            <div class="grid2">
+              <div class="field">
+                <label>CPF</label>
+                <input type="text" value="" placeholder="000.000.000-00">
+              </div>
+              <div class="field">
+                <label>Matrícula funcional</label>
+                <input type="text" value="" placeholder="000000">
+              </div>
+            </div>
+            <div class="field">
+              <label>E-mail institucional</label>
+              <input type="email" value="" placeholder="servidor@recife.pe.gov.br">
+            </div>
+            <div class="field">
+              <label>Secretaria</label>
+              <select>
+                <option>Administração</option>
+                <option>Saúde</option>
+                <option>Educação</option>
+                <option>Infraestrutura</option>
+                <option>Assistência Social</option>
+                <option>Finanças</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Senha provisória</label>
+              <input value="Temp-7M3X9B" readonly>
+              <span class="help">Gerada automaticamente e válida somente até o primeiro acesso.</span>
+            </div>
+            <div class="notice blue">
+              <b>Trilha</b>
+              <p>O servidor será matriculado na trilha Gestão Pública Municipal e enxergará a trilha original do gestor.</p>
+            </div>
+            <div class="row end">
+              <a class="btn ghost" href="gestor-dashboard.html">Cancelar</a>
+              <a class="btn accent" href="#ok">Cadastrar aluno</a>
+            </div>
+          </form>
+          <div class="card flat">
+            <div style="padding:24px 24px 12px">
+              <h2>Alunos cadastrados</h2>
+            </div>
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Servidor</th>
+                  <th>Secretaria</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">AB</span>
+                      <div>
+                        <b class="strong">Ana Beatriz Lima</b>
+                        <small>ana.lima@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Administração</td>
+                  <td><span class="badge green">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">CM</span>
+                      <div>
+                        <b class="strong">Carlos Eduardo Menezes</b>
+                        <small>carlos.menezes@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Saúde</td>
+                  <td><span class="badge green">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">FA</span>
+                      <div>
+                        <b class="strong">Fernanda Albuquerque</b>
+                        <small>fernanda.albuquerque@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Educação</td>
+                  <td><span class="badge green">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="who">
+                      <span class="avatar ">JP</span>
+                      <div>
+                        <b class="strong">João Pedro Cavalcanti</b>
+                        <small>joao.cavalcanti@recife.pe.gov.br</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Infraestrutura</td>
+                  <td><span class="badge yellow">Senha provisória</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal" id="ok">
+          <div class="box">
+            <h2>Aluno cadastrado</h2>
+            <p class="muted">Conta criada com senha provisória. O servidor deverá trocá-la no primeiro acesso.</p>
+            <div class="actions"><a class="btn" href="#">Fechar</a></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

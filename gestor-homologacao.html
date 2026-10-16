@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Homologação · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">GESTOR</div>
+        <nav>
+          <a href="gestor-dashboard.html" class=""><i></i>Dashboard</a>
+          <a href="gestor-criar-trilha.html" class=""><i></i>Criar trilha</a>
+          <a href="gestor-homologacao.html" class="on"><i></i>Homologação<span class="cnt">7</span></a>
+          <a href="gestor-avisos.html" class=""><i></i>Avisos</a>
+          <a href="gestor-professor.html" class=""><i></i>Cadastro de professor</a>
+          <a href="gestor-aluno.html" class=""><i></i>Cadastro de aluno</a>
+        </nav>
+        <div class="me">
+          <span class="avatar navy">MS</span>
+          <div><b class="strong">Marina Souza</b><small>Gestora · SEAD</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Homologação de solicitações</h1>
+            <p>Pedidos de servidores para ingressar em trilhas fora da secretaria de origem.</p>
+          </div>
+          <div class="row"><span class="badge orange">7 pendentes</span></div>
+        </div>
+        <div class="row wrap" style="gap:10px">
+          <span class="chip on">Pendentes (7)</span>
+          <span class="chip">Aprovadas (18)</span>
+          <span class="chip">Indeferidas (4)</span>
+        </div>
+        <div class="col">
+          <div class="card" style="gap:12px">
+            <div class="row between">
+              <div class="who">
+                <span class="avatar ">AB</span>
+                <div><b class="strong">Ana Beatriz Lima</b><small>Administração</small></div>
+              </div>
+              <div class="row">
+                <span class="badge orange">Trilha Saúde e Bem-estar</span>
+                <span class="small muted">há 2 dias</span>
+              </div>
+            </div>
+            <div class="notice blue" style="background:var(--creme);color:var(--navy)">
+              <b class="small">Justificativa do servidor</b>
+              <p style="font-size:13px;line-height:18px">Preciso entender a gestão de unidades de saúde para apoiar o novo sistema de compras da Secretaria. O curso complementa minhas atividades.</p>
+            </div>
+            <div class="row end">
+              <a class="btn danger sm" href="#indeferir1">Indeferir</a>
+              <a class="btn accent sm" href="#aprovar1">Aprovar</a>
+            </div>
+          </div>
+          <div class="card" style="gap:12px">
+            <div class="row between">
+              <div class="who">
+                <span class="avatar ">CM</span>
+                <div><b class="strong">Carlos Eduardo Menezes</b><small>Saúde</small></div>
+              </div>
+              <div class="row">
+                <span class="badge orange">Trilha Educação e Aprendizagem</span>
+                <span class="small muted">há 3 dias</span>
+              </div>
+            </div>
+            <div class="notice blue" style="background:var(--creme);color:var(--navy)">
+              <b class="small">Justificativa do servidor</b>
+              <p style="font-size:13px;line-height:18px">Atuo na formação de agentes comunitários e quero aprender didática para treinamentos presenciais com os servidores.</p>
+            </div>
+            <div class="row end">
+              <a class="btn danger sm" href="#indeferir2">Indeferir</a>
+              <a class="btn accent sm" href="#aprovar2">Aprovar</a>
+            </div>
+          </div>
+          <div class="card" style="gap:12px">
+            <div class="row between">
+              <div class="who">
+                <span class="avatar ">FA</span>
+                <div><b class="strong">Fernanda Albuquerque</b><small>Educação</small></div>
+              </div>
+              <div class="row">
+                <span class="badge orange">Trilha Mobilidade Urbana</span>
+                <span class="small muted">há 5 dias</span>
+              </div>
+            </div>
+            <div class="notice blue" style="background:var(--creme);color:var(--navy)">
+              <b class="small">Justificativa do servidor</b>
+              <p style="font-size:13px;line-height:18px">Participo do grupo de trabalho do transporte escolar e preciso conhecer o planejamento de mobilidade da cidade.</p>
+            </div>
+            <div class="row end">
+              <a class="btn danger sm" href="#indeferir3">Indeferir</a>
+              <a class="btn accent sm" href="#aprovar3">Aprovar</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="indeferir1">
+          <div class="box">
+            <h2>Indeferir solicitação</h2>
+            <p class="muted">Ana Beatriz Lima · Trilha Saúde e Bem-estar</p>
+            <div class="field error">
+              <label>Justificativa do indeferimento</label>
+              <textarea placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)">Sem vaga</textarea>
+              <span class="help">Escreva pelo menos 10 caracteres. Atual: 8.</span>
+            </div>
+            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <button class="btn danger" disabled>Confirmar indeferimento</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="aprovar1">
+          <div class="box">
+            <h2>Aprovar solicitação?</h2>
+            <p class="muted">Ana Beatriz Lima será matriculado automaticamente na Trilha Saúde e Bem-estar e terá acesso imediato aos cursos.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Confirmar aprovação</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="indeferir2">
+          <div class="box">
+            <h2>Indeferir solicitação</h2>
+            <p class="muted">Carlos Eduardo Menezes · Trilha Educação e Aprendizagem</p>
+            <div class="field error">
+              <label>Justificativa do indeferimento</label>
+              <textarea placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)">Sem vaga</textarea>
+              <span class="help">Escreva pelo menos 10 caracteres. Atual: 8.</span>
+            </div>
+            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <button class="btn danger" disabled>Confirmar indeferimento</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="aprovar2">
+          <div class="box">
+            <h2>Aprovar solicitação?</h2>
+            <p class="muted">Carlos Eduardo Menezes será matriculado automaticamente na Trilha Educação e Aprendizagem e terá acesso imediato aos cursos.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Confirmar aprovação</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="indeferir3">
+          <div class="box">
+            <h2>Indeferir solicitação</h2>
+            <p class="muted">Fernanda Albuquerque · Trilha Mobilidade Urbana</p>
+            <div class="field error">
+              <label>Justificativa do indeferimento</label>
+              <textarea placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)">Sem vaga</textarea>
+              <span class="help">Escreva pelo menos 10 caracteres. Atual: 8.</span>
+            </div>
+            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <button class="btn danger" disabled>Confirmar indeferimento</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="aprovar3">
+          <div class="box">
+            <h2>Aprovar solicitação?</h2>
+            <p class="muted">Fernanda Albuquerque será matriculado automaticamente na Trilha Mobilidade Urbana e terá acesso imediato aos cursos.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Confirmar aprovação</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

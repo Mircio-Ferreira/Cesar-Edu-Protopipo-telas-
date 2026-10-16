@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Criar trilha · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="topbar">
+      <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+      <div class="row">
+        <span class="avatar navy">MS</span>
+        <div>
+          <b class="strong">Marina Souza</b>
+          <div class="small muted">Gestora · SEAD</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1120px;margin:0 auto;padding:48px 32px;display:flex;flex-direction:column;gap:28px">
+      <div>
+        <span class="badge orange">Primeiro acesso</span>
+        <h1 style="margin-top:8px">Crie a trilha de aprendizagem da sua secretaria</h1>
+        <p class="muted" style="margin-top:6px">Cada gestor possui uma única trilha. Ela é criada agora e passa a ser a trilha que os alunos e professores vinculados enxergam.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start">
+        <form class="card" action="gestor-dashboard.html">
+          <h2>Dados da trilha</h2>
+          <div class="field">
+            <label>Nome da trilha</label>
+            <input type="text" value="Gestão Pública Municipal" placeholder="">
+            <span class="help">Este nome aparece para todos os alunos da trilha.</span>
+          </div>
+          <div class="field">
+            <label>Secretaria responsável</label>
+            <input type="text" value="Secretaria de Administração e Gestão de Pessoas" placeholder="">
+          </div>
+          <div class="field">
+            <label>Descrição</label>
+            <textarea placeholder="" style="min-height:96px">Formação contínua em gestão, processos e atendimento ao cidadão para servidores municipais.</textarea>
+          </div>
+          <div class="field">
+            <label>Meta mensal de horas de capacitação</label>
+            <input type="text" value="2.400" placeholder="">
+            <span class="help">Usada na barra de meta do dashboard.</span>
+          </div>
+          <div class="row end"><button class="btn accent" type="submit">Criar trilha</button></div>
+        </form>
+        <div class="col">
+          <div class="notice ">
+            <b>Só pode existir uma trilha</b>
+            <p>Depois de criada, a trilha não pode ser duplicada nem excluída. Revise os dados antes de continuar.</p>
+          </div>
+          <div class="card">
+            <h2>Como o aluno vai ver</h2>
+            <div style="background:var(--creme);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px">
+              <h3>Gestão Pública Municipal</h3>
+              <span class="small muted">Secretaria de Administração e Gestão de Pessoas</span><span class="badge">0 cursos publicados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

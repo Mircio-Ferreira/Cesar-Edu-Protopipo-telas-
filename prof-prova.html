@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Prova do curso · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">PROFESSOR</div>
+        <nav><a href="prof-cursos.html" class="on"><i></i>Meus cursos</a></nav>
+        <div class="me">
+          <span class="avatar navy">RL</span>
+          <div><b class="strong">Roberto Lacerda</b><small>Professor · Trilha Gestão Pública</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="crumbs">
+          <a href="prof-cursos.html">Meus cursos</a>
+          /
+          <a href="prof-modulos.html">Atendimento ao Cidadão</a>
+          /
+          <b>Prova</b>
+        </div>
+        <div class="page-head">
+          <div>
+            <h1>Prova do curso</h1>
+            <p>Atendimento ao Cidadão · cada curso possui uma única prova de múltipla escolha.</p>
+          </div>
+          <div class="row">
+            <a class="btn sec" href="prof-modulos.html">← Módulos</a>
+            <a class="btn accent" href="#salvo">Salvar prova</a>
+          </div>
+        </div>
+        <div class="grid2" style="grid-template-columns:1fr 340px;align-items:start">
+          <div class="col">
+            <div class="q">
+              <div class="row between">
+                <b class="strong">Questão 1</b>
+                <a class="small strong" style="color:var(--vermelho)" href="#">Remover questão</a>
+              </div>
+              <div class="field"><input value="Qual princípio da administração pública exige tratamento igual a todos os cidadãos?"></div>
+              <div class="alt ">
+                <span class="r"></span>
+                <span class="grow">Publicidade</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <div class="alt ok">
+                <span class="r"></span>
+                <span class="grow">Impessoalidade</span>
+                <span class="badge green">Gabarito</span>
+              </div>
+              <div class="alt ">
+                <span class="r"></span>
+                <span class="grow">Eficiência</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <div class="alt ">
+                <span class="r"></span>
+                <span class="grow">Moralidade</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <a class="small strong" style="color:var(--laranja-escuro)" href="#">+ Adicionar alternativa</a>
+            </div>
+            <div class="q">
+              <div class="row between">
+                <b class="strong">Questão 2</b>
+                <a class="small strong" style="color:var(--vermelho)" href="#">Remover questão</a>
+              </div>
+              <div class="field"><input value="Qual canal permite o registro formal de reclamações do cidadão?"></div>
+              <div class="alt ok">
+                <span class="r"></span>
+                <span class="grow">Ouvidoria</span>
+                <span class="badge green">Gabarito</span>
+              </div>
+              <div class="alt ">
+                <span class="r"></span>
+                <span class="grow">Mural de avisos</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <div class="alt ">
+                <span class="r"></span>
+                <span class="grow">Intranet</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <div class="alt ">
+                <span class="r"></span>
+                <span class="grow">Protocolo interno</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <a class="small strong" style="color:var(--laranja-escuro)" href="#">+ Adicionar alternativa</a>
+            </div>
+            <a class="btn sec" href="#">+ Adicionar questão</a>
+          </div>
+          <div class="col">
+            <div class="card">
+              <h2>Critério de aprovação</h2>
+              <div class="field error">
+                <label>Nota de corte (% de acertos)</label>
+                <input value="50">
+                <span class="help">A nota de corte precisa ser superior a 50%. Informe de 51% a 100%.</span>
+              </div>
+              <p class="small muted">Alterar a nota de corte vale só para as próximas tentativas. Resultados anteriores não mudam.</p>
+            </div>
+            <div class="card">
+              <h2>Regras da prova</h2>
+              <ul class="reqs">
+                <li>Pelo menos 1 questão</li>
+                <li>Pelo menos 2 alternativas por questão</li>
+                <li>Exatamente 1 alternativa correta</li>
+                <li class="no">Nota de corte acima de 50%</li>
+              </ul>
+            </div>
+            <div class="notice blue">
+              <b>Um curso, uma prova</b>
+              <p>Para criar outra prova neste curso, edite ou exclua a atual.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="salvo">
+          <div class="box">
+            <h2>Corrija antes de salvar</h2>
+            <p class="muted">A nota de corte precisa ser superior a 50%.</p>
+            <div class="actions"><a class="btn" href="#">Entendi</a></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

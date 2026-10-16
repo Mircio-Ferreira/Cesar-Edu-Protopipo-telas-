@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Meus cursos · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">PROFESSOR</div>
+        <nav><a href="prof-cursos.html" class="on"><i></i>Meus cursos</a></nav>
+        <div class="me">
+          <span class="avatar navy">RL</span>
+          <div><b class="strong">Roberto Lacerda</b><small>Professor · Trilha Gestão Pública</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Meus cursos</h1>
+            <p>Você é o professor responsável por estes cursos. Abra um curso para gerenciar módulos, aulas, materiais, comentários e prova.</p>
+          </div>
+          <div class="row"><a class="btn accent" href="#novo">+ Novo curso</a></div>
+        </div>
+        <div class="card flat">
+          <table class="t">
+            <thead>
+              <tr>
+                <th>Curso</th>
+                <th>Situação</th>
+                <th>Alunos</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <b class="strong">Atendimento ao Cidadão</b>
+                  <br>
+                  <span class="small muted">3 módulos · 11 aulas</span>
+                </td>
+                <td><span class="badge green">Publicado</span></td>
+                <td class="muted">212 alunos</td>
+                <td>
+                  <div class="row end" style="gap:8px">
+                    <a class="btn sm" href="prof-modulos.html">Abrir curso</a>
+                    <a class="btn sec sm" href="#editar">Editar</a>
+                    <a class="btn sm" style="background:var(--vermelho-claro);color:var(--vermelho)" href="#arquivar">Arquivar</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b class="strong">Gestão de Processos</b>
+                  <br>
+                  <span class="small muted">6 módulos · 22 aulas</span>
+                </td>
+                <td><span class="badge green">Publicado</span></td>
+                <td class="muted">158 alunos</td>
+                <td>
+                  <div class="row end" style="gap:8px">
+                    <a class="btn sm" href="prof-modulos.html">Abrir curso</a>
+                    <a class="btn sec sm" href="#editar">Editar</a>
+                    <a class="btn sm" style="background:var(--vermelho-claro);color:var(--vermelho)" href="#arquivar">Arquivar</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b class="strong">Licitações e Contratos</b>
+                  <br>
+                  <span class="small muted">5 módulos · 18 aulas</span>
+                </td>
+                <td><span class="badge yellow">Rascunho</span></td>
+                <td class="muted">—</td>
+                <td>
+                  <div class="row end" style="gap:8px">
+                    <a class="btn sm" href="prof-modulos.html">Abrir curso</a>
+                    <a class="btn sec sm" href="#editar">Editar</a>
+                    <a class="btn sm" style="background:var(--vermelho-claro);color:var(--vermelho)" href="#arquivar">Arquivar</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b class="strong">Redação Oficial (2024)</b>
+                  <br>
+                  <span class="small muted">4 módulos · 12 aulas</span>
+                </td>
+                <td><span class="badge ">Arquivado</span></td>
+                <td class="muted">97 alunos · com histórico</td>
+                <td>
+                  <div class="row end" style="gap:8px">
+                    <a class="btn sm" href="prof-modulos.html">Abrir curso</a>
+                    <a class="btn sec sm" href="#editar">Editar</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal" id="novo">
+          <div class="box">
+            <h2>Novo curso</h2>
+            <div class="field">
+              <label>Título do curso</label>
+              <input type="text" value="" placeholder="Ex.: Gestão de Contratos">
+            </div>
+            <div class="field">
+              <label>Descrição</label>
+              <textarea placeholder="Resumo do que o servidor vai aprender" style="min-height:96px"></textarea>
+            </div>
+            <div class="grid2">
+              <div class="field">
+                <label>Carga horária (h)</label>
+                <input type="text" value="" placeholder="20">
+              </div>
+              <div class="field">
+                <label>Situação</label>
+                <select>
+                  <option>Rascunho</option>
+                  <option>Publicado</option>
+                </select>
+              </div>
+            </div>
+            <p class="small muted">Todo curso tem um professor responsável: você.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Criar curso</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="editar">
+          <div class="box">
+            <h2>Editar curso</h2>
+            <div class="field">
+              <label>Título do curso</label>
+              <input type="text" value="Licitações e Contratos" placeholder="">
+            </div>
+            <div class="field">
+              <label>Descrição</label>
+              <textarea placeholder="" style="min-height:96px">Fundamentos da Lei 14.133/2021 aplicados à rotina das secretarias municipais.</textarea>
+            </div>
+            <div class="field">
+              <label>Situação</label>
+              <select>
+                <option>Rascunho</option>
+                <option>Publicado</option>
+                <option>Arquivado</option>
+              </select>
+            </div>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Salvar</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="arquivar">
+          <div class="box">
+            <h2>Arquivar curso?</h2>
+            <p class="muted">Cursos com matrículas, progresso ou certificados não são excluídos: são arquivados e preservam o histórico dos alunos.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn danger" href="#">Arquivar curso</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

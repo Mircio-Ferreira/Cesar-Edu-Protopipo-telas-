@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Solicitar acesso · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">SERVIDOR</div>
+        <nav>
+          <a href="aluno-trilha.html" class=""><i></i>Minha trilha</a>
+          <a href="aluno-aula.html" class=""><i></i>Aula</a>
+          <a href="aluno-comentarios.html" class=""><i></i>Comentários</a>
+          <a href="aluno-avaliar.html" class=""><i></i>Avaliar curso</a>
+          <a href="aluno-solicitar.html" class="on"><i></i>Solicitar acesso</a>
+        </nav>
+        <div class="me">
+          <span class="avatar navy">AB</span>
+          <div><b class="strong">Ana Beatriz Lima</b><small>Servidora · SEAD</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Solicitar acesso a outra trilha</h1>
+            <p>Peça inscrição em trilhas de outras secretarias. O gestor responsável analisa o pedido.</p>
+          </div>
+          <div class="row"></div>
+        </div>
+        <div class="grid2" style="grid-template-columns:1fr 1fr;align-items:start">
+          <form class="card" action="#">
+            <h2>Novo pedido</h2>
+            <div class="field">
+              <label>Trilha desejada</label>
+              <select>
+                <option>Saúde e Bem-estar · Secretaria de Saúde</option>
+                <option>Educação e Aprendizagem · Secretaria de Educação</option>
+                <option>Mobilidade Urbana · Secretaria de Infraestrutura</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Justificativa</label>
+              <textarea placeholder="Explique por que você precisa desta trilha (10 a 500 caracteres)"></textarea>
+              <span class="help">Mínimo de 10 e máximo de 500 caracteres. Texto em branco ou só com espaços não é aceito.</span>
+            </div>
+            <div class="counter">0 / 500</div>
+            <div class="row end"><a class="btn accent" href="#enviado">Enviar solicitação</a></div>
+          </form>
+          <div class="card flat">
+            <div style="padding:24px 24px 12px">
+              <h2>Meus pedidos</h2>
+            </div>
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Trilha</th>
+                  <th>Data</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="strong">Educação e Aprendizagem</td>
+                  <td class="muted">02/10/2026</td>
+                  <td><span class="badge yellow">Pendente</span></td>
+                </tr>
+                <tr>
+                  <td class="strong">Saúde e Bem-estar</td>
+                  <td class="muted">21/09/2026</td>
+                  <td><span class="badge green">Aprovado</span></td>
+                </tr>
+                <tr>
+                  <td class="strong">Mobilidade Urbana</td>
+                  <td class="muted">10/09/2026</td>
+                  <td><span class="badge red">Indeferido</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="padding:16px 20px;border-top:1px solid var(--borda)"><span class="small muted">Não é possível pedir uma trilha que já tem pedido pendente ou matrícula ativa.</span></div>
+          </div>
+        </div>
+        <div class="modal" id="enviado">
+          <div class="box">
+            <h2>Solicitação enviada</h2>
+            <p class="muted">O gestor da trilha foi notificado e vai analisar seu pedido.</p>
+            <div class="actions"><a class="btn" href="aluno-trilha.html">Voltar para minha trilha</a></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

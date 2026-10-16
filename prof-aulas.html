@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aulas do módulo · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">PROFESSOR</div>
+        <nav><a href="prof-cursos.html" class="on"><i></i>Meus cursos</a></nav>
+        <div class="me">
+          <span class="avatar navy">RL</span>
+          <div><b class="strong">Roberto Lacerda</b><small>Professor · Trilha Gestão Pública</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="crumbs">
+          <a href="prof-cursos.html">Meus cursos</a>
+          /
+          <a href="prof-modulos.html">Atendimento ao Cidadão</a>
+          /
+          <b>Módulo 1</b>
+        </div>
+        <div class="page-head">
+          <div>
+            <h1>Módulo 1 · Fundamentos do atendimento</h1>
+            <p>Atendimento ao Cidadão · cada aula reúne materiais e comentários dos alunos.</p>
+          </div>
+          <div class="row">
+            <a class="btn sec" href="prof-modulos.html">← Módulos</a>
+            <a class="btn accent" href="#nova">+ Nova aula</a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="flex-direction:row;align-items:center;gap:16px;">
+            <span class="avatar lg">1.1</span>
+            <div class="grow">
+              <h3>O servidor e o cidadão</h3>
+              <span class="small muted">12 min</span>
+            </div>
+            <span class="badge green">Ativa</span><span class="small muted">↑ ↓</span><a class="btn sec sm" href="#editar">Editar</a><a class="btn sec sm" href="#desativar">Desativar</a><a class="btn" href="prof-aula.html">Abrir aula</a>
+          </div>
+          <div class="card" style="flex-direction:row;align-items:center;gap:16px;">
+            <span class="avatar lg">1.2</span>
+            <div class="grow">
+              <h3>Princípios do atendimento público</h3>
+              <span class="small muted">18 min</span>
+            </div>
+            <span class="badge green">Ativa</span><span class="small muted">↑ ↓</span><a class="btn sec sm" href="#editar">Editar</a><a class="btn sec sm" href="#desativar">Desativar</a><a class="btn" href="prof-aula.html">Abrir aula</a>
+          </div>
+          <div class="card" style="flex-direction:row;align-items:center;gap:16px;opacity:.6">
+            <span class="avatar lg">1.3</span>
+            <div class="grow">
+              <h3>Canais de atendimento</h3>
+              <span class="small muted">15 min</span>
+            </div>
+            <span class="badge">Desativada</span><span class="small muted">↑ ↓</span><a class="btn sec sm" href="#editar">Editar</a><a class="btn sec sm" href="#reativar">Reativar</a><a class="btn" href="prof-aula.html">Abrir aula</a>
+          </div>
+        </div>
+        <div class="notice">
+          <b>Sobre exclusão</b>
+          <p>Aulas com histórico de progresso são desativadas, não excluídas. A desativação preserva o histórico de quem já assistiu.</p>
+        </div>
+        <div class="modal" id="nova">
+          <div class="box">
+            <h2>Nova aula</h2>
+            <div class="field">
+              <label>Título</label>
+              <input type="text" value="" placeholder="Título da aula">
+            </div>
+            <div class="field">
+              <label>Descrição</label>
+              <textarea placeholder="" style="min-height:96px"></textarea>
+            </div>
+            <div class="grid2">
+              <div class="field">
+                <label>Duração (min)</label>
+                <input type="text" value="15" placeholder="">
+              </div>
+              <div class="field">
+                <label>Posição no módulo</label>
+                <input type="text" value="4" placeholder="">
+              </div>
+            </div>
+            <div class="field">
+              <label>Conteúdo (link do vídeo)</label>
+              <input type="text" value="" placeholder="https://">
+            </div>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Criar aula</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="editar">
+          <div class="box">
+            <h2>Editar aula</h2>
+            <div class="field">
+              <label>Título</label>
+              <input type="text" value="Princípios do atendimento público" placeholder="">
+            </div>
+            <div class="field">
+              <label>Descrição</label>
+              <textarea placeholder="" style="min-height:96px">Eficiência, impessoalidade e respeito ao cidadão.</textarea>
+            </div>
+            <div class="grid2">
+              <div class="field">
+                <label>Duração (min)</label>
+                <input type="text" value="18" placeholder="">
+              </div>
+              <div class="field">
+                <label>Posição no módulo</label>
+                <input type="text" value="2" placeholder="">
+              </div>
+            </div>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Salvar</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="desativar">
+          <div class="box">
+            <h2>Desativar aula?</h2>
+            <p class="muted">A aula deixa de aparecer para os alunos, mas o histórico de quem já a assistiu é preservado.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn danger" href="#">Desativar</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="reativar">
+          <div class="box">
+            <h2>Reativar aula?</h2>
+            <p class="muted">A aula volta a aparecer para os alunos na posição atual.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Reativar</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
