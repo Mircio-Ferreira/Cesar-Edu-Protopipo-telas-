@@ -30,9 +30,13 @@
             <a class="btn accent" href="#novomod">+ Novo módulo</a>
           </div>
         </div>
-        <div class="grid3">
+        <div class="grid4">
           <div class="card kpi"><span class="small muted">Módulos</span><span class="v">3</span></div>
           <div class="card kpi"><span class="small muted">Aulas</span><span class="v">9</span></div>
+          <div class="card kpi">
+            <span class="small muted">Carga horária (soma das aulas)</span>
+            <span class="v">3 h</span>
+          </div>
           <div class="card kpi">
             <span class="small muted">Alunos matriculados</span>
             <span class="v">212</span>
@@ -40,7 +44,7 @@
         </div>
         <div>
           <h2>Módulos</h2>
-          <p class="small muted">A ordem abaixo é a que o aluno enxerga.</p>
+          <p class="small muted">Os módulos seguem a ordem em que foram criados, e essa ordem é a que o aluno enxerga.</p>
         </div>
         <div class="col">
           <div class="card" style="flex-direction:row;align-items:center;gap:16px">
@@ -49,7 +53,7 @@
               <h3>Módulo 1 · Fundamentos do atendimento</h3>
               <span class="small muted">3 aulas · 45 min</span>
             </div>
-            <span class="small muted">↑ ↓</span><a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
+            <a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
           </div>
           <div class="card" style="flex-direction:row;align-items:center;gap:16px">
             <span class="avatar lg navy">2</span>
@@ -57,7 +61,7 @@
               <h3>Módulo 2 · Comunicação clara</h3>
               <span class="small muted">2 aulas · 45 min</span>
             </div>
-            <span class="small muted">↑ ↓</span><a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
+            <a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
           </div>
           <div class="card" style="flex-direction:row;align-items:center;gap:16px">
             <span class="avatar lg navy">3</span>
@@ -65,7 +69,7 @@
               <h3>Módulo 3 · Atendimento a públicos específicos</h3>
               <span class="small muted">4 aulas · 1h 30 min</span>
             </div>
-            <span class="small muted">↑ ↓</span><a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
+            <a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
           </div>
         </div>
         <div class="card" style="flex-direction:row;align-items:center;gap:16px">
@@ -74,9 +78,9 @@
               <h2>Prova do curso</h2>
               <span class="badge green">Cadastrada</span>
             </div>
-            <span class="small muted">10 questões · nota de corte de 70% · cada curso tem uma única prova</span>
+            <span class="small muted">2 questões · nota de corte de 70% · cada curso tem uma única prova</span>
           </div>
-          <a class="btn sec" href="prof-prova.html">Gerenciar prova</a>
+          <a class="btn sec" href="prof-prova.html">Ver prova</a>
         </div>
         <div class="modal" id="novomod">
           <div class="box">
@@ -89,9 +93,9 @@
               <label>Descrição</label>
               <textarea placeholder="" style="min-height:96px"></textarea>
             </div>
-            <div class="field">
-              <label>Posição no curso</label>
-              <input type="text" value="4" placeholder="">
+            <div class="notice blue">
+              <b>Ordem automática</b>
+              <p>O módulo entra na próxima posição do curso (Módulo 4) e a ordem não pode ser alterada depois de criado.</p>
             </div>
             <div class="actions">
               <a class="btn sec" href="#">Cancelar</a>
@@ -109,10 +113,6 @@
             <div class="field">
               <label>Descrição</label>
               <textarea placeholder="" style="min-height:96px">Conceitos básicos do atendimento ao cidadão.</textarea>
-            </div>
-            <div class="field">
-              <label>Posição no curso</label>
-              <input type="text" value="1" placeholder="">
             </div>
             <div class="actions">
               <a class="btn sec" href="#">Cancelar</a>

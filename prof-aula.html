@@ -56,12 +56,11 @@
                 <span class="muted">Posição no módulo</span>
                 <b class="strong">2</b>
               </div>
-              <div class="row between">
-                <span class="muted">Situação</span>
-                <span class="badge green">Ativa</span>
-              </div>
             </div>
-            <a class="btn block" href="#editaraula">Editar aula</a>
+            <div class="col" style="gap:10px">
+              <a class="btn block" href="#editaraula">Editar aula</a>
+              <a class="btn block" style="background:var(--vermelho-claro);color:var(--vermelho)" href="#excluiraula">Excluir aula</a>
+            </div>
           </div>
         </div>
         <div class="row wrap" style="gap:10px">
@@ -357,15 +356,9 @@
               <label>Descrição</label>
               <textarea placeholder="" style="min-height:96px">Eficiência, impessoalidade e respeito ao cidadão.</textarea>
             </div>
-            <div class="grid2">
-              <div class="field">
-                <label>Duração (min)</label>
-                <input type="text" value="18" placeholder="">
-              </div>
-              <div class="field">
-                <label>Posição no módulo</label>
-                <input type="text" value="2" placeholder="">
-              </div>
+            <div class="field">
+              <label>Duração (min)</label>
+              <input type="text" value="18" placeholder="">
             </div>
             <div class="field">
               <label>Link do vídeo</label>
@@ -387,7 +380,17 @@
             </div>
           </div>
         </div>
-      </main>
+      <div class="modal" id="excluiraula">
+          <div class="box">
+            <h2>Excluir aula?</h2>
+            <p class="muted">A aula, os materiais e os comentários dela serão removidos definitivamente. Essa ação não pode ser desfeita.</p>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn danger" href="prof-aulas.html">Excluir aula</a>
+            </div>
+          </div>
+        </div>
+        </main>
     </div>
   </body>
 </html>

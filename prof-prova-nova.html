@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Nova prova · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">PROFESSOR</div>
+        <nav><a href="prof-cursos.html" class="on"><i></i>Meus cursos</a></nav>
+        <div class="me">
+          <span class="avatar navy">RL</span>
+          <div><b class="strong">Roberto Lacerda</b><small>Professor · Trilha Gestão Pública</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="crumbs"><a href="prof-cursos.html">Meus cursos</a> / <a href="prof-modulos-licitacoes.html">Licitações e Contratos</a> / <a href="prof-prova-vazia.html">Prova</a> / <b>Nova prova</b></div>
+        <div class="page-head">
+          <div>
+            <h1>Criar prova</h1>
+            <p>Licitações e Contratos · prova de múltipla escolha com gabarito e nota de corte.</p>
+          </div>
+          <div class="row">
+            <a class="btn sec" href="prof-prova-vazia.html">Cancelar</a>
+            <a class="btn accent" href="prof-prova.html">Salvar prova</a>
+          </div>
+        </div>
+        <div class="grid2" style="grid-template-columns:1fr 340px;align-items:start">
+          <div class="col">
+            <div class="q">
+              <div class="row between"><b class="strong">Questão 1</b></div>
+              <div class="field"><input placeholder="Digite o enunciado da questão"></div>
+              <div class="alt">
+                <span class="r"></span>
+                <span class="grow muted">Alternativa A</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <div class="alt">
+                <span class="r"></span>
+                <span class="grow muted">Alternativa B</span>
+                <span class="small muted">Marcar como correta</span>
+              </div>
+              <a class="small strong" style="color:var(--laranja-escuro)" href="#">+ Adicionar alternativa</a>
+            </div>
+            <a class="btn sec" href="#">+ Adicionar questão</a>
+          </div>
+          <div class="col">
+            <div class="card">
+              <h2>Critério de aprovação</h2>
+              <div class="field">
+                <label>Nota de corte (% de acertos)</label>
+                <input placeholder="Ex.: 70">
+                <span class="help">Precisa ser superior a 50%. Informe de 51% a 100%.</span>
+              </div>
+            </div>
+            <div class="card">
+              <h2>Regras da prova</h2>
+              <ul class="reqs">
+                <li class="no">Pelo menos 1 questão completa</li>
+                <li>Pelo menos 2 alternativas por questão</li>
+                <li class="no">Exatamente 1 alternativa correta</li>
+                <li class="no">Nota de corte acima de 50%</li>
+              </ul>
+            </div>
+            <div class="notice blue">
+              <b>Um curso, uma prova</b>
+              <p>Depois de salva, a prova poderá ser editada, mas este curso não pode ter uma segunda prova.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

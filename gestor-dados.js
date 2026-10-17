@@ -144,7 +144,7 @@ function prepararDados(brutos) {
       tentativas: num(m.numero_tentativas_quiz),
       ultimo,
     };
-  });
+  }).filter(m => m.status !== 'cancelado'); // não há matrícula cancelada na plataforma: esses registros são ignorados
 
   const solicitacoes = brutos.solicitacoes.map(s => ({
     id: s.id_solicitacao,

@@ -43,26 +43,19 @@ function validar() {
   return ok ? { nome, cpf, email } : null;
 }
 
+// A trilha é sempre a do próprio gestor (uma por gestor): não há escolha nem edição.
 function trilhaEscolhida() {
-  return db.trilhas.length > 1 ? $('f-trilha').value : db.trilhas[0];
+  return db.trilhas[0];
 }
 
 function montarTrilha() {
-  const unica = db.trilhas.length === 1;
-  $('trilha-fixa').hidden = !unica;
-  $('campo-trilha-select').hidden = unica;
-  $('trilha-nome').textContent = db.trilhas[0] || '—';
-  $('f-trilha').innerHTML = db.trilhas.map(t => `<option value="${esc(t)}">${esc(t)}</option>`).join('');
-  const atualizar = () => {
-    const t = trilhaEscolhida();
-    document.querySelectorAll('.trilha-atual').forEach(el => { el.textContent = t; });
-    if (TIPO === 'aluno') {
-      const n = [...db.cursos.values()].filter(c => c.trilha === t).length;
-      $('cursos-trilha').textContent = `${n} ${n === 1 ? 'curso' : 'cursos'}`;
-    }
-  };
-  $('f-trilha').addEventListener('change', atualizar);
-  atualizar();
+  const t = trilhaEscolhida();
+  $('trilha-nome').textContent = t || '—';
+  document.querySelectorAll('.trilha-atual').forEach(el => { el.textContent = t; });
+  if (TIPO === 'aluno') {
+    const n = [...db.cursos.values()].filter(c => c.trilha === t).length;
+    $('cursos-trilha').textContent = `${n} ${n === 1 ? 'curso' : 'cursos'}`;
+  }
 }
 
 // ---------- professor (F2) ----------
@@ -128,20 +121,18 @@ function linhasAlunos() {
 }
 
 function linhaAluno(s) {
-  const st = norm(s.status);
-  const cor = s.novo ? 'yellow' : /inativ|bloq|suspens|desativ/.test(st) ? 'red' : /ativ/.test(st) ? 'green' : '';
   const cursos = db.matriculas.filter(m => m.servidor === s.id && db.cursosEscopo.has(m.curso)).length;
   return `<tr>
     <td><div class="who"><span class="avatar">${esc(iniciais(s.nome))}</span>
       <div><b class="strong">${esc(s.nome)}</b><small>${esc(s.email || s.id)}</small></div></div></td>
     <td>${esc(s.cargo || '—')}<br><span class="small muted">${esc(s.id)}</span></td>
     <td>${cursos ? `${cursos} ${cursos === 1 ? 'curso' : 'cursos'}` : '<span class="muted">—</span>'}</td>
-    <td><span class="badge ${cor}">${esc(s.status || '—')}</span></td>
   </tr>`;
 }
 
 // ---------- tabela ----------
 function renderTabela() {
+  if (!$('lista')) return; // a tela de professor não exibe a lista de cadastrados
   const termo = norm(estado.busca);
   let linhas = TIPO === 'professor' ? linhasProfessores() : linhasAlunos();
   if (termo) linhas = linhas.filter(l => norm(`${l.nome} ${l.sub || ''} ${l.email || ''} ${l.id || ''} ${l.cargo || ''}`).includes(termo));
@@ -150,7 +141,7 @@ function renderTabela() {
   const ini = (estado.pagina - 1) * POR_PAGINA;
   const pagina = linhas.slice(ini, ini + POR_PAGINA);
   $('lista').innerHTML = pagina.map(TIPO === 'professor' ? linhaProfessor : linhaAluno).join('')
-    || '<tr><td colspan="4" class="muted">Nenhum registro encontrado.</td></tr>';
+    || `<tr><td colspan="${TIPO === 'professor' ? 4 : 3}" class="muted">Nenhum registro encontrado.</td></tr>`;
   $('total').textContent = fmtInt(linhas.length);
   $('pag-info').textContent = linhas.length ? `Mostrando ${ini + 1}–${ini + pagina.length} de ${fmtInt(linhas.length)}` : '';
   renderPaginacao($('paginacao'), estado.pagina, paginas);
@@ -190,17 +181,19 @@ function ligarEventos() {
     toast('Senha provisória copiada.');
   });
 
-  let timer;
-  $('f-busca').addEventListener('input', e => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { estado.busca = e.target.value; estado.pagina = 1; renderTabela(); }, 200);
-  });
-  $('paginacao').addEventListener('click', e => {
-    const b = e.target.closest('button[data-pag]');
-    if (!b || b.disabled) return;
-    estado.pagina = +b.dataset.pag;
-    renderTabela();
-  });
+  if ($('f-busca')) {
+    let timer;
+    $('f-busca').addEventListener('input', e => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { estado.busca = e.target.value; estado.pagina = 1; renderTabela(); }, 200);
+    });
+    $('paginacao').addEventListener('click', e => {
+      const b = e.target.closest('button[data-pag]');
+      if (!b || b.disabled) return;
+      estado.pagina = +b.dataset.pag;
+      renderTabela();
+    });
+  }
 }
 
 async function iniciar() {

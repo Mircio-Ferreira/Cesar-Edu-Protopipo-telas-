@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Módulos do curso · CESAR EDU</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="logo" href="index.html"><svg viewBox="0 0 600 555" style="width:44px" aria-hidden="true"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></a>
+        <div class="sec">PROFESSOR</div>
+        <nav><a href="prof-cursos.html" class="on"><i></i>Meus cursos</a></nav>
+        <div class="me">
+          <span class="avatar navy">RL</span>
+          <div><b class="strong">Roberto Lacerda</b><small>Professor · Trilha Gestão Pública</small></div>
+        </div>
+        <a class="exit" href="index.html">Sair</a>
+      </aside>
+      <main class="main">
+        <div class="crumbs"><a href="prof-cursos.html">Meus cursos</a> / <b>Licitações e Contratos</b></div>
+        <div class="page-head">
+          <div>
+            <h1>Licitações e Contratos</h1>
+            <p>Curso em rascunho · escolha um módulo para ver as aulas ou gerencie a prova do curso.</p>
+          </div>
+          <div class="row">
+            <a class="btn sec" href="prof-cursos.html">← Meus cursos</a>
+            <a class="btn accent" href="#novomod">+ Novo módulo</a>
+          </div>
+        </div>
+        <div class="grid4">
+          <div class="card kpi"><span class="small muted">Módulos</span><span class="v">3</span></div>
+          <div class="card kpi"><span class="small muted">Aulas</span><span class="v">9</span></div>
+          <div class="card kpi">
+            <span class="small muted">Carga horária (soma das aulas)</span>
+            <span class="v">3 h</span>
+          </div>
+          <div class="card kpi">
+            <span class="small muted">Alunos matriculados</span>
+            <span class="v">—</span>
+          </div>
+        </div>
+        <div>
+          <h2>Módulos</h2>
+          <p class="small muted">Os módulos seguem a ordem em que foram criados, e essa ordem é a que o aluno enxerga.</p>
+        </div>
+        <div class="col">
+          <div class="card" style="flex-direction:row;align-items:center;gap:16px">
+            <span class="avatar lg navy">1</span>
+            <div class="grow">
+              <h3>Módulo 1 · Fundamentos das licitações</h3>
+              <span class="small muted">3 aulas · 45 min</span>
+            </div>
+            <a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
+          </div>
+          <div class="card" style="flex-direction:row;align-items:center;gap:16px">
+            <span class="avatar lg navy">2</span>
+            <div class="grow">
+              <h3>Módulo 2 · Fase preparatória</h3>
+              <span class="small muted">2 aulas · 45 min</span>
+            </div>
+            <a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
+          </div>
+          <div class="card" style="flex-direction:row;align-items:center;gap:16px">
+            <span class="avatar lg navy">3</span>
+            <div class="grow">
+              <h3>Módulo 3 · Contratos e fiscalização</h3>
+              <span class="small muted">4 aulas · 1h 30 min</span>
+            </div>
+            <a class="btn sec sm" href="#editarmod">Editar</a><a class="btn sec sm" href="#semexcluir" title="Módulos com aulas não podem ser excluídos">Excluir</a><a class="btn" href="prof-aulas.html">Abrir módulo</a>
+          </div>
+        </div>
+        <div class="card" style="flex-direction:row;align-items:center;gap:16px">
+          <div class="grow">
+            <div class="row" style="gap:10px">
+              <h2>Prova do curso</h2>
+              <span class="badge">Não criada</span>
+            </div>
+            <span class="small muted">Este curso ainda não tem prova · cada curso tem uma única prova</span>
+          </div>
+          <a class="btn accent" href="prof-prova-vazia.html">Criar prova</a>
+        </div>
+        <div class="modal" id="novomod">
+          <div class="box">
+            <h2>Novo módulo</h2>
+            <div class="field">
+              <label>Título</label>
+              <input type="text" value="" placeholder="Módulo 4 · …">
+            </div>
+            <div class="field">
+              <label>Descrição</label>
+              <textarea placeholder="" style="min-height:96px"></textarea>
+            </div>
+            <div class="notice blue">
+              <b>Ordem automática</b>
+              <p>O módulo entra na próxima posição do curso (Módulo 4) e a ordem não pode ser alterada depois de criado.</p>
+            </div>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Criar módulo</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="editarmod">
+          <div class="box">
+            <h2>Editar módulo</h2>
+            <div class="field">
+              <label>Título</label>
+              <input type="text" value="Fundamentos das licitações" placeholder="">
+            </div>
+            <div class="field">
+              <label>Descrição</label>
+              <textarea placeholder="" style="min-height:96px">Conceitos básicos do atendimento ao cidadão.</textarea>
+            </div>
+            <div class="actions">
+              <a class="btn sec" href="#">Cancelar</a>
+              <a class="btn accent" href="#">Salvar</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="semexcluir">
+          <div class="box">
+            <h2>Não é possível excluir</h2>
+            <p class="muted">Este módulo possui aulas. Trate as aulas antes de excluí-lo.</p>
+            <div class="actions"><a class="btn" href="#">Entendi</a></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -4,7 +4,6 @@
 // Utilitários e preparação dos dados ficam em gestor-dados.js.
 
 const NOTA_CORTE = 7;
-const DIAS_ESTAGNACAO = 15;
 const DIAS_EVASAO = 45;
 const POR_PAGINA = 10;
 const FILTROS_PADRAO = { trilha: '', periodo: 'todos', curso: '', secretaria: '', status: '' };
@@ -15,7 +14,6 @@ const estado = {
   pagina: 1,
   busca: '',
   linhas: [],
-  solicitacaoAtual: null,
 };
 // ---------- filtros ----------
 function cursosDoFiltro(f = estado.filtros) {
@@ -135,11 +133,8 @@ function render(metrica) {
   renderKpis(base);
   renderMeta();
   renderGraficos(base);
-  renderEstagnacao(base);
-  renderFila();
   renderTabela(base);
   renderCursos(base);
-  renderEvasao(base);
   renderViews();
   registrarAuditoria(metrica, performance.now() - t0);
 }
@@ -196,7 +191,7 @@ function renderKpis(base) {
     p.taxa == null ? 'neu' : p.taxa >= 60 ? '' : 'neg');
 
   const e = evasao(base);
-  setKpi('kpi-evasao', fmtPct(e.taxa, 1), `${fmtInt(e.evadidas)} de ${fmtInt(e.iniciadas)} iniciadas · ${fmtInt(e.canceladas)} canceladas`,
+  setKpi('kpi-evasao', fmtPct(e.taxa, 1), `${fmtInt(e.evadidas)} de ${fmtInt(e.iniciadas)} iniciadas`,
     e.taxa == null ? 'neu' : e.taxa <= 10 ? '' : 'neg');
 }
 
@@ -228,52 +223,6 @@ function renderMeta() {
   $('meta-rodape').textContent = (faltam ? `Faltam ${fmtInt(faltam)} h para a meta` : 'Meta atingida') +
     ` · ${ultimoDia - r.getDate()} dias restantes no mês · média dos 3 meses anteriores: ${fmtInt(media(anteriores))} h` +
     (configGestor().meta ? '' : ' (meta sugerida: média + 10%)');
-}
-
-function renderEstagnacao(base) {
-  const porServidor = new Map();
-  for (const m of base) {
-    const s = porServidor.get(m.servidor) || { andamento: false, ultimo: null };
-    if (m.status === 'andamento') s.andamento = true;
-    if (m.ultimo && (!s.ultimo || m.ultimo > s.ultimo)) s.ultimo = m.ultimo;
-    porServidor.set(m.servidor, s);
-  }
-  const estagnados = [...porServidor].filter(([, s]) => s.andamento && s.ultimo && dias(s.ultimo, db.ref) > DIAS_ESTAGNACAO)
-    .map(([id, s]) => ({ id, dias: dias(s.ultimo, db.ref) }))
-    .sort((a, b) => b.dias - a.dias);
-  estado.estagnados = estagnados;
-  $('estag-badge').textContent = `${fmtInt(estagnados.length)} servidores`;
-  $('estag-lista').innerHTML = estagnados.slice(0, 4).map(e => {
-    const s = db.servidores.get(e.id) || { nome: e.id, secretaria: '—' };
-    return linhaWho(s.nome, s.secretaria, 'red', `<b class="small red-text">há ${e.dias} dias</b>`);
-  }).join('') + (estagnados.length > 4 ? `<p class="small muted">+ ${fmtInt(estagnados.length - 4)} servidores</p>` : '')
-    || '<p class="small muted" style="padding:8px 0">Nenhum servidor estagnado com os filtros atuais.</p>';
-  $('btn-lembrete').textContent = `Enviar lembrete aos ${fmtInt(estagnados.length)} servidores`;
-  $('btn-lembrete').disabled = !estagnados.length;
-}
-
-// RN 6 / F4 RN 1: pendentes destinadas aos cursos das trilhas do gestor
-function pendentes() {
-  const cursos = new Set(cursosDoFiltro());
-  return db.solicitacoes.filter(s => s.status === 'pendente' && cursos.has(s.curso))
-    .sort((a, b) => (a.data || 0) - (b.data || 0));
-}
-
-function renderFila() {
-  const fila = pendentes();
-  $('side-pendentes').textContent = pendentesDoEscopo();
-  $('fila-badge').textContent = `${fmtInt(fila.length)} pendentes`;
-  $('fila-lista').innerHTML = fila.slice(0, 4).map(s => {
-    const serv = db.servidores.get(s.servidor) || { nome: s.servidor };
-    const curso = db.cursos.get(s.curso)?.nome || s.curso;
-    return linhaWho(serv.nome, `${curso} · ${s.secretariaServidor || serv.secretaria || '—'}`, '', `
-      <div class="row" style="gap:6px">
-        <b class="small muted">${relativo(s.data)}</b>
-        <button type="button" class="btn danger sm" data-indeferir="${esc(s.id)}">Indeferir</button>
-        <button type="button" class="btn accent sm" data-aprovar="${esc(s.id)}">Aprovar</button>
-      </div>`);
-  }).join('') + (fila.length > 4 ? `<p class="small muted">+ ${fmtInt(fila.length - 4)} solicitações na fila</p>` : '')
-    || '<p class="small muted" style="padding:8px 0">Nenhuma solicitação pendente para a seleção atual.</p>';
 }
 
 // RN 5: acompanhamento individualizado agrupado por servidor
@@ -318,7 +267,6 @@ function renderTabela(base) {
   $('tabela-servidores').innerHTML = pagina.map(l => {
     const [rotulo, cor] = STATUS_LABEL[l.status];
     const pct = Math.round(l.avanco);
-    const estagnado = l.ultimo && dias(l.ultimo, db.ref) > DIAS_ESTAGNACAO && l.status === 'andamento';
     return `<tr>
       <td><div class="who"><span class="avatar">${esc(iniciais(l.nome))}</span>
         <div><b class="strong">${esc(l.nome)}</b><small>${esc(l.id)} · ${l.cursos} ${l.cursos === 1 ? 'curso' : 'cursos'}</small></div></div></td>
@@ -326,7 +274,7 @@ function renderTabela(base) {
       <td><span class="badge ${cor}">${rotulo}</span></td>
       <td><div class="bar"><div class="progress ${pct >= 100 ? 'green' : ''}"><i style="width:${pct}%"></i></div><b class="small">${pct}%</b></div></td>
       <td class="strong">${fmt(l.nota)}</td>
-      <td class="${estagnado ? 'red-text' : 'muted'}">${relativo(l.ultimo)}</td>
+      <td class="muted">${relativo(l.ultimo)}</td>
     </tr>`;
   }).join('') || '<tr><td colspan="6" class="muted">Nenhum servidor encontrado para os filtros atuais.</td></tr>';
 
@@ -369,39 +317,6 @@ function renderCursos(base) {
       <td>${fmtPct(l.primeira)}</td>
     </tr>`;
   }).join('') || '<tr><td colspan="4" class="muted">Sem cursos para os filtros atuais.</td></tr>';
-}
-
-function renderEvasao(base) {
-  const f = estado.filtros;
-  const inicio = inicioPeriodo(f.periodo);
-  const linhas = cursosDoFiltro().map(id => {
-    const ms = base.filter(m => m.curso === id);
-    const ps = db.pesquisas.filter(p => p.curso === id && (!inicio || (p.data && p.data >= inicio)) &&
-      (!f.secretaria || db.servidores.get(p.servidor)?.secretaria === f.secretaria));
-    const nps = ps.map(p => p.nps).filter(n => n != null);
-    return {
-      nome: db.cursos.get(id).nome,
-      ev: evasao(ms),
-      media: media(ms.map(m => m.nota).filter(n => n != null)),
-      csat: media(ps.map(p => p.csat).filter(n => n != null)),
-      nps: nps.length ? (nps.filter(n => n >= 9).length - nps.filter(n => n <= 6).length) / nps.length * 100 : null,
-      ativas: ms.filter(m => m.status === 'andamento' || m.status === 'nao_iniciado').length,
-    };
-  }).filter(l => l.ev.iniciadas).sort((a, b) => b.ev.taxa - a.ev.taxa);
-
-  const max = Math.max(1, ...linhas.map(l => l.ev.taxa));
-  const visiveis = linhas.slice(0, 6);
-  $('evasao-lista').innerHTML = visiveis.map((l, i) => {
-    const cor = i === 0 ? 'var(--laranja)' : 'var(--navy)';
-    const corTexto = i === 0 ? 'var(--laranja-escuro)' : 'var(--navy)';
-    return `<div class="col" style="gap:6px">
-      <div class="row between"><b class="strong">${esc(l.nome)}</b>
-        <b class="small" style="color:${corTexto}">${fmtPct(l.ev.taxa, 1)} de evasão</b></div>
-      <div class="progress" style="height:10px"><i style="width:${l.ev.taxa / max * 100}%;background:${cor}"></i></div>
-      <span class="small muted">${fmtInt(l.ativas)} ativas · ${fmtInt(l.ev.evadidas)} evadidas · Média ${fmt(l.media)} · Satisfação ${fmt(l.csat)} de 5 · NPS ${l.nps == null ? '—' : fmtInt(l.nps)}</span>
-    </div>`;
-  }).join('') + (linhas.length > visiveis.length ? `<p class="small muted">+ ${linhas.length - visiveis.length} cursos com menor evasão</p>` : '')
-    || '<p class="small muted">Sem matrículas iniciadas para os filtros atuais.</p>';
 }
 
 // ---------- gráficos (Chart.js) ----------
@@ -555,7 +470,7 @@ function renderGraficos(base) {
     .filter(c => c.ms.length)
     .sort((a, b) => b.ms.length - a.ms.length)
     .slice(0, 8);
-  const ordem = ['concluido', 'andamento', 'nao_iniciado', 'cancelado'];
+  const ordem = ['concluido', 'andamento', 'nao_iniciado'];
   const contagem = st => cursos.map(c => c.ms.filter(m => m.status === st).length);
   const totais = Object.fromEntries(ordem.map(st => [st, contagem(st).reduce((a, b) => a + b, 0)]));
   desenhar('g-status', {
@@ -608,40 +523,6 @@ function renderGraficos(base) {
   tabelaDados('g-notas', ['Faixa', 'Matrículas', 'Situação'], faixas.map(f => [f.de + '–' + f.ate, fmtInt(f.n), abaixo(f) ? 'Abaixo do corte' : 'Aprovado']));
 }
 
-// ---------- teste das fontes ----------
-function renderFontes(testes) {
-  const ids = {
-    cursos: new Set(db.cursos.keys()),
-    servidores: new Set(db.servidores.keys()),
-  };
-  const orfaos = {
-    matriculas: r => !ids.cursos.has(r.id_curso) || !ids.servidores.has(r.id_servidor),
-    solicitacoes: r => !ids.cursos.has(r.id_curso_solicitado) || !ids.servidores.has(r.id_servidor),
-    pesquisas: r => !ids.cursos.has(r.id_curso) || !ids.servidores.has(r.id_servidor),
-    telemetria: r => !ids.cursos.has(r.id_curso) || !ids.servidores.has(r.id_servidor),
-  };
-  $('tabela-fontes').innerHTML = testes.map(t => {
-    const total = CSV_FONTES[t.chave].colunas.length;
-    let resultado;
-    if (t.erro) resultado = `<span class="badge red">Falha</span> <span class="small red-text">${esc(t.erro)}</span>`;
-    else if (t.faltando.length) resultado = `<span class="badge red">Colunas ausentes</span> <span class="small red-text">${esc(t.faltando.join(', '))}</span>`;
-    else if (!t.registros.length) resultado = '<span class="badge red">Arquivo vazio</span>';
-    else {
-      const n = orfaos[t.chave] ? t.registros.filter(orfaos[t.chave]).length : 0;
-      resultado = n
-        ? `<span class="badge yellow">OK · ${fmtInt(n)} refs. sem correspondência</span>`
-        : '<span class="badge green">OK</span>';
-    }
-    return `<tr>
-      <td><a class="strong" href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.arquivo)}</a></td>
-      <td>${t.erro ? '—' : fmtInt(t.registros.length)}</td>
-      <td>${t.erro ? '—' : `${total - t.faltando.length}/${total}`}</td>
-      <td class="muted">${t.ms != null ? `${t.ms} ms` : '—'}</td>
-      <td>${resultado}</td>
-    </tr>`;
-  }).join('');
-}
-
 // ---------- ações ----------
 function exportar() {
   const cab = ['id_servidor', 'nome', 'secretaria', 'status', 'avanco_pct', 'nota_media', 'ultimo_acesso', 'cursos'];
@@ -656,19 +537,6 @@ function exportar() {
   URL.revokeObjectURL(a.href);
   registrarAuditoria('exportar_relatorio', 0);
   toast(`Relatório exportado com ${fmtInt(estado.linhas.length)} servidores.`);
-}
-
-function decidir(id, status, parecer) {
-  const r = registrarDecisao(id, status, parecer);
-  if (!r) return;
-  const { nome, criada } = r;
-  if (status === 'aprovado') {
-    toast(criada ? `${nome} aprovado e matriculado automaticamente.` : `${nome} aprovado · já possuía matrícula ativa neste curso.`);
-  } else {
-    toast(`Solicitação de ${nome} indeferida.`);
-  }
-  location.hash = '';
-  render(`homologacao_${status}`);
 }
 
 function ligarEventos() {
@@ -759,47 +627,7 @@ function ligarEventos() {
     render('alterar_meta');
   });
 
-  $('btn-lembrete').addEventListener('click', () => {
-    registrarAuditoria('enviar_lembrete_estagnados', 0);
-    toast(`Lembrete enviado para ${fmtInt(estado.estagnados.length)} servidores.`);
-  });
-
   $('btn-exportar').addEventListener('click', exportar);
-
-  $('fila-lista').addEventListener('click', e => {
-    const ap = e.target.closest('[data-aprovar]');
-    const ind = e.target.closest('[data-indeferir]');
-    const id = ap?.dataset.aprovar || ind?.dataset.indeferir;
-    if (!id) return;
-    const s = db.solicitacoes.find(x => x.id === id);
-    const nome = db.servidores.get(s.servidor)?.nome || s.servidor;
-    const curso = db.cursos.get(s.curso);
-    estado.solicitacaoAtual = id;
-    if (ap) {
-      $('aprovar-sub').textContent = `${nome} será matriculado automaticamente no curso ${curso?.nome || s.curso} (Trilha ${curso?.trilha || '—'}) e terá acesso imediato.`;
-      location.hash = 'aprovar';
-    } else {
-      $('indeferir-sub').textContent = `${nome} · ${curso?.nome || s.curso}`;
-      $('indeferir-parecer').value = '';
-      $('indeferir-parecer').dispatchEvent(new Event('input'));
-      location.hash = 'indeferir';
-    }
-  });
-
-  $('aprovar-ok').addEventListener('click', () => decidir(estado.solicitacaoAtual, 'aprovado', ''));
-
-  // F4 RN 2: parecer obrigatório com no mínimo 10 caracteres
-  $('indeferir-parecer').addEventListener('input', e => {
-    const n = e.target.value.trim().length;
-    $('indeferir-help').textContent = `Escreva pelo menos 10 caracteres. Atual: ${n}.`;
-    $('indeferir-field').classList.toggle('error', n > 0 && n < 10);
-    $('indeferir-ok').disabled = n < 10;
-  });
-  $('form-indeferir').addEventListener('submit', e => {
-    e.preventDefault();
-    const parecer = $('indeferir-parecer').value.trim();
-    if (parecer.length >= 10) decidir(estado.solicitacaoAtual, 'rejeitado', parecer);
-  });
 
   $('audit-limpar').addEventListener('click', () => { gravarLS(LS.auditoria, []); renderAuditoria(); });
 }
@@ -819,7 +647,6 @@ async function iniciar() {
     estado.ordem = { ...ORDEM_PADRAO, ...ultima.ordem };
   }
   montarFiltros();
-  renderFontes(testes);
   render('render_inicial');
 }
 

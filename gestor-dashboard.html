@@ -32,6 +32,7 @@
           </div>
           <div class="row">
             <button class="btn sec" id="btn-exportar" type="button">Exportar relatório</button>
+            <a class="btn ghost" href="#auditoria">Log de auditoria (<span id="audit-cnt">0</span>)</a>
             <a class="btn accent" href="#salvar">Salvar visualização</a>
           </div>
         </div>
@@ -74,7 +75,6 @@
               <option value="nao_iniciado">Não iniciado</option>
               <option value="andamento">Em andamento</option>
               <option value="concluido">Concluído</option>
-              <option value="cancelado">Cancelado</option>
             </select>
           </div>
           <button class="btn" type="submit">Aplicar filtros</button>
@@ -157,27 +157,6 @@
           </div>
         </div>
 
-        <div class="grid2">
-          <div class="card danger-border" style="gap:8px">
-            <div class="card-head">
-              <h2>Alerta de estagnação</h2>
-              <span class="badge red" id="estag-badge">—</span>
-            </div>
-            <p class="small muted">Matrículas em andamento sem acesso ou avanço há mais de 15 dias.</p>
-            <div id="estag-lista"></div>
-            <button class="btn sec block" type="button" id="btn-lembrete">Enviar lembrete</button>
-          </div>
-          <div class="card" style="gap:8px">
-            <div class="card-head">
-              <h2>Fila de homologação</h2>
-              <span class="badge orange" id="fila-badge">—</span>
-            </div>
-            <p class="small muted">Solicitações de servidores de outras secretarias para cursos da sua trilha.</p>
-            <div id="fila-lista"></div>
-            <a class="btn block" href="gestor-homologacao.html">Ir para homologação</a>
-          </div>
-        </div>
-
         <div class="card flat">
           <div class="row between" style="padding:18px 20px 14px">
             <div>
@@ -205,52 +184,21 @@
           </div>
         </div>
 
-        <div class="grid2">
-          <div class="card flat">
-            <div style="padding:24px 24px 8px">
-              <h2>Média e reprovação por curso</h2>
-              <p class="small muted" id="corte-info">Percentual de tentativas abaixo da nota de corte.</p>
-            </div>
-            <table class="t">
-              <thead>
-                <tr>
-                  <th>Curso</th>
-                  <th>Média</th>
-                  <th>Reprovação</th>
-                  <th>1ª tentativa</th>
-                </tr>
-              </thead>
-              <tbody id="tabela-cursos"></tbody>
-            </table>
-          </div>
-          <div class="card">
-            <div>
-              <h2>Evasão e comparativo entre cursos</h2>
-              <p class="small muted">Canceladas ou sem progresso há mais de 45 dias, média de notas e satisfação.</p>
-            </div>
-            <div class="col" style="gap:16px" id="evasao-lista"></div>
-          </div>
-        </div>
-
         <div class="card flat">
-          <div class="row between" style="padding:18px 20px 14px">
-            <div>
-              <h2>Fonte de dados</h2>
-              <span class="small muted">Teste de carregamento e validação de colunas dos CSV de dashboard_links.js</span>
-            </div>
-            <a class="btn sec sm" href="#auditoria">Log de auditoria (<span id="audit-cnt">0</span>)</a>
+          <div style="padding:24px 24px 8px">
+            <h2>Média e reprovação por curso</h2>
+            <p class="small muted" id="corte-info">Percentual de tentativas abaixo da nota de corte.</p>
           </div>
           <table class="t">
             <thead>
               <tr>
-                <th>Arquivo</th>
-                <th>Registros</th>
-                <th>Colunas</th>
-                <th>Tempo de carga</th>
-                <th>Resultado</th>
+                <th>Curso</th>
+                <th>Média</th>
+                <th>Reprovação</th>
+                <th>1ª tentativa</th>
               </tr>
             </thead>
-            <tbody id="tabela-fontes"></tbody>
+            <tbody id="tabela-cursos"></tbody>
           </table>
         </div>
 
@@ -268,34 +216,6 @@
               <button class="btn accent" type="submit">Salvar</button>
             </div>
           </form>
-        </div>
-
-        <div class="modal" id="indeferir">
-          <form class="box" id="form-indeferir">
-            <h2>Indeferir solicitação</h2>
-            <p class="muted" id="indeferir-sub"></p>
-            <div class="field" id="indeferir-field">
-              <label for="indeferir-parecer">Justificativa do indeferimento</label>
-              <textarea id="indeferir-parecer" placeholder="Explique o motivo da recusa (mínimo de 10 caracteres)"></textarea>
-              <span class="help" id="indeferir-help">Escreva pelo menos 10 caracteres. Atual: 0.</span>
-            </div>
-            <p class="small muted">A decisão é definitiva e não poderá ser reaberta.</p>
-            <div class="actions">
-              <a class="btn sec" href="#">Cancelar</a>
-              <button class="btn danger" type="submit" id="indeferir-ok" disabled>Confirmar indeferimento</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="modal" id="aprovar">
-          <div class="box">
-            <h2>Aprovar solicitação?</h2>
-            <p class="muted" id="aprovar-sub"></p>
-            <div class="actions">
-              <a class="btn sec" href="#">Cancelar</a>
-              <button class="btn accent" type="button" id="aprovar-ok">Confirmar aprovação</button>
-            </div>
-          </div>
         </div>
 
         <div class="modal" id="auditoria">
