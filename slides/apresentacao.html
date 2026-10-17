@@ -115,7 +115,7 @@
   .col{top:50px}
   .col h3{padding-bottom:18px}
   .col ul{margin-top:18px}
-  .col.e ul.two{columns:2;column-gap:16px;font-size:16px;line-height:29px;padding-left:18px}
+  .col.e ul.many{font-size:20px;line-height:32px}
   .col.e.wide{left:100px;width:470px}
   .col.r.tight{left:660px;width:540px}
   .col.r li{margin-bottom:11px}
@@ -133,6 +133,14 @@
   .cont .col.r li span{font-size:22px;line-height:27px}
   .cont .col.r li small{font-size:16px;line-height:21px}
   .cont .col h3{font-size:0;padding:0;border:0;display:none}
+  .sub .pill{font-size:19px;line-height:23px;text-align:center;padding:0 26px}
+  .core .logo-core{background:var(--creme);flex-direction:column;gap:14px;font-size:0}
+  .core .logo-core svg{width:190px}
+  .core .logo-core span{font-size:30px;font-weight:800;letter-spacing:.04em;color:var(--navy);line-height:1}
+  .col.r.compact li{margin-bottom:9px}
+  .col.r.compact li span{font-size:19px;line-height:24px}
+  .col.r.compact li small{font-size:14.5px;line-height:19px;margin-top:1px}
+  .col.r.compact li em{margin-top:2px}
   .cap b{color:var(--navy)}
   .cont .col.r.c0{left:130px;width:1040px;top:56px}
   .cont .col.r.c0 li{margin-bottom:34px;gap:18px}
@@ -162,30 +170,30 @@
   </section>
 <section class="slide light sub">
     <h2>Subdomínios</h2>
-    <div class="pill l" style="top:249px">Cadastros e Acesso</div>
-    <div class="pill l" style="top:371px">Cursos e Conteúdo</div>
-    <div class="pill l" style="top:511px">Provas e Avaliações</div>
-    <div class="core"><div>CESAR<br>EDU</div></div>
-    <div class="pill r" style="top:249px">Aprendizagem do Servidor</div>
-    <div class="pill r" style="top:371px">Comunicação</div>
-    <div class="pill r" style="top:511px">Gestão e Indicadores</div>
+    <div class="pill l" style="top:249px">1. Gerenciamento e Permissões da Plataforma</div>
+    <div class="pill l" style="top:371px">2. Gestão de Cursos</div>
+    <div class="pill l" style="top:511px">3. Provas e Avaliações</div>
+    <div class="core"><div class="logo-core"><svg viewBox="0 0 600 555"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></div></div>
+    <div class="pill r" style="top:249px">4. Aprendizagem Contínua do Servidor (Estudante)</div>
+    <div class="pill r" style="top:371px">5. Comunicação Assíncrona</div>
+    <div class="pill r" style="top:511px">6. Dashboard de Gestão</div>
   </section>
 <section class="slide dark div" data-f="1">
   <div class="num">01</div>
-  <div class="box"><h2>Cadastro de professores da trilha</h2>
+  <div class="box"><h2>Cadastro de alunos e professores da trilha</h2>
     <div style="margin-top:30px"><span class="chip perfil" style="margin-top:0">Gestor</span><span class="chip facil" style="margin-top:0">Fácil</span></div>
     <div class="own">Responsável: <b>Eric Albuquerque</b></div></div>
 </section>
 <section class="slide story" data-f="1">
-  <div class="top" style="font-size:29px"><b>Como</b> <span>gestor da trilha</span><br><b>Quero</b> <span>cadastrar professores e vinculá-los à minha trilha</span><br><b>Para</b> <span>que possam criar cursos com acesso seguro desde o 1º login</span></div>
+  <div class="top" style="font-size:32px"><b>Como</b> <span>gestor da trilha</span><br><b>Quero</b> <span>cadastrar alunos e professores na minha trilha</span><br><b>Para</b> <span>que cada um acesse a plataforma e a trilha certa</span></div>
   <div class="bot">
-    <div class="col e"><h3><i></i>Envolve</h3><ul><li>Gestor</li><li>Professor</li><li>TrilhaDeAprendizagem</li><li>VinculoProfessorTrilha</li><li>Usuario</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Permissão exclusiva do gestor da trilha<small>Somente gestores ativos cadastram e vinculam professores à sua trilha.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Unicidade de CPF e e-mail<small>Bloqueia cadastro com CPF ou e-mail já existente em qualquer perfil.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Credencial provisória e primeiro acesso<small>Gera senha provisória e exige uma nova senha no primeiro login.</small></span></li><li><em class="media">MÉDIA</em><span>RN 4 · Atribuição fixa e irrevogável à trilha<small>O vínculo professor–trilha é permanente: não pode ser alterado nem removido.</small></span></li></ul></div>
+    <div class="col e"><h3><i></i>Envolve</h3><ul><li>Gestor</li><li>Professor</li><li>TrilhaDeAprendizagem</li><li>VinculoProfessorTrilha</li><li>Servidor/Aluno</li></ul></div>
+    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Permissão exclusiva do gestor da trilha<small>Somente gestores ativos cadastram e vinculam professores à sua trilha.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Unicidade de CPF e e-mail<small>Bloqueia cadastro com CPF ou e-mail já existente em qualquer perfil.</small></span></li><li><em class="media">MÉDIA</em><span>RN 3 · Atribuição fixa e irrevogável à trilha<small>O vínculo professor–trilha é permanente: não pode ser alterado nem removido.</small></span></li></ul></div>
   </div>
 </section>
-<section class="slide shot"><div class="frame f1"><img src="img/e2-form.png" alt="Gestor · Cadastro de professor: nome, CPF, e-mail e trilha com vínculo permanente (RN 1, RN 4)"></div><div class="cap">Gestor · Cadastro de professor: nome, CPF, e-mail e trilha com vínculo permanente (RN 1, RN 4)</div></section>
-<section class="slide shot"><div class="lab" style="left:30px">E-mail ou CPF já cadastrado é bloqueado (RN 2)</div><div class="lab" style="left:650px">Conta criada com senha provisória (RN 3)</div><div class="frame f2a"><img src="img/e2-erro.png" alt="E-mail ou CPF já cadastrado é bloqueado (RN 2)"></div><div class="frame f2b"><img src="img/e2-ok.png" alt="Conta criada com senha provisória (RN 3)"></div></section>
-<section class="slide shot"><div class="frame f1"><img src="img/e2-aluno.png" alt="Tela complementar · Cadastro de aluno (servidor) pelo gestor, na mesma lógica de conta provisória"></div><div class="cap">Tela complementar · Cadastro de aluno (servidor) pelo gestor, na mesma lógica de conta provisória</div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/e2-form.png" alt="Gestor · Cadastro de professor: nome, CPF, e-mail e trilha com vínculo permanente (RN 1, RN 3)"></div><div class="cap">Gestor · Cadastro de professor: nome, CPF, e-mail e trilha com vínculo permanente (RN 1, RN 3)</div></section>
+<section class="slide shot"><div class="lab" style="left:30px">E-mail ou CPF já cadastrado é bloqueado (RN 2)</div><div class="lab" style="left:650px">Conta criada e vinculada de forma permanente à trilha (RN 3)</div><div class="frame f2a"><img src="img/e2-erro.png" alt="E-mail ou CPF já cadastrado é bloqueado (RN 2)"></div><div class="frame f2b"><img src="img/e2-ok.png" alt="Conta criada e vinculada de forma permanente à trilha (RN 3)"></div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/e2-aluno.png" alt="Cadastro de aluno (servidor) pelo gestor, na mesma trilha"></div><div class="cap">Cadastro de aluno (servidor) pelo gestor, na mesma trilha</div></section>
 <section class="slide dark div" data-f="2">
   <div class="num">02</div>
   <div class="box"><h2>Avisos e notificações do gestor</h2>
@@ -196,15 +204,12 @@
   <div class="top" style="font-size:32px"><b>Como</b> <span>gestor da trilha</span><br><b>Quero</b> <span>publicar e gerenciar avisos para os alunos da trilha</span><br><b>Para</b> <span>manter a turma informada sobre prazos e orientações</span></div>
   <div class="bot">
     <div class="col e"><h3><i></i>Envolve</h3><ul><li>Gestor</li><li>Aluno</li><li>TrilhaDeAprendizagem</li><li>Notificacao</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Gestão restrita ao gestor da trilha<small>Só o gestor responsável cria, edita ou exclui avisos da trilha.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Validação de conteúdo não vazio<small>Aviso em branco ou só com espaços não é publicado (máx. 2.000 caracteres).</small></span></li><li><em class="media">MÉDIA</em><span>RN 3 · Feed restrito aos alunos da trilha<small>Apenas servidores com vínculo ativo na trilha veem o aviso.</small></span></li></ul></div>
+    <div class="col r compact"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Gestão restrita ao gestor da trilha<small>Só o gestor responsável cria, edita ou exclui avisos da trilha.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Validação de conteúdo não vazio<small>Aviso em branco ou só com espaços não é publicado (máx. 2.000 caracteres).</small></span></li><li><em class="media">MÉDIA</em><span>RN 3 · Feed restrito aos alunos da trilha<small>Apenas servidores com vínculo ativo na trilha veem o aviso.</small></span></li><li><em class="media">MÉDIA</em><span>RN 4 · Edição pelo autor e sinal de &quot;editado&quot;<small>Ao editar, o feed é atualizado e exibe &quot;editado&quot; com a data.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 5 · Exclusão de mensagem do feed<small>Excluir remove o aviso da listagem dos alunos.</small></span></li></ul></div>
   </div>
-</section>
-<section class="slide cont" data-f="2">
-  <div class="top"><h2>Regras de Negócio · continuação</h2><p>02 · Avisos e notificações do gestor</p></div>
-  <div class="bot"><div class="col r c0"><ul><li><em class="media">MÉDIA</em><span>RN 4 · Edição pelo autor e sinal de &quot;editado&quot;<small>Ao editar, o feed é atualizado e exibe &quot;editado&quot; com a data.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 5 · Exclusão de mensagem do feed<small>Excluir remove o aviso da listagem dos alunos.</small></span></li></ul></div></div>
 </section>
 <section class="slide shot"><div class="frame f1"><img src="img/m3-feed.png" alt="Gestor · Feed de avisos: criar aviso (RN 1, RN 2) e feed da trilha com selo &quot;editado&quot; (RN 4)"></div><div class="cap">Gestor · Feed de avisos: criar aviso (RN 1, RN 2) e feed da trilha com selo &quot;editado&quot; (RN 4)</div></section>
 <section class="slide shot"><div class="lab" style="left:30px">Editar aviso (RN 4)</div><div class="lab" style="left:650px">Excluir aviso do feed (RN 5)</div><div class="frame f2a"><img src="img/m3-editar.png" alt="Editar aviso (RN 4)"></div><div class="frame f2b"><img src="img/m3-excluir.png" alt="Excluir aviso do feed (RN 5)"></div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/m3-servidor.png" alt="Servidor · Avisos do gestor da trilha, com selo &quot;editado&quot; (RN 3 e RN 4)"></div><div class="cap">Servidor · Avisos do gestor da trilha, com selo &quot;editado&quot; (RN 3 e RN 4)</div></section>
 <section class="slide dark div" data-f="3">
   <div class="num">03</div>
   <div class="box"><h2>Gerenciamento de cursos</h2>
@@ -215,7 +220,7 @@
   <div class="top" style="font-size:32px"><b>Como</b> <span>professor</span><br><b>Quero</b> <span>criar, editar e arquivar os meus cursos</span><br><b>Para</b> <span>organizar o conteúdo que os servidores vão estudar</span></div>
   <div class="bot">
     <div class="col e"><h3><i></i>Envolve</h3><ul><li>Professor</li><li>Servidor</li><li>Curso</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Criação de curso<small>Campos obrigatórios preenchidos e sempre com um professor responsável.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Consulta e visualização de cursos<small>Professor lista os próprios cursos; servidor vê os publicados a que tem acesso.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Atualização de curso<small>Só o professor responsável (ou administrador) edita dados e status.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Exclusão ou arquivamento<small>Sem histórico, exclui. Com matrículas, progresso ou certificados, arquiva.</small></span></li></ul></div>
+    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Criação de curso<small>Campos obrigatórios preenchidos e sempre com um professor responsável.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Consulta e visualização de cursos<small>Professor lista os próprios cursos; servidor vê os publicados a que tem acesso.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Atualização de curso<small>Só o professor responsável (ou administrador) edita dados e status.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Arquivamento de curso<small>Curso com matrículas, progresso ou certificados é arquivado, preservando o histórico.</small></span></li></ul></div>
   </div>
 </section>
 <section class="slide shot"><div class="frame f1"><img src="img/g1-lista.png" alt="Professor · Meus cursos: situação (Publicado, Rascunho, Arquivado) e alunos (RN 2)"></div><div class="cap">Professor · Meus cursos: situação (Publicado, Rascunho, Arquivado) e alunos (RN 2)</div></section>
@@ -231,7 +236,7 @@
   <div class="top" style="font-size:32px"><b>Como</b> <span>professor</span><br><b>Quero</b> <span>estruturar meu curso em módulos ordenados</span><br><b>Para</b> <span>organizar a sequência de aprendizagem do servidor</span></div>
   <div class="bot">
     <div class="col e"><h3><i></i>Envolve</h3><ul><li>Professor</li><li>Servidor</li><li>Curso</li><li>Módulo</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Criação de módulo<small>Só em cursos do professor responsável; todo módulo tem um curso associado.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Consulta e visualização de módulos<small>Professor organiza; servidor vê os módulos do curso na ordem definida.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Atualização de módulo<small>Edita título, descrição e posição dentro do curso.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Exclusão de módulo<small>Sem aulas, exclui direto; com aulas, bloqueia ou exige tratamento.</small></span></li></ul></div>
+    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Criação de módulo<small>Só em cursos do professor responsável; todo módulo tem um curso associado.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Consulta e visualização de módulos<small>Professor organiza; servidor vê os módulos do curso na ordem definida.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Atualização de módulo<small>Edita o título e a descrição do módulo.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Exclusão de módulo<small>Sem aulas, exclui direto; com aulas, bloqueia ou exige tratamento.</small></span></li></ul></div>
   </div>
 </section>
 <section class="slide shot"><div class="frame f1"><img src="img/g2-lista.png" alt="Professor · Módulos do curso, em ordem, com carga horária e prova (RN 2)"></div><div class="cap">Professor · Módulos do curso, em ordem, com carga horária e prova (RN 2)</div></section>
@@ -247,10 +252,10 @@
   <div class="top" style="font-size:32px"><b>Como</b> <span>professor</span><br><b>Quero</b> <span>cadastrar e manter as aulas de cada módulo</span><br><b>Para</b> <span>disponibilizar o conteúdo em vídeo aos servidores</span></div>
   <div class="bot">
     <div class="col e"><h3><i></i>Envolve</h3><ul><li>Professor</li><li>Servidor</li><li>Curso</li><li>Módulo</li><li>Aula</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Criação de aula<small>Toda aula pertence a um módulo existente de um curso do professor.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Consulta e visualização de aulas<small>Professor consulta; servidor acessa as aulas na ordem do módulo.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Atualização de aula<small>Altera título, descrição, duração, conteúdo e posição da aula.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Exclusão de aula<small>Sem progresso, exclui; com histórico, preserva com exclusão lógica ou desativação.</small></span></li></ul></div>
+    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Criação de aula<small>Toda aula pertence a um módulo existente de um curso do professor.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Consulta e visualização de aulas<small>Professor consulta; servidor acessa as aulas na ordem do módulo.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Atualização de aula<small>Altera título, descrição, duração e conteúdo da aula.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Exclusão de aula<small>Sem progresso, exclui; com histórico, preserva com exclusão lógica ou desativação.</small></span></li></ul></div>
   </div>
 </section>
-<section class="slide shot"><div class="frame f1"><img src="img/g3-lista.png" alt="Professor · Aulas do módulo, com posição e duração (RN 2)"></div><div class="cap">Professor · Aulas do módulo, com posição e duração (RN 2)</div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/g3-lista.png" alt="Professor · Aulas do módulo, em ordem e com duração (RN 2)"></div><div class="cap">Professor · Aulas do módulo, em ordem e com duração (RN 2)</div></section>
 <section class="slide shot"><div class="lab" style="left:30px">Criar aula (RN 1)</div><div class="lab" style="left:650px">Editar aula (RN 3)</div><div class="frame f2a"><img src="img/g3-nova.png" alt="Criar aula (RN 1)"></div><div class="frame f2b"><img src="img/g3-editar.png" alt="Editar aula (RN 3)"></div></section>
 <section class="slide shot"><div class="frame f1"><img src="img/g3-excluir.png" alt="Excluir aula remove também materiais e comentários (RN 4)"></div><div class="cap">Excluir aula remove também materiais e comentários (RN 4)</div></section>
 <section class="slide dark div" data-f="6">
@@ -279,12 +284,8 @@
   <div class="top" style="font-size:29px"><b>Como</b> <span>professor do curso</span><br><b>Quero</b> <span>criar e manter a prova de múltipla escolha</span><br><b>Para</b> <span>avaliar o aprendizado com critério de aprovação definido</span></div>
   <div class="bot">
     <div class="col e"><h3><i></i>Envolve</h3><ul><li>Curso</li><li>Prova</li><li>Questão</li><li>Alternativa</li><li>Gabarito</li><li>TentativaDeProva</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="media">MÉDIA</em><span>RN 1 · Estrutura mínima de questões e alternativas<small>Ao menos 1 questão; cada uma com 2+ alternativas e exatamente 1 correta.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Limite mínimo da nota de corte<small>O percentual de aprovação deve ser superior a 50%.</small></span></li><li><em class="media">MÉDIA</em><span>RN 3 · Validação contínua na edição<small>Toda alteração revalida as regras antes de salvar.</small></span></li></ul></div>
+    <div class="col r compact"><h3><i></i>Regras de Negócio</h3><ul><li><em class="media">MÉDIA</em><span>RN 1 · Estrutura mínima da prova<small>Mín. 1 questão; cada uma com 2+ alternativas e 1 correta.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Limite mínimo da nota de corte<small>O percentual de aprovação deve ser superior a 50%.</small></span></li><li><em class="media">MÉDIA</em><span>RN 3 · Validação contínua na edição<small>Toda alteração revalida as regras antes de salvar.</small></span></li><li><em class="media">MÉDIA</em><span>RN 4 · Efeito não retroativo da nota de corte<small>A nova nota vale só para tentativas futuras; resultados passados não mudam.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 5 · Unicidade de prova por curso<small>Uma segunda prova no mesmo curso é bloqueada.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 6 · Gestão restrita ao professor do curso<small>Só o professor responsável cria, vê, edita ou exclui a prova.</small></span></li></ul></div>
   </div>
-</section>
-<section class="slide cont" data-f="7">
-  <div class="top"><h2>Regras de Negócio · continuação</h2><p>07 · Gestão de provas de avaliação</p></div>
-  <div class="bot"><div class="col r c0"><ul><li><em class="media">MÉDIA</em><span>RN 4 · Efeito não retroativo da nota de corte<small>A nova nota vale só para tentativas futuras; resultados passados não mudam.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 5 · Unicidade de prova por curso<small>Uma segunda prova no mesmo curso é bloqueada.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 6 · Gestão restrita ao professor do curso<small>Só o professor responsável cria, vê, edita ou exclui a prova.</small></span></li></ul></div></div>
 </section>
 <section class="slide shot"><div class="frame f1"><img src="img/m1-prova.png" alt="Professor · Prova do curso: gabarito, critério de aprovação (RN 2) e desempenho dos alunos"></div><div class="cap">Professor · Prova do curso: gabarito, critério de aprovação (RN 2) e desempenho dos alunos</div></section>
 <section class="slide shot"><div class="lab" style="left:30px">Criar prova: regras conferidas em tempo real (RN 1, RN 2)</div><div class="lab" style="left:650px">Editar prova revalida as regras (RN 3)</div><div class="frame f2a"><img src="img/m1-nova.png" alt="Criar prova: regras conferidas em tempo real (RN 1, RN 2)"></div><div class="frame f2b"><img src="img/m1-editar.png" alt="Editar prova revalida as regras (RN 3)"></div></section>
@@ -292,21 +293,21 @@
 <section class="slide shot"><div class="lab" style="left:30px">Servidor · Trilha e cursos publicados (Cursos, RN 2)</div><div class="lab" style="left:650px">Servidor · Módulos e aulas do curso (Módulos e Aulas, RN 2)</div><div class="frame f2a"><img src="img/s-trilha.png" alt="Servidor · Trilha e cursos publicados (Cursos, RN 2)"></div><div class="frame f2b"><img src="img/s-curso.png" alt="Servidor · Módulos e aulas do curso (Módulos e Aulas, RN 2)"></div><div class="cap">Consulta pelo servidor das funcionalidades 03 a 06 (cursos, módulos, aulas e materiais)</div></section>
 <section class="slide dark div" data-f="8">
   <div class="num">08</div>
-  <div class="box"><h2>Progresso e consumo de aulas</h2>
+  <div class="box"><h2>Consumo de aulas e provas</h2>
     <div style="margin-top:30px"><span class="chip perfil" style="margin-top:0">Servidor</span><span class="chip media" style="margin-top:0">Média</span></div>
     <div class="own">Responsável: <b>Amanda Luz</b></div></div>
 </section>
 <section class="slide story" data-f="8">
-  <div class="top" style="font-size:32px"><b>Como</b> <span>aluno (servidor público municipal)</span><br><b>Quero</b> <span>assistir às aulas e marcar meu progresso no curso</span><br><b>Para</b> <span>acompanhar minha evolução e manter meu streak</span></div>
+  <div class="top" style="font-size:32px"><b>Como</b> <span>aluno (servidor público municipal)</span><br><b>Quero</b> <span>assistir às aulas e realizar as provas dos cursos</span><br><b>Para</b> <span>acompanhar minha evolução e meu desempenho no curso</span></div>
   <div class="bot">
-    <div class="col e"><h3><i></i>Envolve</h3><ul><li>Aluno</li><li>Curso</li><li>Aula</li><li>Matricula</li><li>ProgressoAula</li><li>LogEstudo</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Matrícula ativa obrigatória<small>Só acessa aulas e registra progresso quem tem matrícula ativa no curso.</small></span></li><li><em class="media">MÉDIA</em><span>RN 2 · Atualização de progresso<small>Recalcula o % do curso a cada aula; em 100%, a matrícula é concluída.</small></span></li><li><em class="media">MÉDIA</em><span>RN 3 · Log diário e contagem de streak<small>A primeira aula do dia registra o log e soma ao streak de estudos.</small></span></li></ul></div>
+    <div class="col e"><h3><i></i>Envolve</h3><ul><li>Aluno</li><li>TrilhaDeAprendizagem</li><li>Curso</li><li>Aula</li><li>Matricula</li><li>ProgressoAula</li><li>Prova</li><li>TentativaDeProva</li></ul></div>
+    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Matrícula ativa obrigatória<small>Só acessa aulas e registra progresso quem tem matrícula ativa no curso.</small></span></li><li><em class="media">MÉDIA</em><span>RN 2 · Atualização de progresso<small>Recalcula o % do curso a cada aula; em 100%, a matrícula é concluída.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Acesso restrito aos cursos da trilha<small>O aluno só consome os cursos da trilha em que está matriculado.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Aprovação encerra a prova<small>Aluno já aprovado na prova do curso não pode refazê-la.</small></span></li></ul></div>
   </div>
 </section>
-<section class="slide shot"><div class="frame f1"><img src="img/f2-aula.png" alt="Servidor · Aula: vídeo, materiais, progresso do curso (68%) e &quot;Marcar como concluída&quot;"></div><div class="cap">Servidor · Aula: vídeo, materiais, progresso do curso (68%) e &quot;Marcar como concluída&quot;</div></section>
-<section class="slide shot"><div class="lab" style="left:30px">Iniciar o curso exige matrícula ativa (RN 1)</div><div class="lab" style="left:650px">Aula concluída: progresso e streak do dia (RN 2, RN 3)</div><div class="frame f2a"><img src="img/f2-curso.png" alt="Iniciar o curso exige matrícula ativa (RN 1)"></div><div class="frame f2b"><img src="img/f2-concluida.png" alt="Aula concluída: progresso e streak do dia (RN 2, RN 3)"></div></section>
-<section class="slide shot"><div class="lab" style="left:30px">Servidor · Tentativas e nota de corte fixada (RN 4)</div><div class="lab" style="left:650px">Servidor · Tentativa em andamento</div><div class="frame f2a"><img src="img/m1-s-prova.png" alt="Servidor · Tentativas e nota de corte fixada (RN 4)"></div><div class="frame f2b"><img src="img/m1-s-fazer.png" alt="Servidor · Tentativa em andamento"></div><div class="cap">Continuação da funcionalidade 07 · Prova do curso na visão do servidor</div></section>
-<section class="slide shot"><div class="frame f1"><img src="img/m1-s-resultado.png" alt="Servidor · Resultado da tentativa, com a nota de corte vigente na hora da prova (RN 4)"></div><div class="cap">Servidor · Resultado da tentativa, com a nota de corte vigente na hora da prova (RN 4)</div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/f2-aula.png" alt="Servidor · Consumo de aulas: vídeo, materiais, progresso do curso (68%) e &quot;Marcar como concluída&quot;"></div><div class="cap">Servidor · Consumo de aulas: vídeo, materiais, progresso do curso (68%) e &quot;Marcar como concluída&quot;</div></section>
+<section class="slide shot"><div class="lab" style="left:30px">Iniciar o curso exige matrícula ativa (RN 1)</div><div class="lab" style="left:650px">Aula concluída: progresso do curso atualizado (RN 2)</div><div class="frame f2a"><img src="img/f2-curso.png" alt="Iniciar o curso exige matrícula ativa (RN 1)"></div><div class="frame f2b"><img src="img/f2-concluida.png" alt="Aula concluída: progresso do curso atualizado (RN 2)"></div></section>
+<section class="slide shot"><div class="lab" style="left:30px">Consumo de provas · tentativas e nota de corte fixada</div><div class="lab" style="left:650px">Consumo de provas · tentativa em andamento</div><div class="frame f2a"><img src="img/m1-s-prova.png" alt="Consumo de provas · tentativas e nota de corte fixada"></div><div class="frame f2b"><img src="img/m1-s-fazer.png" alt="Consumo de provas · tentativa em andamento"></div><div class="cap">Servidor · Prova do curso (regra de nota de corte não retroativa: funcionalidade 07, RN 4)</div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/m1-s-resultado.png" alt="Servidor · Resultado da tentativa, com a nota de corte vigente na hora da prova (funcionalidade 07, RN 4)"></div><div class="cap">Servidor · Resultado da tentativa, com a nota de corte vigente na hora da prova (funcionalidade 07, RN 4)</div></section>
 <section class="slide dark div" data-f="9">
   <div class="num">09</div>
   <div class="box"><h2>Comentários, dúvidas e respostas</h2>
@@ -317,12 +318,8 @@
   <div class="top" style="font-size:32px"><b>Como</b> <span>aluno matriculado ou professor do curso</span><br><b>Quero</b> <span>comentar e responder dúvidas em cada aula</span><br><b>Para</b> <span>trocar conhecimento com a turma e o professor</span></div>
   <div class="bot">
     <div class="col e"><h3><i></i>Envolve</h3><ul><li>Aluno</li><li>Professor</li><li>Curso</li><li>Aula</li><li>Matrícula</li><li>Comentário (pai e respostas)</li></ul></div>
-    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="media">MÉDIA</em><span>RN 1 · Permissão de acesso e interação<small>Só publica o professor do curso ou aluno com matrícula ativa.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Validação de conteúdo não vazio<small>Texto de 1 a 1.000 caracteres válidos; sem envio em branco.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Destaque e identificação do professor<small>Respostas do professor ganham selo &quot;Professor&quot; e fundo destacado.</small></span></li></ul></div>
+    <div class="col r compact"><h3><i></i>Regras de Negócio</h3><ul><li><em class="media">MÉDIA</em><span>RN 1 · Permissão de acesso e interação<small>Só publica o professor do curso ou aluno com matrícula ativa.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Validação de conteúdo não vazio<small>Texto de 1 a 1.000 caracteres válidos; sem envio em branco.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Destaque e identificação do professor<small>Respostas do professor ganham selo &quot;Professor&quot; e fundo destacado.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 4 · Edição exclusiva do autor<small>Só o autor altera a própria mensagem; editadas exibem &quot;editado&quot;.</small></span></li><li><em class="media">MÉDIA</em><span>RN 5 · Exclusão em cascata<small>Autor exclui o que é seu; apagar o comentário pai remove as respostas.</small></span></li></ul></div>
   </div>
-</section>
-<section class="slide cont" data-f="9">
-  <div class="top"><h2>Regras de Negócio · continuação</h2><p>09 · Comentários, dúvidas e respostas</p></div>
-  <div class="bot"><div class="col r c0"><ul><li><em class="baixa">BAIXA</em><span>RN 4 · Edição exclusiva do autor<small>Só o autor altera a própria mensagem; editadas exibem &quot;editado&quot;.</small></span></li><li><em class="media">MÉDIA</em><span>RN 5 · Exclusão em cascata<small>Autor exclui o que é seu; apagar o comentário pai remove as respostas.</small></span></li></ul></div></div>
 </section>
 <section class="slide shot"><div class="frame f1"><img src="img/m2-aluno.png" alt="Servidor · Comentários da aula, com resposta do professor em destaque (RN 3)"></div><div class="cap">Servidor · Comentários da aula, com resposta do professor em destaque (RN 3)</div></section>
 <section class="slide shot"><div class="lab" style="left:30px">Editar o próprio comentário (RN 4)</div><div class="lab" style="left:650px">Excluir o próprio comentário e respostas (RN 5)</div><div class="frame f2a"><img src="img/m2-editar.png" alt="Editar o próprio comentário (RN 4)"></div><div class="frame f2b"><img src="img/m2-excluir.png" alt="Excluir o próprio comentário e respostas (RN 5)"></div></section>
@@ -355,9 +352,7 @@
     <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Unicidade de solicitação<small>Sem pedido pendente ou matrícula ativa na mesma trilha.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 2 · Validação de justificativa<small>Justificativa obrigatória, de 10 a 500 caracteres válidos.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Notificação ao gestor da trilha<small>O gestor da secretaria é notificado automaticamente.</small></span></li></ul></div>
   </div>
 </section>
-<section class="slide shot"><div class="frame f1"><img src="img/f1-solicitar.png" alt="Servidor · Solicitar acesso: justificativa (RN 2) e histórico de pedidos (RN 1)"></div><div class="cap">Servidor · Solicitar acesso: justificativa (RN 2) e histórico de pedidos (RN 1)</div></section>
 <section class="slide shot"><div class="lab" style="left:30px">Pedido a partir do catálogo de trilhas</div><div class="lab" style="left:650px">Gestor notificado (RN 3)</div><div class="frame f2a"><img src="img/f1-trilha-modal.png" alt="Pedido a partir do catálogo de trilhas"></div><div class="frame f2b"><img src="img/f1-enviado.png" alt="Gestor notificado (RN 3)"></div></section>
-<section class="slide shot"><div class="frame f1"><img src="img/m3-servidor.png" alt="Servidor · Avisos do gestor da trilha, com selo &quot;editado&quot; (funcionalidade 02, RN 3 e RN 4)"></div><div class="cap">Servidor · Avisos do gestor da trilha, com selo &quot;editado&quot; (funcionalidade 02, RN 3 e RN 4)</div></section>
 <section class="slide dark div" data-f="12">
   <div class="num">12</div>
   <div class="box"><h2>Homologação de solicitações de acesso</h2>
@@ -383,17 +378,17 @@
 <section class="slide story" data-f="13">
   <div class="top" style="font-size:32px"><b>Como</b> <span>gestor da trilha</span><br><b>Quero</b> <span>acompanhar indicadores e filtros da minha equipe</span><br><b>Para</b> <span>identificar gargalos e agir sobre o engajamento</span></div>
   <div class="bot">
-    <div class="col e wide"><h3><i></i>Envolve</h3><ul class="two"><li>Gestor</li><li>TrilhaDeAprendizagem</li><li>Curso</li><li>Servidor</li><li>MatriculaTrilha</li><li>MatriculaCurso</li><li>AvaliacaoQuiz</li><li>PesquisaSatisfacao</li><li>DashboardConfigGestor</li><li>DashboardLogConsulta</li></ul></div>
-    <div class="col r tight"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Escopo restrito ao gestor responsável<small>Vê só dados das trilhas e servidores sob sua responsabilidade.</small></span></li><li><em class="media">MÉDIA</em><span>RN 2 · Filtros e visualizações salvas<small>Salva filtros, ordenação e layout para os próximos acessos.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Auditoria de consultas<small>Cada consulta grava parâmetros, usuário e tempo de resposta.</small></span></li><li><em class="media">MÉDIA</em><span>RN 4 · Progresso coletivo e meta da secretaria<small>Horas concluídas no mês comparadas à meta definida pela liderança.</small></span></li></ul></div>
+    <div class="col e"><h3><i></i>Envolve</h3><ul class="many"><li>Gestor</li><li>TrilhaDeAprendizagem</li><li>Curso</li><li>Servidor</li><li>MatriculaTrilha</li><li>MatriculaCurso</li><li>TentativaProva</li><li>PesquisaSatisfacao</li><li>DashboardConfigGestor</li><li>DashboardLogConsulta</li></ul></div>
+    <div class="col r"><h3><i></i>Regras de Negócio</h3><ul><li><em class="baixa">BAIXA</em><span>RN 1 · Escopo restrito ao gestor responsável<small>Vê só dados das trilhas e servidores sob sua responsabilidade.</small></span></li><li><em class="media">MÉDIA</em><span>RN 2 · Filtros e visualizações salvas<small>Salva filtros, ordenação e layout para os próximos acessos.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 3 · Auditoria de consultas<small>Cada consulta grava parâmetros, usuário e tempo de resposta.</small></span></li><li><em class="media">MÉDIA</em><span>RN 4 · Progresso coletivo e meta da secretaria<small>Horas concluídas no mês comparadas à meta definida pela liderança.</small></span></li></ul></div>
   </div>
 </section>
 <section class="slide cont" data-f="13">
   <div class="top"><h2>Regras de Negócio · continuação</h2><p>13 · Dashboard analítico do gestor</p></div>
-  <div class="bot"><div class="col r c1"><ul><li><em class="media">MÉDIA</em><span>RN 5 · Acompanhamento individual da equipe<small>Tabela por servidor: status, avanço na trilha e nota acumulada.</small></span></li><li><em class="baixa">BAIXA</em><span>RN 6 · Fila de homologação em tempo real<small>Contagem e lista de pedidos pendentes, com atalho para aprovação.</small></span></li><li><em class="media">MÉDIA</em><span>RN 7 · Alerta de estagnação<small>Sinaliza servidores há mais de 15 dias sem acesso ou progresso.</small></span></li></ul></div><div class="col r c2"><ul><li><em class="alta">ALTA</em><span>RN 8 · Aprovação na primeira tentativa<small>% de servidores que atingem a nota mínima já na 1ª tentativa.</small></span></li><li><em class="media">MÉDIA</em><span>RN 9 · Média de notas e índice de reprovação<small>Média por curso e % de tentativas abaixo da nota mínima.</small></span></li><li><em class="alta">ALTA</em><span>RN 10 · Evasão e comparativo entre trilhas<small>Abandono de cursos e indicadores comparados entre trilhas.</small></span></li></ul></div></div>
+  <div class="bot"><div class="col r c0"><ul><li><em class="media">MÉDIA</em><span>RN 5 · Acompanhamento individual da equipe<small>Tabela por servidor: status, avanço na trilha e nota acumulada.</small></span></li><li><em class="alta">ALTA</em><span>RN 6 · Aprovação na primeira tentativa<small>% de servidores que atingem a nota mínima já na 1ª tentativa.</small></span></li><li><em class="media">MÉDIA</em><span>RN 7 · Média de notas e índice de reprovação<small>Média por curso e % de tentativas abaixo da nota mínima.</small></span></li><li><em class="alta">ALTA</em><span>RN 8 · Evasão e comparativo entre trilhas<small>Abandono de cursos e indicadores comparados entre trilhas.</small></span></li></ul></div></div>
 </section>
-<section class="slide shot"><div class="frame f1"><img src="img/e1-topo.png" alt="Gestor · Dashboard: filtros, indicadores (aprovação na 1ª tentativa, evasão) e meta mensal de horas (RN 2, RN 4, RN 8, RN 10)"></div><div class="cap">Gestor · Dashboard: filtros, indicadores (aprovação na 1ª tentativa, evasão) e meta mensal de horas (RN 2, RN 4, RN 8, RN 10)</div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/e1-topo.png" alt="Gestor · Dashboard: filtros, indicadores (aprovação na 1ª tentativa, evasão) e meta mensal de horas (RN 2, RN 4, RN 6, RN 8)"></div><div class="cap">Gestor · Dashboard: filtros, indicadores (aprovação na 1ª tentativa, evasão) e meta mensal de horas (RN 2, RN 4, RN 6, RN 8)</div></section>
 <section class="slide shot"><div class="frame f1"><img src="img/e1-servidores.png" alt="Acompanhamento individual dos servidores: status, avanço, nota e último acesso (RN 5)"></div><div class="cap">Acompanhamento individual dos servidores: status, avanço, nota e último acesso (RN 5)</div></section>
-<section class="slide shot"><div class="frame f1"><img src="img/e1-cursos.png" alt="Média de notas e índice de reprovação por curso (RN 9)"></div><div class="cap">Média de notas e índice de reprovação por curso (RN 9)</div></section>
+<section class="slide shot"><div class="frame f1"><img src="img/e1-cursos.png" alt="Média de notas e índice de reprovação por curso (RN 7)"></div><div class="cap">Média de notas e índice de reprovação por curso (RN 7)</div></section>
 <section class="slide shot"><div class="lab" style="left:30px">Salvar visualização (RN 2)</div><div class="lab" style="left:650px">Auditoria de consultas do dashboard (RN 3)</div><div class="frame f2a"><img src="img/e1-salvar.png" alt="Salvar visualização (RN 2)"></div><div class="frame f2b"><img src="img/e1-auditoria.png" alt="Auditoria de consultas do dashboard (RN 3)"></div></section>
 <section class="slide dark end">
     <h1>Agradecemos<br>a atenção!</h1>
