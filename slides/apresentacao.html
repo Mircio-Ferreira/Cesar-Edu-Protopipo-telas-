@@ -147,6 +147,38 @@
   .cont .col.r.c0 li span{font-size:30px;line-height:37px}
   .cont .col.r.c0 li small{font-size:21px;line-height:28px;margin-top:6px}
   .cont .col.r.c0 li em{margin-top:10px;font-size:14px;padding:4px 12px;line-height:22px}
+
+  /* ---- tipos de domínio ---- */
+  .sub .pill.t-core{background:var(--navy);border-color:var(--navy);color:var(--creme)}
+  .sub .pill.t-apoio{background:var(--laranja-claro)}
+  .sub .pill.t-gen{background:var(--creme2)}
+  .legend{position:absolute;left:0;right:0;top:604px;display:flex;justify-content:center;gap:34px;font-size:18px;color:var(--navy)}
+  .legend span{display:flex;align-items:center;gap:10px}
+  .legend i{width:22px;height:22px;border-radius:7px;border:1px solid var(--borda)}
+  .legend i.t-core{background:var(--navy);border-color:var(--navy)}
+  .legend i.t-apoio{background:var(--laranja-claro)}
+  .legend i.t-gen{background:var(--creme2)}
+  .legend b{font-weight:800}
+  .dom .top{position:absolute;left:0;right:0;top:0;height:150px;background:var(--creme);color:var(--navy);padding:30px 60px 0}
+  .dom .top .row1{display:flex;align-items:center;gap:18px}
+  .dom .top h2{font-size:40px;font-weight:800;letter-spacing:-.02em}
+  .dom .top p{font-size:20px;color:var(--texto2);margin-top:10px;line-height:27px}
+  .dom .tipo{padding:6px 18px;border-radius:20px;font-size:16px;font-weight:700;letter-spacing:.04em}
+  .dom .tipo.t-core{background:var(--navy);color:var(--creme)}
+  .dom .tipo.t-apoio{background:var(--laranja-claro);color:var(--laranja-escuro)}
+  .dom .tipo.t-gen{background:var(--creme2);color:var(--navy)}
+  .dom .bot{position:absolute;left:0;right:0;top:150px;bottom:0;background:var(--navy);color:var(--creme);padding:26px 50px;display:grid;gap:20px}
+  .dom .bot.g2{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+  .dom .bot.g3{grid-template-columns:repeat(3,1fr)}
+  .dom .bot.g1{grid-template-columns:1.25fr 1fr}
+  .dc{background:rgba(243,240,231,.06);border:1px solid rgba(243,240,231,.2);border-radius:22px;padding:18px 24px;overflow:hidden}
+  .dc h3{font-size:23px;font-weight:700;color:var(--laranja);display:block;border:0;padding:0;margin-bottom:10px}
+  .dc ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px}
+  .dc li{font-size:15.5px;line-height:21px;color:var(--creme2)}
+  .dc li b{color:var(--creme);font-weight:700}
+  .dom .bot.g3 .dc li,.dom .bot.g1 .dc li{font-size:17px;line-height:24px}
+  .dom .bot.g3 .dc,.dom .bot.g1 .dc{padding:22px 26px}
+  .dom .bot.g3 .dc ul,.dom .bot.g1 .dc ul{gap:14px}
 </style>
 </head>
 <body>
@@ -170,14 +202,29 @@
   </section>
 <section class="slide light sub">
     <h2>Subdomínios</h2>
-    <div class="pill l" style="top:249px">1. Gerenciamento e Permissões da Plataforma</div>
-    <div class="pill l" style="top:371px">2. Gestão de Cursos</div>
-    <div class="pill l" style="top:511px">3. Provas e Avaliações</div>
-    <div class="core"><div class="logo-core"><svg viewBox="0 0 600 555"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></div></div>
-    <div class="pill r" style="top:249px">4. Aprendizagem Contínua do Servidor (Estudante)</div>
-    <div class="pill r" style="top:371px">5. Comunicação Assíncrona</div>
-    <div class="pill r" style="top:511px">6. Dashboard de Gestão</div>
+    <div class="pill l t-core" style="top:210px">Trilhas</div>
+    <div class="pill l t-core" style="top:300px">Catálogo de Cursos</div>
+    <div class="pill l t-core" style="top:390px">Avaliação (Provas)</div>
+    <div class="pill l t-core" style="top:480px">Aprendizagem do Aluno</div>
+    <div class="core" style="top:215px"><div class="logo-core"><svg viewBox="0 0 600 555"><circle cx="277" cy="277" r="277" fill="#13222F"/><circle cx="508" cy="150" r="92" fill="#EE7440"/><circle cx="312" cy="283" r="64" fill="#EE7440"/><circle cx="159" cy="370" r="42" fill="#EE7440"/></svg><span>CESAR EDU</span></div></div>
+    <div class="pill r t-apoio" style="top:210px">Acesso Interdisciplinar</div>
+    <div class="pill r t-apoio" style="top:300px">Comunicação</div>
+    <div class="pill r t-apoio" style="top:390px">Analytics do Gestor</div>
+    <div class="pill r t-gen" style="top:480px">Identidade e Acesso</div>
+    <div class="legend"><span><i class="t-core"></i><b>Core</b> · diferencial do negócio</span><span><i class="t-apoio"></i><b>Apoio</b> · necessário, não diferencial</span><span><i class="t-gen"></i><b>Genérico</b> · solução padrão</span></div>
   </section>
+<section class="slide light dom">
+  <div class="top"><div class="row1"><h2>Domínios centrais</h2><span class="tipo t-core">CORE</span></div><p>É onde o CESAR EDU se diferencia: organizar a formação, avaliar e acompanhar o servidor.</p></div>
+  <div class="bot g2"><div class="dc"><h3>Trilhas</h3><ul><li><b>TrilhaDeAprendizagem</b> — trilha única do gestor, criada junto com a conta dele</li><li><b>VinculoProfessorTrilha</b> — vínculo fixo e irrevogável entre professor e trilha</li><li><b>MatriculaTrilha</b> — inscrição do servidor na trilha</li></ul></div><div class="dc"><h3>Catálogo de Cursos</h3><ul><li><b>Curso</b> — tem um professor responsável; com histórico é arquivado, não excluído</li><li><b>Módulo</b> — agrupa as aulas; a ordem é definida na criação</li><li><b>Aula</b> — vídeo do curso; a carga horária do curso é a soma das aulas</li><li><b>Material</b> — arquivo ou link de apoio da aula</li></ul></div><div class="dc"><h3>Avaliação (Provas)</h3><ul><li><b>Prova</b> — uma por curso, de múltipla escolha</li><li><b>Questão / Alternativa</b> — 2 ou mais alternativas e exatamente 1 correta (gabarito)</li><li><b>TentativaDeProva</b> — guarda a nota de corte vigente (acima de 50%) no momento da prova</li></ul></div><div class="dc"><h3>Aprendizagem do Aluno</h3><ul><li><b>MatriculaCurso</b> — só quem tem matrícula ativa acessa o curso</li><li><b>ProgressoAula</b> — aula concluída recalcula o percentual do curso</li><li><b>AvaliacaoCurso</b> — estrelas e comentário; uma avaliação por aluno e curso</li></ul></div></div>
+</section>
+<section class="slide light dom">
+  <div class="top"><div class="row1"><h2>Domínios de apoio</h2><span class="tipo t-apoio">APOIO</span></div><p>Necessários para o negócio funcionar, mas não são o diferencial da plataforma.</p></div>
+  <div class="bot g3"><div class="dc"><h3>Acesso Interdisciplinar</h3><ul><li><b>SolicitacaoAcessoTrilha</b> — pedido do servidor para entrar em outra trilha, com justificativa de 10 a 500 caracteres</li><li><b>Decisão do gestor</b> — aprovar cria a matrícula; indeferir exige parecer; é irreversível</li></ul></div><div class="dc"><h3>Comunicação</h3><ul><li><b>Comentario</b> — respostas encadeadas na aula, com selo “Professor”; só o autor edita ou exclui</li><li><b>Aviso</b> — feed do gestor para os alunos da trilha, com selo “editado”</li><li><b>Notificacao</b> — avisa o gestor quando chega um pedido de acesso</li></ul></div><div class="dc"><h3>Analytics do Gestor</h3><ul><li><b>Indicadores</b> — modelo de leitura: engajamento, progresso e desempenho da trilha</li><li><b>DashboardConfigGestor</b> — filtros e visualizações salvas por gestor</li><li><b>DashboardLogConsulta</b> — auditoria das consultas feitas no dashboard</li></ul></div></div>
+</section>
+<section class="slide light dom">
+  <div class="top"><div class="row1"><h2>Domínio genérico</h2><span class="tipo t-gen">GENÉRICO</span></div><p>Resolve uma necessidade padrão, sem regra de negócio própria do ensino.</p></div>
+  <div class="bot g1"><div class="dc"><h3>Identidade e Acesso</h3><ul><li><b>Usuario</b> — conta com CPF e e-mail únicos na plataforma</li><li><b>Perfil</b> — Gestor, Professor ou Aluno; define o que cada um enxerga</li><li><b>Credencial</b> — e-mail e senha de acesso usados no login</li></ul></div><div class="dc"><h3>Por que é genérico?</h3><ul><li>Autenticação e cadastro de contas são um problema comum a qualquer sistema</li><li>Não define o diferencial do CESAR EDU</li><li>Pode usar uma solução pronta, como um provedor de identidade</li><li>Os demais domínios só consomem o perfil do usuário</li></ul></div></div>
+</section>
 <section class="slide dark div" data-f="1">
   <div class="num">01</div>
   <div class="box"><h2>Cadastro de alunos e professores da trilha</h2>
